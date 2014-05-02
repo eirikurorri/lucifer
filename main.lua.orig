@@ -22,6 +22,9 @@ end
 function love.update( dt )
     background1y = background1y + dir * dt
     background2y = background2y + dir * dt
+<<<<<<< HEAD
+end
+=======
     if (love.keyboard.isDown("left")) then 
     	dudeX = dudeX - dudeSpeed * dt
     end
@@ -29,3 +32,4 @@ function love.update( dt )
     	dudeX = dudeX + dudeSpeed * dt
     end
 end
+>>>>>>> 2d3177558cfb25a0013c790d575d2f2ecf80794d
