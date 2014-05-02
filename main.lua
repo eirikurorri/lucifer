@@ -9,6 +9,7 @@ end
 
 function love.draw()
     love.graphics.draw(background, 0, background1y )
+    love.graphics.rotate(1)
     love.graphics.draw(background2, 0, background2y )
 end
 
