@@ -10,10 +10,6 @@ function love.load()
     pinkdude = love.graphics.newImage('gfx/pinkdude.bmp')
     dudeSpeed = 600
     dudeX = 400
-    -- keyboard
-    left = love.keyboard.isDown("left")
-    right = love.keyboard.isDown("right")
-    space = love.keyboard.isDown(" ") -- might not work with " "
 end
 
 function love.draw()
