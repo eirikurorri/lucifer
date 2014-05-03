@@ -8,15 +8,23 @@ function love.load()
     dir =  -128
     -- lucifer's character
     pinkdude = love.graphics.newImage('gfx/pinkdude.bmp')
-    dudeSpeed = 600
-    dudeX = 120
+    dudeSpeed = 600 -- movement speed
+    dudeX = 420 -- X axis placement, initial value is 120
+    -- ledge obstacle
+    ledge = love.graphics.newImage('gfx/ledge.bmp')
+    -- soul dude
+    soul = love.graphics.newImage('gfx/souldude.bmp')
+    soulmovementX = 0 -- want to have soul dude float back and forth a little bit
 end
 
 function love.draw()
     -- background drawing
-    --love.graphics.rotate(1.57079633)
     love.graphics.draw(background, 160, backgroundy )
     love.graphics.draw(background2, 160, backgroundy + background:getHeight() )
+    -- ledge drawing
+    love.graphics.draw(ledge, -20, backgroundy + background:getHeight() )
+    -- soul dude drawn
+    love.graphics.draw(soul, 550, 200 + backgroundy + background:getHeight() )
     -- our character drawn
     love.graphics.draw(pinkdude, dudeX, 90)
     -- FPS meter
