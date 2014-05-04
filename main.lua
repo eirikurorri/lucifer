@@ -4,7 +4,10 @@ function love.load()
     background = love.graphics.newImage('gfx/cave.png')
     background2 = love.graphics.newImage('gfx/cave.png')
     backgroundy = 0
+    ledgey = 0
+    souly = 0
     --background2y = 440
+    bgheight = background:getHeight()
     dir =  -128
     -- lucifer's character
     pinkdude = love.graphics.newImage('gfx/pinkdude.bmp')
@@ -20,22 +23,32 @@ end
 function love.draw()
     -- background drawing
     love.graphics.draw(background, 160, backgroundy )
-    love.graphics.draw(background2, 160, backgroundy + background:getHeight() )
+    love.graphics.draw(background2, 160, backgroundy + bgheight )
     -- ledge drawing
-    love.graphics.draw(ledge, -20, backgroundy + background:getHeight() )
+    love.graphics.draw(ledge, -20, ledgey + bgheight )
     -- soul dude drawn
-    love.graphics.draw(soul, 550, 200 + backgroundy + background:getHeight() )
+    love.graphics.draw(soul, 550, 200 + souly + bgheight )
     -- our character drawn
     love.graphics.draw(pinkdude, dudeX, 90)
     -- FPS meter
     love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 680, 20)
-    love.graphics.print(background:getHeight(),680,80)
+    love.graphics.print(bgheight,680,80)
     love.graphics.print(backgroundy, 680,100)
 
-    backgroundy = backgroundy - 4
+    backgroundy = backgroundy - 1
+    ledgey = ledgey - 2
+    souly = souly - 2
     --background2y = background2y - 1
-    if backgroundy <= -background:getHeight() then
+    if backgroundy <= -bgheight then
         backgroundy = 0 
+    end
+
+    if ledgey <= 0 then
+        ledgey = 0
+    end
+
+    if souly <= 0 then
+        souly = 0
     end
 
 end
