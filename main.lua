@@ -14,7 +14,6 @@ local HC = require "HardonCollider"
 local hero
 local collider
 local allSolidTiles
-local hahah
 
 function love.load()
 
