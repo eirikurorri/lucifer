@@ -3,7 +3,7 @@
  <tileset firstgid="1" source="desert.tsx"/>
  <layer name="Tile Layer 1" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJzjZqAe4ARi7lHzRs0jwTwZIGbCgZnJMI8LDybV7SDzRIBYCAcWJsO8wR4fg8E8eSqbhwuMmke5eQApyAKe
+   eJzjZqAe4ARi7lHzRs0jwTwZIGYigJlJMI+LCEysH0DmiQCxEAEsTIJ5gz0+BoN58lQ2DxcYNY9y8wDl+ALa
   </data>
  </layer>
 </map>
