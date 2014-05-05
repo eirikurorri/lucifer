@@ -14,7 +14,7 @@ end
 
 function background.drawBackground()
 	love.graphics.draw(background, 160, backgroundy )
-    love.graphics.draw(background2, 140, background2y + bgheight )
+    love.graphics.draw(background2, 160, background2y + bgheight )
 
     -- movement of the scrolling movement of the background through Y-axis
     backgroundy = backgroundy - 4
