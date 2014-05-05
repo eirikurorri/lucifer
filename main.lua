@@ -17,6 +17,7 @@ local collider
 local allSolidTiles
 local distanceGoal
 local distance
+local speed
 
 function love.load()
 
@@ -41,10 +42,11 @@ function love.load()
     background.loadBackground()
 
     --distance monitor and goal
-    distanceGoal = 32000
+    distanceGoal = 640
     distance = 0
     -- Tiled stuff
-	
+    -- speedometer, use for different speeds
+	speed = 2
 	-- End Tiled stuff
 
 
@@ -95,11 +97,11 @@ function love.update(dt)
     collider:update(dt) 
 
     if reached_bottom == false then
-        distance = distance + 4
-        camY = camY + 4
+        distance = distance + speed
+        camY = camY + speed
     else
-        distance = distance - 4
-        camY = camY - 4
+        distance = distance - speed
+        camY = camY - speed
     end
     cam:lookAt(400,camY)   
 
