@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32">
- <tileset firstgid="1" source="desert.tsx"/>
- <layer name="Tile Layer 1" width="20" height="20">
+ <properties>
+  <property name="Solid" value=""/>
+ </properties>
+ <tileset firstgid="1" name="tmw_desert_spacing" tilewidth="32" tileheight="32" spacing="1" margin="1">
+  <tileoffset x="3" y="3"/>
+  <image source="tmw_desert_spacing.png" width="265" height="199"/>
+  <tile id="28">
+   <properties>
+    <property name="Solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="Solid" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="ground" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJzjZqAe4ARi7lHzRs0jwTwZIGYigJlJMI+LCEysH0DmiQCxEAEsTIJ5gz0+BoN58lQ2DxcYNY9y8wDl+ALa
+   eJzjZqAe4ARi7lHzhrV5MkDMhAczk2geFwFMivtB5okAsRAeLEyieYM9PsgxT57K5uECo+YNf/MA7zwCvA==
   </data>
  </layer>
+ <objectgroup name="Object Layer 1" width="20" height="20" visible="0"/>
 </map>

@@ -7,11 +7,12 @@ function player.loadPlayer()
     dudeSpeed = 600 
     -- X axis placement, initial value is 90
     dudeX = 420 
+    dudeY = 90 
 end
 
 function player.drawPlayer()
 	-- our character drawn
-    love.graphics.draw(pinkdude, dudeX, 90)
+    love.graphics.draw(pinkdude, dudeX, dudeY)
 end
 
 function player.updatePlayer( dt )
@@ -21,6 +22,12 @@ function player.updatePlayer( dt )
     end
     if (love.keyboard.isDown("right")) then 
     	dudeX = dudeX + dudeSpeed * dt
+    end 
+    if (love.keyboard.isDown("up")) then 
+        dudeY = dudeY - dudeSpeed * dt
+    end 
+    if (love.keyboard.isDown("down")) then 
+        dudeY = dudeY + dudeSpeed * dt
     end 
 
 end
