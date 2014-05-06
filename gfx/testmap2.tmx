@@ -50011,4 +50011,8 @@
    <tile gid="0"/>
   </data>
  </layer>
+ <objectgroup name="object" width="25" height="1000">
+  <object name="recty" type="ledge" x="168" y="1143" width="194" height="141"/>
+ </objectgroup>
+ <imagelayer name="Image Layer 1" width="25" height="1000" visible="0"/>
 </map>
