@@ -23,8 +23,8 @@ function love.load()
 
 	-- Tiled stuff
 	--map = loader.load("testmap.tmx")
-    map = loader.load("tilemap.tmx")
-    map:setDrawRange(0,0,640,32000)
+    map = loader.load("testmap2.tmx")
+    map:setDrawRange(0,0,800,32000)
 	-- End Tiled stuff
     camY = 0
     cam = Camera(400,0)
@@ -43,7 +43,7 @@ function love.load()
     background.loadBackground()
 
     --distance monitor and goal
-    distanceGoal = 640
+    distanceGoal = 800
     distance = 0
     -- Tiled stuff
     -- speedometer, use for different speeds
@@ -109,8 +109,8 @@ end
 function findSolidTiles(map)
     local collidable_tiles = {}
 
-    for x, y, tile in map("ground"):iterate() do
-        love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
+    for x, y, tile in map("sides"):iterate() do
+        --love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
         --if tile.properties.solid then
             local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
             ctile.type = "tile"

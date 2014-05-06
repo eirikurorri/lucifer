@@ -19,7 +19,7 @@
  </tileset>
  <layer name="ground" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJzjZqAe4ARi7lHzhrV5MkDMhAczk2geFwFMivtB5okAsRAeLEyieYM9PsgxT57K5uECo+YNf/MA7zwCvA==
+   eJzjZqAe4ARi7lHzhrV5MkDMhAczk2geFwFMivtB5okAsRAeLEyieYM9PsgxT57K5uECg8k8RgbMtCpLgXm40i655gkyYKZVUQrMwwZoER8AiycDcA==
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="20" height="20" visible="0"/>
