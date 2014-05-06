@@ -109,7 +109,7 @@ function hero.findSolidTilesLayer(map)
     for i, obj in pairs( map("object").objects ) do
         local collObject
         -- now we check if the shape is a polygon or a rect
-        if obj.name == "polly" then -- polygons should have this name in Tiled
+        if obj.name == "polygon" then -- polygons should have this name in Tiled
             collObject = collider:addPolygon(obj.polygon)  
         else 
             collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)

@@ -26,6 +26,7 @@ function love.load()
 	--map = loader.load("testmap.tmx")
     map = loader.load("testmap2.tmx")
     map:setDrawRange(0,0,800,32000)
+    -- map("object").visible = false -- makes object map invisible
 	-- End Tiled stuff
     camY = 0
     cam = Camera(400,0)
