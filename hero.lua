@@ -4,6 +4,7 @@ local HC = require "HardonCollider"
 local collider
 local map
 local ourHero
+local camY
 
 function hero.setupHero(x,y,coll)
 	collider = coll
@@ -12,9 +13,16 @@ function hero.setupHero(x,y,coll)
 end
 
 
-function hero.updateHero(dt)
+function hero.updateHero(dt,cam,speed,reached_bottom)
 	-- apply a downward force to the hero (=gravity)
-	ourHero:move(0,dt*150)
+	
+    if reached_bottom == false then
+        ourHero:move(0,dt*speed)
+        cam:move(0,dt*speed)
+    else
+        ourHero:move(0,-dt*speed)
+        cam:move(0,-dt*speed)
+    end
 end
 
 
@@ -30,10 +38,8 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
     local hero_shape, tileshape
     if shape_a == ourHero and shape_b.type == "tile" then
         hero_shape = shape_a
-        love.graphics.print("COLLISION",680,140)
     elseif shape_b == hero and shape_a.type == "tile" then
         hero_shape = shape_b
-        love.graphics.print("COLLISION2",680,160)
     else
         -- none of the two shapes is a tile, return to upper function
         return
@@ -45,7 +51,7 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
 
 end
 
-function hero.draw()
+function hero.draw(camY)
 	ourHero:draw("fill")
 end
 
@@ -57,9 +63,9 @@ function hero.handleInput(dt)
     if love.keyboard.isDown("right") then
         ourHero:move(ourHero.speed*dt, 0)
     end
-    if love.keyboard.isDown("up") then
-    	ourHero:move(0, -ourHero.speed*dt*2)
-    end
+    --if love.keyboard.isDown("up") then
+    --	ourHero:move(0, -ourHero.speed*dt*2)
+    --end
 
 end
 

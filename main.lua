@@ -33,9 +33,10 @@ function love.load()
 	-- load HardonCollider, set callback to on_collide and size of 100
     collider = HC(100, on_collide)
     -- find all the tiles that we can collide with
-    allSolidTiles = findSolidTiles(map)
-    -- set up the hero object, set him to position 32, 32
     ourHero.setupHero(32,32, collider)
+    allSolidTiles = ourHero.findSolidTiles(map)
+    -- set up the hero object, set him to position 32, 32
+    
 
     reached_bottom = false
 	-- background
@@ -46,7 +47,7 @@ function love.load()
     distance = 0
     -- Tiled stuff
     -- speedometer, use for different speeds
-	speed = 2
+	speed = 300
 	-- End Tiled stuff
 
 
@@ -70,14 +71,14 @@ function love.draw()
 	-- Tiled stuff
 	cam:draw(drawCamera)
 	-- end Tiled stuff
-	if distance >= distanceGoal then
+	if cam.y >= distanceGoal then
         reached_bottom = true
         love.graphics.print("DOWN", 680, 140)
-    elseif distance <= 0 then
+    elseif cam.y <= 0 then
         reached_bottom = false
         love.graphics.print("UP", 680, 160)
     end
-
+    love.graphics.print(cam.y, 680, 80)
     -- scrolling speed for ledge and soul
 
 end
@@ -93,18 +94,16 @@ function love.update(dt)
     -- player events handled
     --player.updatePlayer(dt) 
     ourHero.handleInput(dt)
-    ourHero.updateHero(dt)
+    ourHero.updateHero(dt,cam,speed,reached_bottom)
     collider:update(dt) 
 
     if reached_bottom == false then
-        distance = distance + speed
-        camY = camY + speed
+        distance = distance + cam.y
     else
-        distance = distance - speed
-        camY = camY - speed
+        distance = distance - cam.y
     end
-    cam:lookAt(400,camY)   
-
+    --cam:lookAt(400,camY)   
+    
 end
 
 function findSolidTiles(map)
