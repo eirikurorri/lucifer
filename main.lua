@@ -19,6 +19,7 @@ local distanceGoal
 local distance
 local speed
 local death
+local scorecount
 
 function love.load()
 
@@ -32,6 +33,7 @@ function love.load()
     cam = Camera(400,0)
     cam:cameraCoords(0,0)
 	-- Collider stuff
+    scorecount = 0
 	-- load HardonCollider, set callback to on_collide and size of 100
     collider = HC(100, on_collide)
     -- find all the tiles that we can collide with
@@ -72,7 +74,7 @@ function love.draw()
         
         -- FPS meter and memory counter
         love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 680, 20)
-    
+        love.graphics.print("Score: "..scorecount, 680, 60)
 	   -- Tiled stuff
 	   cam:draw(drawCamera)
 	   -- end Tiled stuff
@@ -90,6 +92,10 @@ function love.draw()
         love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 680, 20)
     
     end
+end
+
+function scorecounter()
+    scorecount = scorecount + 1
 end
 
 function drawCamera()

@@ -46,6 +46,12 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
    elseif shape_b == hero and shape_a.type == "collide" then
        endgame()
        return
+   elseif shape_a == ourHero and shape_b.type == "soul" then
+        scorecounter()
+        return
+   elseif shape_b == hero and shape_a.type == "soul" then
+        scorecounter()
+        return
    else
        -- none of the two shapes is a tile, return to upper function
        return
@@ -128,8 +134,8 @@ function hero.findSouls(map)
 
     for i, obj in pairs( map("souls").objects ) do
         local collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
-        collObject.type = "collide"
-        collider:addToGroup("collide", collObject)
+        collObject.type = "soul"
+        collider:addToGroup("soul", collObject)
         collider:setPassive(collObject)
         table.insert(souls, collObject)
     end
