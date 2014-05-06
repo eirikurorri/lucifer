@@ -36,14 +36,14 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
 
     -- sort out which one our hero shape is
    local hero_shape, tileshape
-   --if shape_a == ourHero and shape_b.type == "tile" then
-   --    hero_shape = shape_a
-   --elseif shape_b == hero and shape_a.type == "tile" then
-   --    hero_shape = shape_b
-   --else
-   --    -- none of the two shapes is a tile, return to upper function
-   --    return
-   --end
+   if shape_a == ourHero and shape_b.type == "tile" then
+       hero_shape = shape_a
+   elseif shape_b == hero and shape_a.type == "tile" then
+       hero_shape = shape_b
+   else
+       -- none of the two shapes is a tile, return to upper function
+       return
+   end
 
     -- why not in one function call? because we will need to differentiate between the axis later
     hero_shape:move(mtv_x, 0)
