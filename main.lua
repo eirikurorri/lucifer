@@ -18,6 +18,7 @@ local allSolidTiles
 local distanceGoal
 local distance
 local speed
+local death
 
 function love.load()
 
@@ -47,6 +48,8 @@ function love.load()
     -- Tiled stuff
     -- speedometer, use for different speeds
 	speed = 300
+    death = false
+    killed = love.graphics.newImage('gfx/death.jpg')
 	-- End Tiled stuff
 
 
@@ -59,28 +62,30 @@ end
 
 function love.draw()
     --love.graphics.scale(0.25, 0.25)
-
-    -- background drawing
-    background.drawBackground(reached_bottom)
-    background.debugBackground()
-
+    if death == false then
+        -- background drawing
+        background.drawBackground(reached_bottom)
+        background.debugBackground()
     
-    -- FPS meter and memory counter
-    love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 680, 20)
-
-	-- Tiled stuff
-	cam:draw(drawCamera)
-	-- end Tiled stuff
-	if cam.y >= distanceGoal then
-        reached_bottom = true
-        love.graphics.print("DOWN", 680, 140)
-    elseif cam.y <= 0 then
-        reached_bottom = false
-        love.graphics.print("UP", 680, 160)
+        
+        -- FPS meter and memory counter
+        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 680, 20)
+    
+	   -- Tiled stuff
+	   cam:draw(drawCamera)
+	   -- end Tiled stuff
+	    if cam.y >= distanceGoal then
+            reached_bottom = true
+            love.graphics.print("DOWN", 680, 140)
+        elseif cam.y <= 0 then
+            reached_bottom = false
+            love.graphics.print("UP", 680, 160)
+        end
+        love.graphics.print(cam.y, 680, 80)
+        -- scrolling speed for ledge and soul
+    else
+        love.graphics.draw(killed,0,0)
     end
-    love.graphics.print(cam.y, 680, 80)
-    -- scrolling speed for ledge and soul
-
 end
 
 function drawCamera()
@@ -107,6 +112,7 @@ end
 
 function endgame()
     
+    death = true
     speed = 0
 end
 
