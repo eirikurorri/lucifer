@@ -12,22 +12,43 @@ function background.loadBackground()
 
 end  
 
-function background.drawBackground()
-	love.graphics.draw(background, 160, backgroundy )
-    love.graphics.draw(background2, 160, background2y + bgheight )
+function background.drawBackground(bottom_reached)
+	
 
     -- movement of the scrolling movement of the background through Y-axis
-    backgroundy = backgroundy - 4
-    background2y = background2y - 4
+    if bottom_reached == false then
+        love.graphics.draw(background2, 0, background2y - bgheight )
+        love.graphics.draw(background, 0, backgroundy )
+        love.graphics.draw(background2, 0, background2y + bgheight )
+        backgroundy = backgroundy - 4
+        background2y = background2y - 4
+        
+        if backgroundy <= -bgheight then
+            backgroundy = 0 
+        end
+
+        if background2y <= -bgheight then
+            background2y = 0
+        end
+    else
+        love.graphics.draw(background2, 0, background2y - bgheight )
+        love.graphics.draw(background, 0, backgroundy )
+        love.graphics.draw(background2, 0, background2y + bgheight )
+        
+        backgroundy = backgroundy + 4
+        background2y = background2y + 4
+
+        if backgroundy >= bgheight then
+            backgroundy = 0 
+        end
+
+        if background2y >= bgheight then
+            background2y = 0
+        end
+    end
 
     -- resets the background to create a scrolling feeling
-    if backgroundy <= -bgheight then
-        backgroundy = 0 
-    end
-
-    if background2y <= -bgheight then
-        background2y = 0
-    end
+    
 
 end
 

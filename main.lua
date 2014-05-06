@@ -35,15 +35,14 @@ function love.load()
     -- find all the tiles that we can collide with
     ourHero.setupHero(32,32, collider)
     allSolidTiles = ourHero.findSolidTiles(map)
+    deathtiles = ourHero.findSolidTileslayer(map)
     -- set up the hero object, set him to position 32, 32
-    
-
     reached_bottom = false
 	-- background
     background.loadBackground()
 
     --distance monitor and goal
-    distanceGoal = 800
+    distanceGoal = 3200
     distance = 0
     -- Tiled stuff
     -- speedometer, use for different speeds
@@ -59,9 +58,10 @@ end
 
 
 function love.draw()
-    --love.graphics.scale(1.25, 1.25)
+    --love.graphics.scale(0.25, 0.25)
+
     -- background drawing
-    background.drawBackground()
+    background.drawBackground(reached_bottom)
     background.debugBackground()
 
     
@@ -92,7 +92,7 @@ end
 
 function love.update(dt)
     -- player events handled
-    --player.updatePlayer(dt) 
+ 
     ourHero.handleInput(dt)
     ourHero.updateHero(dt,cam,speed,reached_bottom)
     collider:update(dt) 
@@ -101,9 +101,13 @@ function love.update(dt)
         distance = distance + cam.y
     else
         distance = distance - cam.y
-    end
-    --cam:lookAt(400,camY)   
+    end 
     
+end
+
+function endgame()
+    
+    speed = 0
 end
 
 function findSolidTiles(map)

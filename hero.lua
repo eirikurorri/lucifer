@@ -35,15 +35,15 @@ end
 function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
 
     -- sort out which one our hero shape is
-    local hero_shape, tileshape
-    if shape_a == ourHero and shape_b.type == "tile" then
-        hero_shape = shape_a
-    elseif shape_b == hero and shape_a.type == "tile" then
-        hero_shape = shape_b
-    else
-        -- none of the two shapes is a tile, return to upper function
-        return
-    end
+   local hero_shape, tileshape
+   --if shape_a == ourHero and shape_b.type == "tile" then
+   --    hero_shape = shape_a
+   --elseif shape_b == hero and shape_a.type == "tile" then
+   --    hero_shape = shape_b
+   --else
+   --    -- none of the two shapes is a tile, return to upper function
+   --    return
+   --end
 
     -- why not in one function call? because we will need to differentiate between the axis later
     hero_shape:move(mtv_x, 0)
@@ -72,7 +72,24 @@ end
 function hero.findSolidTiles(map)
     local collidable_tiles = {}
 
-    for x, y, tile in map("ground"):iterate() do
+    for x, y, tile in map("sides"):iterate() do
+        love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
+        --if tile.properties.solid then
+            local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
+            ctile.type = "tile"
+            collider:addToGroup("tiles", ctile)
+            collider:setPassive(ctile)
+            table.insert(collidable_tiles, ctile)
+        --end
+    end
+
+    return collidable_tiles
+end
+
+function hero.findSolidTileslayer(map)
+    local collidable_tiles = {}
+
+    for x, y, tile in map("ledge"):iterate() do
         love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
         --if tile.properties.solid then
             local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
