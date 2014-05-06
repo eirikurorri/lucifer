@@ -110,7 +110,7 @@ end
 function findSolidTiles(map)
     local collidable_tiles = {}
 
-    for x, y, tile in map("ground"):iterate() do
+    for x, y, tile in map("sides"):iterate() do
         --love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
         --if tile.properties.solid then
             local ctile = collider:addRectangle((x)*32,(y)*32,32,32)

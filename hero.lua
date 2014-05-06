@@ -59,7 +59,7 @@ function hero.handleInput(dt)
     end
     if love.keyboard.isDown("up") then
     	ourHero:move(0, -ourHero.speed*dt*2)
-    end
+    end 
 
 end
 
