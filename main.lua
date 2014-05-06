@@ -49,7 +49,7 @@ function love.load()
     -- speedometer, use for different speeds
 	speed = 300
     death = false
-    killed = love.graphics.newImage('gfx/death.jpg')
+    killed = love.graphics.newImage('gfx/death2.jpg')
 	-- End Tiled stuff
 
 
@@ -84,7 +84,7 @@ function love.draw()
         love.graphics.print(cam.y, 680, 80)
         -- scrolling speed for ledge and soul
     else
-        love.graphics.draw(killed,0,0)
+        love.graphics.draw(killed,0,-100)
     end
 end
 
