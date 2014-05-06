@@ -36,7 +36,7 @@ function love.load()
     -- find all the tiles that we can collide with
     ourHero.setupHero(32,32, collider)
     allSolidTiles = ourHero.findSolidTiles(map)
-    deathtiles = ourHero.findSolidTileslayer(map)
+    deathtiles = ourHero.findSolidTilesLayer(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
 	-- background

@@ -92,10 +92,10 @@ function hero.findSolidTiles(map)
     return collidable_tiles
 end
 
-function hero.findSolidTileslayer(map)
+function hero.findSolidTilesLayer(map)
     local collidable_tiles = {}
 
-    for x, y, tile in map("ledge"):iterate() do
+    for x, y, tile in map("ledge"):iterate() do -- tile layer
         love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
         --if tile.properties.solid then
             local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
@@ -104,6 +104,20 @@ function hero.findSolidTileslayer(map)
             collider:setPassive(ctile)
             table.insert(collidable_tiles, ctile)
         --end
+    end
+
+    for i, obj in pairs( map("object").objects ) do
+        local collObject
+        -- now we check if the shape is a polygon or a rect
+        if obj.name == "polly" then -- polygons should have this name in Tiled
+            collObject = collider:addPolygon(obj.polygon)  
+        else 
+            collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
+        end
+        collObject.type = "collide"
+        collider:addToGroup("collide", collObject)
+        collider:setPassive(collObject)
+        table.insert(collidable_tiles, collObject)
     end
 
     return collidable_tiles
