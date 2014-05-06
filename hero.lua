@@ -123,4 +123,18 @@ function hero.findSolidTilesLayer(map)
     return collidable_tiles
 end
 
+function hero.findSouls(map)
+    local souls = {}
+
+    for i, obj in pairs( map("souls").objects ) do
+        local collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
+        collObject.type = "collide"
+        collider:addToGroup("collide", collObject)
+        collider:setPassive(collObject)
+        table.insert(souls, collObject)
+    end
+
+    return souls
+end
+
 return hero

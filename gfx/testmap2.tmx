@@ -50014,11 +50014,14 @@
  <objectgroup name="object" width="25" height="1000">
   <object name="recty" x="99" y="1147" width="194" height="141"/>
   <object name="recty" x="34" y="1510" width="470" height="90"/>
-  <object name="soul" x="284" y="461" width="42" height="40"/>
-  <object name="soul" x="548" y="708" width="42" height="40"/>
-  <object name="soul" x="681" y="579" width="42" height="40"/>
-  <object name="soul" x="70" y="908" width="42" height="40"/>
-  <object name="soul" x="682" y="1383" width="42" height="40"/>
  </objectgroup>
  <imagelayer name="Image Layer 1" width="25" height="1000" visible="0"/>
+ <objectgroup name="souls" width="25" height="1000">
+  <object name="soul" x="260" y="382" width="42" height="40"/>
+  <object name="soul" x="548" y="832" width="42" height="40"/>
+  <object name="soul" x="651" y="603" width="42" height="40"/>
+  <object name="soul" x="70" y="1032" width="42" height="40"/>
+  <object name="soul" x="682" y="1507" width="42" height="40"/>
+  <object name="soul" x="616" y="1355" width="42" height="40"/>
+ </objectgroup>
 </map>
