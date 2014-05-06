@@ -43,7 +43,7 @@ function love.load()
     background.loadBackground()
 
     --distance monitor and goal
-    distanceGoal = 3200
+    distanceGoal = 32000
     distance = 0
     -- Tiled stuff
     -- speedometer, use for different speeds
@@ -85,6 +85,8 @@ function love.draw()
         -- scrolling speed for ledge and soul
     else
         love.graphics.draw(killed,0,-100)
+        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 680, 20)
+    
     end
 end
 
