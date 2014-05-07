@@ -9,6 +9,7 @@ loader.path = "gfx/"
 local HC = require "HardonCollider"
 local Camera = require "hump.camera"
 local gamemenu = require "menu"
+local souls = require "souls"
 
 local scoresign
 local ourHero = require "hero"

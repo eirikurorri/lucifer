@@ -184,7 +184,18 @@ function hero.findSouls(map)
         table.insert(souls, collObject)
     end
 
+    -- for a, b in pairs(souls) do
+    --     print("---", a, "---")
+    --     for x, y in pairs(b) do
+    --         print(x, " ", y, "OOOO")
+    --         -- for one, two in pairs(y) do
+    --         --     print(one, " ", two, "******")
+    --         -- end
+    --     end
+    -- end
+
     return souls
 end
+
 
 return hero
