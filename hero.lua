@@ -45,12 +45,9 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
        return
    elseif shape_b == hero and shape_a.type == "collide" then
        endgame()
-       return
-   else
        -- none of the two shapes is a tile, return to upper function
        return
    end
-
     -- why not in one function call? because we will need to differentiate between the axis later
     hero_shape:move(mtv_x, 0)
     hero_shape:move(0, mtv_y)
