@@ -10,7 +10,7 @@ local lucifer
 function hero.setupHero(x,y,coll)
 	collider = coll
 	ourHero = collider:addRectangle(x,y,48,48) -- size of our hero
-	ourHero.speed = 400
+	--ourHero.speed = 400
     luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.png')
     -- lucifer = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
     lucifer = love.graphics.newQuad(64, 56, 16, 16, 96, 72) -- head facing south
@@ -73,22 +73,38 @@ end
 
 function hero.draw()
 
-	--ourHero:draw('fill')
+	ourHero:draw('fill')
     local collx, colly = ourHero:center()
     love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
     -- print(collx, " ", colly)
 
 end
 
-function hero.handleInput(dt,speed)
+function hero.handleInput(dt,herospeed,speedmargin)
 
     if love.keyboard.isDown("left") then
-        ourHero:move(-speed*dt, 0)
+        if herospeed > 0 then
+            herospeed = herospeed - 30
+        else
+            herospeed = herospeed - 10
+        end 
+    elseif love.keyboard.isDown("right") then
+        if herospeed < 0 then
+            herospeed = herospeed + 30
+        else
+            herospeed = herospeed + 10  
+        end  
+    else  
+            if herospeed < -speedmargin then 
+                herospeed = herospeed + 10
+            elseif herospeed > speedmargin then
+                herospeed = herospeed - 10
+            else
+                herospeed = 0
+            end
     end
-    if love.keyboard.isDown("right") then
-        ourHero:move(speed*dt, 0)
-    end
-
+    ourHero:move(herospeed*dt, 0)
+    return herospeed
 end
 
 function hero.findSolidTiles(map)

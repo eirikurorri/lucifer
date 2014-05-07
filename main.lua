@@ -20,6 +20,8 @@ local maxspeed = 700
 local death
 local scorecount
 local gamestate = "menu"
+local herospeed = 0
+local speedmargin = 0.1
 
 function love.load()
 
@@ -80,8 +82,10 @@ function love.draw()
         
         if speed < maxspeed then
             speed = speed * 1.001
+            --herospeed = speed/2
         end
         love.graphics.print(speed,680,100)
+
 
         -- FPS meter and memory counter
         love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 680, 20)
@@ -116,7 +120,9 @@ end
 
 function love.update(dt)
     -- player events handled
-    ourHero.handleInput(dt,speed)
+    --print(speedmargin)
+    herospeed = ourHero.handleInput(dt,herospeed,speedmargin)
+    --print(herospeed)
     ourHero.updateHero(dt,cam,speed,reached_bottom)
     collider:update(dt) 
 
