@@ -10,7 +10,7 @@ local lucifer
 function hero.setupHero(x,y,coll)
 	collider = coll
 	ourHero = collider:addRectangle(x,y,48,48) -- size of our hero
-	ourHero.speed = 400
+	--ourHero.speed = 400
     luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.png')
     -- lucifer = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
     lucifer = love.graphics.newQuad(64, 56, 16, 16, 96, 72) -- head facing south
@@ -43,12 +43,12 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
    local hero_shape, tileshape
    if shape_a == ourHero and shape_b.type == "tile" then
        hero_shape = shape_a
-   elseif shape_b == hero and shape_a.type == "tile" then
+   elseif shape_b == ourHero and shape_a.type == "tile" then
        hero_shape = shape_b
    elseif shape_a == ourHero and shape_b.type == "collide" then
        endgame()
        return
-   elseif shape_b == hero and shape_a.type == "collide" then
+   elseif shape_b == ourHero and shape_a.type == "collide" then
        endgame()
        return
    elseif shape_a == ourHero and shape_b.type == "soul" then
@@ -56,7 +56,7 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
         collider:remove(shape_b)
         scorecounter()
         return
-    elseif shape_b == hero and shape_a.type == "soul" then
+    elseif shape_b == ourHero and shape_a.type == "soul" then
         map.layers["souls"]["objects"][shape_a.key]["visible"] = false
         collider:remove(shape_a)
         scorecounter()
@@ -73,25 +73,38 @@ end
 
 function hero.draw()
 
-	--ourHero:draw('fill')
+	ourHero:draw('fill')
     local collx, colly = ourHero:center()
     love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
     -- print(collx, " ", colly)
 
 end
 
-function hero.handleInput(dt)
+function hero.handleInput(dt,herospeed,speedmargin)
 
     if love.keyboard.isDown("left") then
-        ourHero:move(-ourHero.speed*dt, 0)
+        if herospeed > 0 then
+            herospeed = herospeed - 30
+        else
+            herospeed = herospeed - 10
+        end 
+    elseif love.keyboard.isDown("right") then
+        if herospeed < 0 then
+            herospeed = herospeed + 30
+        else
+            herospeed = herospeed + 10  
+        end  
+    else  
+            if herospeed < -speedmargin then 
+                herospeed = herospeed + 10
+            elseif herospeed > speedmargin then
+                herospeed = herospeed - 10
+            else
+                herospeed = 0
+            end
     end
-    if love.keyboard.isDown("right") then
-        ourHero:move(ourHero.speed*dt, 0)
-    end
-    --if love.keyboard.isDown("up") then
-    --	ourHero:move(0, -ourHero.speed*dt*2)
-    --end
-
+    ourHero:move(herospeed*dt, 0)
+    return herospeed
 end
 
 function hero.findSolidTiles(map)
