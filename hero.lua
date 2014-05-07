@@ -5,11 +5,12 @@ local collider
 
 local ourHero
 local camY
+--local speed
 
 function hero.setupHero(x,y,coll)
 	collider = coll
 	ourHero = collider:addRectangle(x,y,16,16)
-	ourHero.speed = 400
+	--ourHero.speed = 400
 end
 
 
@@ -38,12 +39,12 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
    local hero_shape, tileshape
    if shape_a == ourHero and shape_b.type == "tile" then
        hero_shape = shape_a
-   elseif shape_b == hero and shape_a.type == "tile" then
+   elseif shape_b == ourHero and shape_a.type == "tile" then
        hero_shape = shape_b
    elseif shape_a == ourHero and shape_b.type == "collide" then
        endgame()
        return
-   elseif shape_b == hero and shape_a.type == "collide" then
+   elseif shape_b == ourHero and shape_a.type == "collide" then
        endgame()
        return
    elseif shape_a == ourHero and shape_b.type == "soul" then
@@ -51,7 +52,7 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
         collider:remove(shape_b)
         scorecounter()
         return
-    elseif shape_b == hero and shape_a.type == "soul" then
+    elseif shape_b == ourHero and shape_a.type == "soul" then
         map.layers["souls"]["objects"][shape_a.key]["visible"] = false
         collider:remove(shape_a)
         scorecounter()
@@ -70,17 +71,14 @@ function hero.draw()
 	ourHero:draw("fill")
 end
 
-function hero.handleInput(dt)
+function hero.handleInput(dt,speed)
 
     if love.keyboard.isDown("left") then
-        ourHero:move(-ourHero.speed*dt, 0)
+        ourHero:move(-speed*dt, 0)
     end
     if love.keyboard.isDown("right") then
-        ourHero:move(ourHero.speed*dt, 0)
+        ourHero:move(speed*dt, 0)
     end
-    --if love.keyboard.isDown("up") then
-    --	ourHero:move(0, -ourHero.speed*dt*2)
-    --end
 
 end
 

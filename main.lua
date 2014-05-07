@@ -10,7 +10,7 @@ loader.path = "gfx/"
 -- End Tiled stuff
 local HC = require "HardonCollider"
 local Camera = require "hump.camera"
-
+local gamemenu = require "menu"
 
 local ourHero = require "hero"
 local collider
@@ -18,6 +18,7 @@ local allSolidTiles
 local distanceGoal
 local distance
 local speed
+local maxspeed = 700
 local death
 local scorecount
 local gamestate = "menu"
@@ -38,7 +39,7 @@ function love.load()
 	-- load HardonCollider, set callback to on_collide and size of 100
     collider = HC(100, on_collide)
     -- find all the tiles that we can collide with
-    ourHero.setupHero(32,32, collider)
+    ourHero.setupHero(400,-200, collider)
     allSolidTiles = ourHero.findSolidTiles(map)
     deathtiles = ourHero.findSolidTilesLayer(map)
     soulTiles = ourHero.findSouls(map)
@@ -52,19 +53,17 @@ function love.load()
     distance = 0
     -- Tiled stuff
     -- speedometer, use for different speeds
-	speed = 300
+	speed = 200
     death = false
     killed = love.graphics.newImage('gfx/death2.jpg')
 	-- End Tiled stuff
-    menuimage = love.graphics.newImage('gfx/satanmenu.jpg')
 
+    -- menu loaded
+    gamemenu.loadmenu()
 
 end
 
-function restart()
-    love.load()
-    gamestate = "menu"
-end
+
 
 function on_collide(dt, shape_a, shape_b, mtv_x, mtv_y)
     ourHero.on_collide(dt, shape_a, shape_b, mtv_x, mtv_y)
@@ -74,14 +73,18 @@ end
 function love.draw()
     --love.graphics.scale(0.25, 0.25)
     if gamestate == "menu" then
-        love.graphics.draw(menuimage, 0, 0)
-        love.graphics.print("Press Enter to begin", 400,400)
+        gamemenu.loadmenu()
+        
     elseif death == false then
         -- background drawing
         background.drawBackground(reached_bottom)
-        background.debugBackground()
-    
+        --background.debugBackground()
         
+        if speed < maxspeed then
+            speed = speed * 1.001
+        end
+        love.graphics.print(speed,680,100)
+
         -- FPS meter and memory counter
         love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 680, 20)
         love.graphics.print("Score: "..scorecount, 680, 60)
@@ -90,10 +93,8 @@ function love.draw()
 	   -- end Tiled stuff
 	    if cam.y >= distanceGoal then
             reached_bottom = true
-            love.graphics.print("DOWN", 680, 140)
         elseif cam.y <= 0 then
             reached_bottom = false
-            love.graphics.print("UP", 680, 160)
         end
         love.graphics.print(cam.y, 680, 80)
         -- scrolling speed for ledge and soul
@@ -117,8 +118,7 @@ end
 
 function love.update(dt)
     -- player events handled
- 
-    ourHero.handleInput(dt)
+    ourHero.handleInput(dt,speed)
     ourHero.updateHero(dt,cam,speed,reached_bottom)
     collider:update(dt) 
 
@@ -126,8 +126,9 @@ function love.update(dt)
         or love.keyboard.isDown("return") and death == true and gamestate == "playing" then
         gamestate = "playing"
         love.load()
-    elseif   love.keyboard.isDown("escape") and death == true and gamestate == "playing" then
+    elseif love.keyboard.isDown("escape") and death == true and gamestate == "playing" then
         gamestate = "menu"
+        love.load()
     end
     if reached_bottom == false then
         distance = distance + cam.y
