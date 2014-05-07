@@ -9,6 +9,7 @@ loader.path = "gfx/"
 local HC = require "HardonCollider"
 local Camera = require "hump.camera"
 local gamemenu = require "menu"
+local souls = require "souls"
 
 local scoresign
 local ourHero = require "hero"
@@ -24,7 +25,7 @@ local gamestate = "menu"
 local herospeed = 0
 local speedmargin = 0.1
 
-love.window.setMode(1200, 900)
+love.window.setMode(1200, 800)
 
 function love.load()
 
@@ -97,6 +98,7 @@ function love.draw()
         
 	   -- Tiled stuff
 	   cam:draw(drawCamera)
+	   --souls.drawSouls(soulTiles) -- uncomment for soul drawing action!
        love.graphics.draw(scoresign, 600, 20)
        love.graphics.print("Score: "..scorecount, 680, 80)
 	   -- end Tiled stuff
