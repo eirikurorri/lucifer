@@ -24,7 +24,7 @@ local gamestate = "menu"
 local herospeed = 0
 local speedmargin = 0.1
 
-love.window.setMode(1200, 900)
+love.window.setMode(1200, 800)
 
 function love.load()
 
@@ -88,17 +88,17 @@ function love.draw()
             speed = speed * 1.001
             --herospeed = speed/2
         end
-        love.graphics.print(speed,680,100)
+        love.graphics.print(math.floor(speed),1050,180)
 
 
         -- FPS meter and memory counter
-        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 680, 300)
+        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 300)
         
         
 	   -- Tiled stuff
 	   cam:draw(drawCamera)
-       love.graphics.draw(scoresign, 600, 20)
-       love.graphics.print("Score: "..scorecount, 680, 80)
+       love.graphics.draw(scoresign, 1000, 20)
+       love.graphics.print("Score: "..scorecount, 1050, 75)
 	   -- end Tiled stuff
 	    if cam.y >= distanceGoal then
             reached_bottom = true
@@ -109,7 +109,7 @@ function love.draw()
         -- scrolling speed for ledge and soul
     else
         love.graphics.draw(killed,0,-100)
-        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 680, 20)
+        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 20)
         
     end
 end

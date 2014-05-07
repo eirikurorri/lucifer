@@ -4,12 +4,12 @@ local HC = require "HardonCollider"
 local collider
 
 local ourHero
-local camY
 local lucifer
+local collx, colly = 0
 
 function hero.setupHero(x,y,coll)
 	collider = coll
-	ourHero = collider:addRectangle(x,y,48,48) -- size of our hero
+	ourHero = collider:addRectangle(x,y,40,40) -- size of our hero
 	--ourHero.speed = 400
     luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.png')
     -- lucifer = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
@@ -74,7 +74,7 @@ end
 function hero.draw()
 
 	ourHero:draw('fill')
-    local collx, colly = ourHero:center()
+    collx, colly = ourHero:center()
     love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
     -- print(collx, " ", colly)
 
@@ -103,7 +103,16 @@ function hero.handleInput(dt,herospeed,speedmargin)
                 herospeed = 0
             end
     end
-    ourHero:move(herospeed*dt, 0)
+    --print(collx, " ", colly)
+    --print(herospeed)
+    if collx <= 54 and herospeed < 0 then
+        herospeed = 0
+        --print(herospeed)
+    elseif collx >= 738 and herospeed > 0 then
+        herospeed = 0
+    else
+        ourHero:move(herospeed*dt, 0)
+    end
     return herospeed
 end
 
