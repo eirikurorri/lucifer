@@ -145,11 +145,15 @@ end
 function hero.findSouls(map)
     local souls = {}
     
-
-    for i, obj in pairs( map("souls").objects ) do
+      for i, obj in pairs( map("souls").objects ) do
+          -- debugging print statment
+          -- for a, att in pairs(obj) do
+          --     print(a, " ", att)
+          -- end
         local x = map.layers["souls"]["objects"][i]["x"]
         local y = map.layers["souls"]["objects"][i]["y"]
-        local collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
+        --local collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
+        local collObject = collider:addRectangle(obj.x, obj.y, 70, 122) -- hard coded according to soul image tile size
         collObject.type = "soul"
         collObject.key = i
         collObject.visible = true
