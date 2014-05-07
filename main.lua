@@ -20,6 +20,7 @@ local distance
 local speed
 local death
 local scorecount
+local gamestate = "menu"
 
 function love.load()
 
@@ -55,8 +56,14 @@ function love.load()
     death = false
     killed = love.graphics.newImage('gfx/death2.jpg')
 	-- End Tiled stuff
+    menuimage = love.graphics.newImage('gfx/satanmenu.jpg')
 
 
+end
+
+function restart()
+    love.load()
+    gamestate = "menu"
 end
 
 function on_collide(dt, shape_a, shape_b, mtv_x, mtv_y)
@@ -66,7 +73,10 @@ end
 
 function love.draw()
     --love.graphics.scale(0.25, 0.25)
-    if death == false then
+    if gamestate == "menu" then
+        love.graphics.draw(menuimage, 0, 0)
+        love.graphics.print("Press Enter to begin", 400,400)
+    elseif death == false then
         -- background drawing
         background.drawBackground(reached_bottom)
         background.debugBackground()
@@ -90,7 +100,7 @@ function love.draw()
     else
         love.graphics.draw(killed,0,-100)
         love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 680, 20)
-    
+        
     end
 end
 
@@ -112,6 +122,13 @@ function love.update(dt)
     ourHero.updateHero(dt,cam,speed,reached_bottom)
     collider:update(dt) 
 
+    if love.keyboard.isDown("return") and gamestate == "menu"
+        or love.keyboard.isDown("return") and death == true and gamestate == "playing" then
+        gamestate = "playing"
+        love.load()
+    elseif   love.keyboard.isDown("escape") and death == true and gamestate == "playing" then
+        gamestate = "menu"
+    end
     if reached_bottom == false then
         distance = distance + cam.y
     else
