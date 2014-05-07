@@ -2,7 +2,7 @@
 local hero = {}
 local HC = require "HardonCollider"
 local collider
-local map
+
 local ourHero
 local camY
 
@@ -47,9 +47,13 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
        endgame()
        return
    elseif shape_a == ourHero and shape_b.type == "soul" then
+        map.layers["souls"]["objects"][shape_b.key]["visible"] = false
+        collider:remove(shape_b)
         scorecounter()
         return
-   elseif shape_b == hero and shape_a.type == "soul" then
+    elseif shape_b == hero and shape_a.type == "soul" then
+        map.layers["souls"]["objects"][shape_a.key]["visible"] = false
+        collider:remove(shape_a)
         scorecounter()
         return
    else
@@ -63,7 +67,7 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
 
 end
 
-function hero.draw(camY)
+function hero.draw()
 	ourHero:draw("fill")
 end
 
@@ -131,10 +135,15 @@ end
 
 function hero.findSouls(map)
     local souls = {}
+    
 
     for i, obj in pairs( map("souls").objects ) do
+        local x = map.layers["souls"]["objects"][i]["x"]
+        local y = map.layers["souls"]["objects"][i]["y"]
         local collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
         collObject.type = "soul"
+        collObject.key = i
+        collObject.visible = true
         collider:addToGroup("soul", collObject)
         collider:setPassive(collObject)
         table.insert(souls, collObject)
