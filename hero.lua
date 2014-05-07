@@ -9,10 +9,12 @@ local lucifer
 
 function hero.setupHero(x,y,coll)
 	collider = coll
-	ourHero = collider:addRectangle(x,y,16,16) -- size of our hero
+	ourHero = collider:addRectangle(x,y,48,48) -- size of our hero
 	ourHero.speed = 400
-    luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.bmp')
-    lucifer = love.graphics.newQuad(0, 0, 32, 32, 64, 64)
+    luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.png')
+    -- lucifer = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
+    lucifer = love.graphics.newQuad(64, 56, 16, 16, 96, 72) -- head facing south
+
 end
 
 
@@ -70,10 +72,10 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
 end
 
 function hero.draw()
-    
-	ourHero:draw('fill')
+
+	--ourHero:draw('fill')
     local collx, colly = ourHero:center()
-    love.graphics.draw(luciferSpritesheet, lucifer, collx, colly)
+    love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
     -- print(collx, " ", colly)
 
 end
