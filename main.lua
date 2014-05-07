@@ -10,6 +10,7 @@ local HC = require "HardonCollider"
 local Camera = require "hump.camera"
 local gamemenu = require "menu"
 
+local scoresign
 local ourHero = require "hero"
 local collider
 local allSolidTiles
@@ -22,6 +23,8 @@ local scorecount
 local gamestate = "menu"
 local herospeed = 0
 local speedmargin = 0.1
+
+love.window.setMode(1200, 900)
 
 function love.load()
 
@@ -56,6 +59,7 @@ function love.load()
 	speed = 200
     death = false
     killed = love.graphics.newImage('gfx/death2.jpg')
+    scoresign = love.graphics.newImage('gfx/scoresign.png')
 	-- End Tiled stuff
 
     -- menu loaded
@@ -88,17 +92,20 @@ function love.draw()
 
 
         -- FPS meter and memory counter
-        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 680, 20)
-        love.graphics.print("Score: "..scorecount, 680, 60)
+        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 680, 300)
+        
+        
 	   -- Tiled stuff
 	   cam:draw(drawCamera)
+       love.graphics.draw(scoresign, 600, 20)
+       love.graphics.print("Score: "..scorecount, 680, 80)
 	   -- end Tiled stuff
 	    if cam.y >= distanceGoal then
             reached_bottom = true
         elseif cam.y <= 0 then
             reached_bottom = false
         end
-        love.graphics.print(cam.y, 680, 80)
+        --love.graphics.print(cam.y, 680, 80)
         -- scrolling speed for ledge and soul
     else
         love.graphics.draw(killed,0,-100)
