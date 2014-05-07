@@ -3,6 +3,14 @@
  <tileset firstgid="1" name="tmw_desert_spacing" tilewidth="32" tileheight="32" spacing="1" margin="1">
   <image source="tmw_desert_spacing.png" width="265" height="199"/>
  </tileset>
+ <tileset firstgid="49" name="soul" tilewidth="32" tileheight="32" spacing="1" margin="1">
+  <tileoffset x="3" y="3"/>
+  <image source="soul.png" width="215" height="375"/>
+ </tileset>
+ <tileset firstgid="115" name="soul2" tilewidth="70" tileheight="122">
+  <tileoffset x="3" y="3"/>
+  <image source="soul2.png" width="70" height="122"/>
+ </tileset>
  <layer name="sides" width="25" height="1000">
   <data>
    <tile gid="11"/>
@@ -50017,11 +50025,20 @@
  </objectgroup>
  <imagelayer name="Image Layer 1" width="25" height="1000" visible="0"/>
  <objectgroup name="souls" width="25" height="1000">
-  <object name="soul" x="260" y="382" width="42" height="40"/>
-  <object name="soul" x="548" y="832" width="42" height="40"/>
-  <object name="soul" x="651" y="603" width="42" height="40"/>
-  <object name="soul" x="70" y="1032" width="42" height="40"/>
-  <object name="soul" x="682" y="1507" width="42" height="40"/>
-  <object name="soul" x="616" y="1355" width="42" height="40"/>
+  <object name="soul" gid="115" x="351" y="631"/>
+  <object name="soul" gid="115" x="623" y="469"/>
+  <object name="soul" gid="115" x="120" y="348"/>
+  <object name="soul" gid="115" x="122" y="945"/>
+  <object name="soul" gid="115" x="602" y="1165"/>
+  <object name="soul" gid="115" x="138" y="2108"/>
+  <object gid="115" x="541" y="2402"/>
+  <object gid="115" x="216" y="3301"/>
+  <object gid="115" x="418" y="3924"/>
+  <object gid="115" x="564" y="5057"/>
+  <object gid="115" x="221" y="5373"/>
+  <object gid="115" x="541" y="6173"/>
+  <object gid="115" x="109" y="6253"/>
+  <object gid="115" x="493" y="7021"/>
+  <object gid="115" x="205" y="7709"/>
  </objectgroup>
 </map>

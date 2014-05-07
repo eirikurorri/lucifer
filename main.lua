@@ -171,3 +171,4 @@ function findSolidTiles(map)
 
     return collidable_tiles
 end
+
