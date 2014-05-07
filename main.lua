@@ -1,7 +1,5 @@
 --background layer loaded
 background = require "background"
--- player code instatiated
---player = require "player"
 
 -- Tiled stuff!
 local loader = require "AdvTiledLoader/Loader"

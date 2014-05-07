@@ -5,11 +5,13 @@ local collider
 local map
 local ourHero
 local camY
+local lucifer
 
 function hero.setupHero(x,y,coll)
 	collider = coll
-	ourHero = collider:addRectangle(x,y,16,16)
+	ourHero = collider:addRectangle(x,y,16,16) -- size of our hero
 	ourHero.speed = 400
+    lucifer = love.graphics.newImage('gfx/tinySatan.bmp')
 end
 
 
@@ -17,8 +19,8 @@ function hero.updateHero(dt,cam,speed,reached_bottom)
 	-- apply a downward force to the hero (=gravity)
 	
     if reached_bottom == false then
-        ourHero:move(0,dt*speed)
-        cam:move(0,dt*speed)
+        ourHero:move(0,dt*speed) -- collider.move 
+        cam:move(0,dt*speed)     -- camera.move
     else
         ourHero:move(0,-dt*speed)
         cam:move(0,-dt*speed)
@@ -62,8 +64,12 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
 
 end
 
-function hero.draw(camY)
-	ourHero:draw("fill")
+function hero.draw()
+	ourHero:draw('fill')
+    local collx, colly = ourHero:center()
+    love.graphics.draw(lucifer, collx, colly)
+    -- print(collx, " ", colly)
+
 end
 
 function hero.handleInput(dt)
