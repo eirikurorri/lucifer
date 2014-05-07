@@ -11,7 +11,8 @@ function hero.setupHero(x,y,coll)
 	collider = coll
 	ourHero = collider:addRectangle(x,y,16,16) -- size of our hero
 	ourHero.speed = 400
-    lucifer = love.graphics.newImage('gfx/tinySatan.bmp')
+    luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.bmp')
+    lucifer = love.graphics.newQuad(0, 0, 32, 32, 64, 64)
 end
 
 
@@ -67,7 +68,7 @@ end
 function hero.draw()
 	ourHero:draw('fill')
     local collx, colly = ourHero:center()
-    love.graphics.draw(lucifer, collx, colly)
+    love.graphics.draw(luciferSpritesheet, lucifer, collx, colly)
     -- print(collx, " ", colly)
 
 end
