@@ -103,7 +103,7 @@ function love.draw()
         
 	   -- Tiled stuff
 	   cam:draw(drawCamera)
-       --souls.drawSouls(soulTiles) -- uncomment for soul drawing action!
+       --souls.drawSouls(map) -- uncomment for soul drawing action!
        love.graphics.draw(scoresign, 1000, 20)
        love.graphics.print("Score: "..scorecount, 1050, 75)
 	   -- end Tiled stuff
