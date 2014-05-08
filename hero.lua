@@ -72,12 +72,14 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
        return
    elseif shape_a == ourHero and shape_b.type == "soul" then
         map.layers["souls"]["objects"][shape_b.key]["visible"] = false
-        collider:remove(shape_b)
+        -- map.layers["soulTiles"]["objects"][shape_b.key]["visible"] = false
+        -- collider:remove(shape_b)
         scorecounter()
         return
     elseif shape_b == ourHero and shape_a.type == "soul" then
         map.layers["souls"]["objects"][shape_a.key]["visible"] = false
-        collider:remove(shape_a)
+        --map.layers["soulTiles"]["objects"][shape_a.key]["visible"] = false
+        -- collider:remove(shape_a)
         scorecounter()
         return
    else
@@ -94,7 +96,8 @@ function hero.draw()
 
 	ourHero:draw('fill')
     collx, colly = ourHero:center()
-    love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
+    --love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
+    love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0       , 3)
     -- print(collx, " ", colly)
 
 end
@@ -139,7 +142,7 @@ function hero.findSolidTiles(map)
     local collidable_tiles = {}
 
     for x, y, tile in map("sides"):iterate() do
-        love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
+        --love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
         --if tile.properties.solid then
             local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
             ctile.type = "tile"
@@ -156,7 +159,7 @@ function hero.findSolidTilesLayer(map)
     local collidable_tiles = {}
 
     for x, y, tile in map("ledge"):iterate() do -- tile layer
-        love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
+        -- love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
         --if tile.properties.solid then
             local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
             ctile.type = "collide"
@@ -166,24 +169,38 @@ function hero.findSolidTilesLayer(map)
         --end
     end
 
-    for i, obj in pairs( map("object").objects ) do
-        local collObject
-        -- now we check if the shape is a polygon or a rect
-        if obj.name == "polygon" then -- polygons should have this name in Tiled
-            collObject = collider:addPolygon(obj.polygon)  
-        else 
-            collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
-        end
-        collObject.type = "collide"
-        collider:addToGroup("collide", collObject)
-        collider:setPassive(collObject)
-        table.insert(collidable_tiles, collObject)
-    end
+    -- for i, obj in pairs( map("object").objects ) do
+    --     local collObject
+    --     -- now we check if the shape is a polygon or a rect
+    --     if obj.name == "polygon" then -- polygons should have this name in Tiled
+    --         collObject = collider:addPolygon(obj.polygon)  
+    --     else 
+    --         collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
+    --     end
+    --     collObject.type = "collide"
+    --     collider:addToGroup("collide", collObject)
+    --     collider:setPassive(collObject)
+    --     table.insert(collidable_tiles, collObject)
+    -- end
 
     return collidable_tiles
 end
 
+-- for the soulTiles layer
 function hero.findSouls(map)
+    local souls = {}
+        for x, y, tile in map("souls"):iterate() do -- tile layer
+            local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
+            ctile.type = "soul"
+            collider:addToGroup("soul", ctile)
+            collider:setPassive(ctile)
+            table.insert(souls, ctile)
+        end
+    return souls
+    end
+
+-- for the souls object layer
+function hero.findSoulObjects(map)
     local souls = {}
     
       for i, obj in pairs( map("souls").objects ) do
@@ -191,10 +208,7 @@ function hero.findSouls(map)
           -- for a, att in pairs(obj) do
           --     print(a, " ", att)
           -- end
-        --local y = map.layers["souls"]["objects"][i]["y"]
-        --local x = map.layers["souls"]["objects"][i]["x"]
-        --local collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
-        local collObject = collider:addRectangle(obj.x, obj.y, 70, -122) -- hard coded according to soul image tile size
+        local collObject = collider:addRectangle(obj.x+32, obj.y+14, 32, 56) -- hard coded according to soul image tile size
         collObject.type = "soul"
         collObject.key = i
         collObject.visible = true
@@ -203,16 +217,6 @@ function hero.findSouls(map)
         collider:setPassive(collObject)
         table.insert(souls, collObject)
     end
-
-    -- for a, b in pairs(souls) do
-    --     print("---", a, "---")
-    --     for x, y in pairs(b) do
-    --         print(x, " ", y, "OOOO")
-    --         -- for one, two in pairs(y) do
-    --         --     print(one, " ", two, "******")
-    --         -- end
-    --     end
-    -- end
 
     return souls
 end

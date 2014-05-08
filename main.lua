@@ -14,7 +14,7 @@ local souls = require "souls"
 local scoresign
 local ourHero = require "hero"
 local collider
-local allSolidTiles
+-- local allSolidTiles
 local distanceGoal
 local distance
 local speed
@@ -44,9 +44,9 @@ function love.load()
     collider = HC(100, on_collide)
     -- find all the tiles that we can collide with
     ourHero.setupHero(400,-300, collider)
-    allSolidTiles = ourHero.findSolidTiles(map)
-    deathtiles = ourHero.findSolidTilesLayer(map)
-    soulTiles = ourHero.findSouls(map)
+    --allSolidTiles = ourHero.findSolidTiles(map)
+    --deathtiles = ourHero.findSolidTilesLayer(map)
+    soulTiles = ourHero.findSoulObjects(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
 	-- background
@@ -107,7 +107,7 @@ function love.draw()
         
 	   -- Tiled stuff
 	   cam:draw(drawCamera)
-       --souls.drawSouls(soulTiles) -- uncomment for soul drawing action!
+       --souls.drawSouls(map) -- uncomment for soul drawing action!
        love.graphics.draw(scoresign, 1000, 20)
        love.graphics.print("Score: "..scorecount, 1050, 75)
 	   -- end Tiled stuff
@@ -177,21 +177,3 @@ function endgame()
     death = true
     speed = 0
 end
-
-function findSolidTiles(map)
-    local collidable_tiles = {}
-
-    for x, y, tile in map("sides"):iterate() do
-        --love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
-        --if tile.properties.solid then
-            local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
-            ctile.type = "tile"
-            collider:addToGroup("tiles", ctile)
-            collider:setPassive(ctile)
-            table.insert(collidable_tiles, ctile)
-        --end
-    end
-
-    return collidable_tiles
-end
-
