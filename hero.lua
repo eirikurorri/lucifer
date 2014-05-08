@@ -52,12 +52,14 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
        endgame()
        return
    elseif shape_a == ourHero and shape_b.type == "soul" then
-        map.layers["souls"]["objects"][shape_b.key]["visible"] = false
+        --map.layers["souls"]["objects"][shape_b.key]["visible"] = false
+        map.layers["soulTiles"]["objects"][shape_b.key]["visible"] = false
         collider:remove(shape_b)
         scorecounter()
         return
     elseif shape_b == ourHero and shape_a.type == "soul" then
-        map.layers["souls"]["objects"][shape_a.key]["visible"] = false
+        -- map.layers["souls"]["objects"][shape_a.key]["visible"] = false
+        map.layers["soulTiles"]["objects"][shape_a.key]["visible"] = false
         collider:remove(shape_a)
         scorecounter()
         return
@@ -138,24 +140,38 @@ function hero.findSolidTilesLayer(map)
         --end
     end
 
-    for i, obj in pairs( map("object").objects ) do
-        local collObject
-        -- now we check if the shape is a polygon or a rect
-        if obj.name == "polygon" then -- polygons should have this name in Tiled
-            collObject = collider:addPolygon(obj.polygon)  
-        else 
-            collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
-        end
-        collObject.type = "collide"
-        collider:addToGroup("collide", collObject)
-        collider:setPassive(collObject)
-        table.insert(collidable_tiles, collObject)
-    end
+    -- for i, obj in pairs( map("object").objects ) do
+    --     local collObject
+    --     -- now we check if the shape is a polygon or a rect
+    --     if obj.name == "polygon" then -- polygons should have this name in Tiled
+    --         collObject = collider:addPolygon(obj.polygon)  
+    --     else 
+    --         collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
+    --     end
+    --     collObject.type = "collide"
+    --     collider:addToGroup("collide", collObject)
+    --     collider:setPassive(collObject)
+    --     table.insert(collidable_tiles, collObject)
+    -- end
 
     return collidable_tiles
 end
 
+-- for the soulTiles layer
 function hero.findSouls(map)
+    local souls = {}
+        for x, y, tile in map("soulTiles"):iterate() do -- tile layer
+            local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
+            ctile.type = "soul"
+            collider:addToGroup("soul", ctile)
+            collider:setPassive(ctile)
+            table.insert(souls, ctile)
+        end
+    return souls
+    end
+
+-- for the souls object layer
+function hero.findSoulObjects(map)
     local souls = {}
     
       for i, obj in pairs( map("souls").objects ) do
