@@ -14,8 +14,8 @@ function hero.setupHero(x,y,coll)
 	ourHero = collider:addRectangle(x,y,40,40) -- size of our hero
 	--ourHero.speed = 400
     luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.png')
-    -- lucifer = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
-    lucifer = love.graphics.newQuad(64, 56, 16, 16, 96, 72) -- head facing south
+    luciferNorthFacing = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
+    luciferSouthFacing = love.graphics.newQuad(64, 56, 16, 16, 96, 72) -- head facing south
 
 end
 function hero.herocoords()
@@ -94,10 +94,14 @@ end
 
 function hero.draw()
 
-	ourHero:draw('fill')
+	-- ourHero:draw('fill')
     collx, colly = ourHero:center()
     --love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
-    love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0       , 3)
+    if reached_bottom == false then
+        love.graphics.draw(luciferSpritesheet, luciferSouthFacing, collx-24, colly-24, 0, 3)
+    else
+        love.graphics.draw(luciferSpritesheet, luciferNorthFacing, collx-24, colly-24, 0, 3)
+    end
     -- print(collx, " ", colly)
 
 end
