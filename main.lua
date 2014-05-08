@@ -30,8 +30,9 @@ love.window.setMode(1200, 800)
 function love.load()
 
 	-- Tiled stuff
+    print("wat")
 	--map = loader.load("testmap.tmx")
-    map = loader.load("testmap2.tmx")
+    map = loader.load("derpmap.tmx")
     map:setDrawRange(0,0,800,32000)
     -- map("object").visible = false -- makes object map invisible
 	-- End Tiled stuff
@@ -44,8 +45,8 @@ function love.load()
     collider = HC(100, on_collide)
     -- find all the tiles that we can collide with
     ourHero.setupHero(400,-200, collider)
-    allSolidTiles = ourHero.findSolidTiles(map)
-    deathtiles = ourHero.findSolidTilesLayer(map)
+    --allSolidTiles = ourHero.findSolidTiles(map)
+    --deathtiles = ourHero.findSolidTilesLayer(map)
     soulTiles = ourHero.findSouls(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
@@ -128,6 +129,7 @@ end
 function drawCamera()
 
     map:draw()
+    map("souls"):draw()
     ourHero.draw()
 
 end

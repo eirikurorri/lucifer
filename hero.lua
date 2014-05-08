@@ -172,13 +172,16 @@ function hero.findSouls(map)
           -- for a, att in pairs(obj) do
           --     print(a, " ", att)
           -- end
-        local x = map.layers["souls"]["objects"][i]["x"]
-        local y = map.layers["souls"]["objects"][i]["y"]
+        --local y = map.layers["souls"]["objects"][i]["y"]
+        --local x = map.layers["souls"]["objects"][i]["x"]
         --local collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
-        local collObject = collider:addRectangle(obj.x, obj.y, 70, 122) -- hard coded according to soul image tile size
+        local collObject = collider:addRectangle(obj.x, obj.y, 70, -122) -- hard coded according to soul image tile size
+        print(obj.width)
+        print(obj.height)
         collObject.type = "soul"
         collObject.key = i
         collObject.visible = true
+        --obj.draw(obj.x,obj.y)
         collider:addToGroup("soul", collObject)
         collider:setPassive(collObject)
         table.insert(souls, collObject)
