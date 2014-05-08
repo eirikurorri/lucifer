@@ -84,11 +84,16 @@ function love.draw()
         -- background drawing
         background.drawBackground(reached_bottom)
         --background.debugBackground()
-        
-        if speed < maxspeed then
-            speed = speed * 1.001
-            --herospeed = speed/2
+        if cam.y < distanceGoal/2 then
+            if speed < maxspeed then
+                speed = speed * 1.001
+            end
+        elseif  cam.y > distanceGoal/2 then
+            if speed > 200 then
+                speed = speed * 0.9999
+            end
         end
+        love.graphics.print(math.floor(cam.y),1050,200)
         love.graphics.print(math.floor(speed),1050,180)
 
 
@@ -98,6 +103,7 @@ function love.draw()
         
 	   -- Tiled stuff
 	   cam:draw(drawCamera)
+       --souls.drawSouls(soulTiles) -- uncomment for soul drawing action!
        love.graphics.draw(scoresign, 1000, 20)
        love.graphics.print("Score: "..scorecount, 1050, 75)
 	   -- end Tiled stuff
