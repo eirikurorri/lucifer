@@ -27,6 +27,7 @@ end
 
 function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset)
 	-- apply a downward force to the hero (=gravity)
+    --print(distanceGoal)
 	camx,heroy = ourHero:center()
     if reached_bottom == false then
         if heroy < distanceGoal - cameraoffset then

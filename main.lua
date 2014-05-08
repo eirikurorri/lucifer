@@ -160,7 +160,7 @@ function love.update(dt)
         if death == false then
             herospeed = ourHero.handleInput(dt,herospeed,speedmargin)
             --print(herospeed)
-            ourHero.updateHero(dt,cam,speed,reached_bottom)
+            ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset)
             collider:update(dt) 
 
             if reached_bottom == false then
