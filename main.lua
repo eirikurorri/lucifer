@@ -33,7 +33,8 @@ function love.load()
 	-- Tiled stuff
 	--map = loader.load("testmap.tmx")
     map = loader.load("derpmap.tmx")
-    map:setDrawRange(120,0,960,32000)
+    map:setDrawRange(0,0,960,32000)
+    map.offsetX = 120
     -- map("object").visible = false -- makes object map invisible
 	-- End Tiled stuff
     camY = 0
@@ -96,21 +97,22 @@ function love.draw()
                 speed = speed - 0.1
             end
         end
-        love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200)
-        love.graphics.print(math.floor(speed),1050,180)
+        --love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200)
+        --love.graphics.print(math.floor(speed),1050,180)
         --love.graphics.print(math.floor(distance),1050,220)
 
 
 
         -- FPS meter and memory counter
-        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 300)
+        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 140)
         
         
 	   -- Tiled stuff
 	   cam:draw(drawCamera)
        --souls.drawSouls(map) -- uncomment for soul drawing action!
-       love.graphics.draw(scoresign, 1000, 20)
-       love.graphics.print("Score: "..scorecount, 1050, 75)
+       love.graphics.draw(scoresign, 1050, 20)
+       love.graphics.print("Hell Population: ", 1060, 46)
+       love.graphics.print(scorecount, 1100, 61)
 	   -- end Tiled stuff
 	    if ourHero.herocoords() >= distanceGoal - 100 then
             reached_bottom = true

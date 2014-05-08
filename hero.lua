@@ -94,7 +94,7 @@ end
 
 function hero.draw()
 
-	ourHero:draw('fill')
+	-- ourHero:draw('fill')
     collx, colly = ourHero:center()
     --love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
     love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0       , 3)
@@ -127,10 +127,10 @@ function hero.handleInput(dt,herospeed,speedmargin)
     end
     --print(collx, " ", colly)
     --print(herospeed)
-    if collx <= 54 and herospeed < 0 then
+    if collx <= -27 and herospeed < 0 then
         herospeed = 0
         --print(herospeed)
-    elseif collx >= 738 and herospeed > 0 then
+    elseif collx >= 748 and herospeed > 0 then
         herospeed = 0
     else
         ourHero:move(herospeed*dt, 0)
