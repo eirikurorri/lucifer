@@ -28,7 +28,7 @@ end
 function hero.updateHero(dt,cam,speed,reached_bottom)
 	-- apply a downward force to the hero (=gravity)
 	camx,heroy = ourHero:center()
-    print(reached_bottom)
+    --print(reached_bottom)
     if reached_bottom == false then
         if heroy < 2500 then
             ourHero:move(0,dt*speed) -- collider.move 
@@ -61,7 +61,7 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
     -- sort out which one our hero shape is
    local hero_shape, tileshape
    if shape_a == ourHero and shape_b.type == "tile" then
-       hero_shape = shape_a
+        hero_shape = shape_a
    elseif shape_b == ourHero and shape_a.type == "tile" then
        hero_shape = shape_b
    elseif shape_a == ourHero and shape_b.type == "collide" then
@@ -73,13 +73,13 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
    elseif shape_a == ourHero and shape_b.type == "soul" then
         map.layers["souls"]["objects"][shape_b.key]["visible"] = false
         -- map.layers["soulTiles"]["objects"][shape_b.key]["visible"] = false
-        -- collider:remove(shape_b)
+        collider:remove(shape_b)
         scorecounter()
         return
     elseif shape_b == ourHero and shape_a.type == "soul" then
         map.layers["souls"]["objects"][shape_a.key]["visible"] = false
         --map.layers["soulTiles"]["objects"][shape_a.key]["visible"] = false
-        -- collider:remove(shape_a)
+        collider:remove(shape_a)
         scorecounter()
         return
    else
