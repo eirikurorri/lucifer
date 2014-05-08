@@ -52,15 +52,15 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
        endgame()
        return
    elseif shape_a == ourHero and shape_b.type == "soul" then
-        --map.layers["souls"]["objects"][shape_b.key]["visible"] = false
-        map.layers["soulTiles"]["objects"][shape_b.key]["visible"] = false
-        collider:remove(shape_b)
+        map.layers["souls"]["objects"][shape_b.key]["visible"] = false
+        -- map.layers["soulTiles"]["objects"][shape_b.key]["visible"] = false
+        -- collider:remove(shape_b)
         scorecounter()
         return
     elseif shape_b == ourHero and shape_a.type == "soul" then
-        -- map.layers["souls"]["objects"][shape_a.key]["visible"] = false
-        map.layers["soulTiles"]["objects"][shape_a.key]["visible"] = false
-        collider:remove(shape_a)
+        map.layers["souls"]["objects"][shape_a.key]["visible"] = false
+        --map.layers["soulTiles"]["objects"][shape_a.key]["visible"] = false
+        -- collider:remove(shape_a)
         scorecounter()
         return
    else

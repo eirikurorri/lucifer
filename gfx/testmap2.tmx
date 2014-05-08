@@ -50027,7 +50027,7 @@
   </object>
  </objectgroup>
  <imagelayer name="Image Layer 1" width="25" height="1000" visible="0"/>
- <objectgroup name="souls" width="25" height="1000" visible="0">
+ <objectgroup name="souls" width="25" height="1000">
   <object name="soul" gid="115" x="351" y="631"/>
   <object name="soul" gid="115" x="623" y="469"/>
   <object name="soul" gid="115" x="120" y="348"/>
@@ -50044,7 +50044,7 @@
   <object gid="115" x="493" y="7021"/>
   <object gid="115" x="205" y="7709"/>
  </objectgroup>
- <layer name="soulTiles" width="25" height="1000">
+ <layer name="soulTiles" width="25" height="1000" visible="0">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>

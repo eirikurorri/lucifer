@@ -46,7 +46,7 @@ function love.load()
     ourHero.setupHero(400,-200, collider)
     -- allSolidTiles = ourHero.findSolidTiles(map)
     deathtiles = ourHero.findSolidTilesLayer(map)
-    soulTiles = ourHero.findSouls(map)
+    soulTiles = ourHero.findSoulObjects(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
 	-- background
