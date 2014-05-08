@@ -26,10 +26,13 @@ local herospeed = 0
 local speedmargin = 0.1
 local cameraoffset = 700
 
+local menuimage = love.graphics.newImage('gfx/fall-of-lucifer.jpg')
+
 love.window.setMode(1200, 800)
 
 function love.load()
 
+    print("lol")
 	-- Tiled stuff
 	--map = loader.load("testmap.tmx")
     map = loader.load("derpmap.tmx")
@@ -47,7 +50,7 @@ function love.load()
     -- find all the tiles that we can collide with
     ourHero.setupHero(400,-300, collider)
     --allSolidTiles = ourHero.findSolidTiles(map)
-    --deathtiles = ourHero.findSolidTilesLayer(map)
+    deathtiles = ourHero.findSolidTilesLayer(map)
     soulTiles = ourHero.findSoulObjects(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
@@ -80,7 +83,8 @@ end
 function love.draw()
     --love.graphics.scale(0.25, 0.25)
     if gamestate == "menu" then
-        gamemenu.loadmenu()
+        love.graphics.draw(menuimage, 0, 0)
+        love.graphics.print("Press Enter to begin", 400,400)
         
     elseif death == false then
         -- background drawing
@@ -98,7 +102,7 @@ function love.draw()
             end
         end
         --love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200)
-        --love.graphics.print(math.floor(speed),1050,180)
+        love.graphics.print("Speed: "..math.floor(speed),1050,180)
         --love.graphics.print(math.floor(distance),1050,220)
 
 
@@ -123,8 +127,8 @@ function love.draw()
         -- scrolling speed for ledge and soul
     else
         love.graphics.draw(killed,0,-100)
-        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 20)
-        
+        --love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 20)
+        love.graphics.print("Press Enter to restart", 400,400)
     end
 end
 
