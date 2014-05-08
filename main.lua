@@ -24,15 +24,16 @@ local scorecount
 local gamestate = "menu"
 local herospeed = 0
 local speedmargin = 0.1
+local cameraoffset = 700
 
 love.window.setMode(1200, 800)
 
 function love.load()
 
 	-- Tiled stuff
-	map = loader.load("derpmap.tmx")
-    --map = loader.load("testmap2.tmx")
-    map:setDrawRange(0,0,960,32000)
+	--map = loader.load("testmap.tmx")
+    map = loader.load("derpmap.tmx")
+    map:setDrawRange(120,0,960,32000)
     -- map("object").visible = false -- makes object map invisible
 	-- End Tiled stuff
     camY = 0
@@ -53,7 +54,7 @@ function love.load()
     background.loadBackground()
 
     --distance monitor and goal
-    distanceGoal = 3200
+    distanceGoal = 32000
     distance = 0
     -- Tiled stuff
     -- speedometer, use for different speeds
@@ -159,7 +160,7 @@ function love.update(dt)
         if death == false then
             herospeed = ourHero.handleInput(dt,herospeed,speedmargin)
             --print(herospeed)
-            ourHero.updateHero(dt,cam,speed,reached_bottom)
+            ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset)
             collider:update(dt) 
 
             if reached_bottom == false then

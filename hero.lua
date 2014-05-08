@@ -25,19 +25,19 @@ function hero.herocoords()
     return math.floor(heroy)
 end
 
-function hero.updateHero(dt,cam,speed,reached_bottom)
+function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset)
 	-- apply a downward force to the hero (=gravity)
+    --print(distanceGoal)
 	camx,heroy = ourHero:center()
-    --print(reached_bottom)
     if reached_bottom == false then
-        if heroy < 2500 then
+        if heroy < distanceGoal - cameraoffset then
             ourHero:move(0,dt*speed) -- collider.move 
             cam:lookAt(400,heroy+offset+dt*speed)
         else
             ourHero:move(0,dt*speed)
         end
     elseif reached_bottom == true then
-        if heroy < 700 then
+        if heroy < cameraoffset then
             ourHero:move(0,-dt*speed)
             
         else
