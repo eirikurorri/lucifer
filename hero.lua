@@ -77,7 +77,8 @@ function hero.draw()
 
 	ourHero:draw('fill')
     collx, colly = ourHero:center()
-    love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
+    --love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
+    love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0       , 3)
     -- print(collx, " ", colly)
 
 end
@@ -122,7 +123,7 @@ function hero.findSolidTiles(map)
     local collidable_tiles = {}
 
     for x, y, tile in map("sides"):iterate() do
-        love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
+        --love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
         --if tile.properties.solid then
             local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
             ctile.type = "tile"
@@ -139,7 +140,7 @@ function hero.findSolidTilesLayer(map)
     local collidable_tiles = {}
 
     for x, y, tile in map("ledge"):iterate() do -- tile layer
-        love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
+        -- love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
         --if tile.properties.solid then
             local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
             ctile.type = "collide"
@@ -169,7 +170,7 @@ end
 -- for the soulTiles layer
 function hero.findSouls(map)
     local souls = {}
-        for x, y, tile in map("soulTiles"):iterate() do -- tile layer
+        for x, y, tile in map("souls"):iterate() do -- tile layer
             local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
             ctile.type = "soul"
             collider:addToGroup("soul", ctile)
@@ -188,27 +189,15 @@ function hero.findSoulObjects(map)
           -- for a, att in pairs(obj) do
           --     print(a, " ", att)
           -- end
-        local x = map.layers["souls"]["objects"][i]["x"]
-        local y = map.layers["souls"]["objects"][i]["y"]
-        --local collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
-        local collObject = collider:addRectangle(obj.x, obj.y, 70, 122) -- hard coded according to soul image tile size
+        local collObject = collider:addRectangle(obj.x+32, obj.y+14, 32, 56) -- hard coded according to soul image tile size
         collObject.type = "soul"
         collObject.key = i
         collObject.visible = true
+        --obj.draw(obj.x,obj.y)
         collider:addToGroup("soul", collObject)
         collider:setPassive(collObject)
         table.insert(souls, collObject)
     end
-
-    -- for a, b in pairs(souls) do
-    --     print("---", a, "---")
-    --     for x, y in pairs(b) do
-    --         print(x, " ", y, "OOOO")
-    --         -- for one, two in pairs(y) do
-    --         --     print(one, " ", two, "******")
-    --         -- end
-    --     end
-    -- end
 
     return souls
 end
