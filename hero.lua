@@ -94,16 +94,15 @@ end
 
 function hero.draw()
 
-	-- ourHero:draw('fill')
+	 ourHero:draw('fill')
     collx, colly = ourHero:center()
-    --love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
-    love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0       , 3)
+    love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
     -- print(collx, " ", colly)
 
 end
 
 function hero.handleInput(dt,herospeed,speedmargin)
-
+    collx, colly = ourHero:center()
     if love.keyboard.isDown("left") then
         if herospeed > 0 then
             herospeed = herospeed - 30
@@ -208,7 +207,7 @@ function hero.findSoulObjects(map)
           -- for a, att in pairs(obj) do
           --     print(a, " ", att)
           -- end
-        local collObject = collider:addRectangle(obj.x+32, obj.y+14, 32, 56) -- hard coded according to soul image tile size
+        local collObject = collider:addRectangle(obj.x-88, obj.y+14, 32, 56) -- hard coded according to soul image tile size
         collObject.type = "soul"
         collObject.key = i
         collObject.visible = true
