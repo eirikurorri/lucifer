@@ -112,19 +112,19 @@ function hero.handleInput(dt,herospeed,speedmargin)
         if herospeed > 0 then
             herospeed = herospeed - 30
         else
-            herospeed = herospeed - 10
+            herospeed = herospeed - 12
         end 
     elseif love.keyboard.isDown("right") then
         if herospeed < 0 then
             herospeed = herospeed + 30
         else
-            herospeed = herospeed + 10  
+            herospeed = herospeed + 12  
         end  
     else  
             if herospeed < -speedmargin then 
-                herospeed = herospeed + 10
+                herospeed = herospeed + 12
             elseif herospeed > speedmargin then
-                herospeed = herospeed - 10
+                herospeed = herospeed - 12
             else
                 herospeed = 0
             end
@@ -165,7 +165,7 @@ function hero.findSolidTilesLayer(map)
     for x, y, tile in map("ledge"):iterate() do -- tile layer
         -- love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
         --if tile.properties.solid then
-            local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
+            local ctile = collider:addRectangle((x)*32-120,(y)*32,32,32)
             ctile.type = "collide"
             collider:addToGroup("collide", ctile)
             collider:setPassive(ctile)
