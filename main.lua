@@ -32,7 +32,7 @@ love.window.setMode(1200, 800)
 
 function love.load()
 
-    print("lol")
+    --print("lol")
 	-- Tiled stuff
 	--map = loader.load("testmap.tmx")
     map = loader.load("derpmap.tmx")
@@ -64,7 +64,7 @@ function love.load()
     -- speedometer, use for different speeds
 	speed = 200
     death = false
-    killed = love.graphics.newImage('gfx/death2.jpg')
+    killed = love.graphics.newImage('gfx/death3.jpg')
     scoresign = love.graphics.newImage('gfx/scoresign.png')
 	-- End Tiled stuff
     herospeed = 0
@@ -126,7 +126,8 @@ function love.draw()
         --love.graphics.print(cam.y, 680, 80)
         -- scrolling speed for ledge and soul
     else
-        love.graphics.draw(killed,0,-100)
+        --love.graphics.draw(killed,0,-100)
+        love.graphics.draw(killed,0,0)
         --love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 20)
         love.graphics.print("Press Enter to restart", 400,400)
     end
