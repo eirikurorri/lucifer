@@ -6,6 +6,8 @@ local collider
 local ourHero
 local lucifer
 local collx, colly = 0
+local camx, camy = 0
+local offset = 300
 
 function hero.setupHero(x,y,coll)
 	collider = coll
@@ -16,18 +18,35 @@ function hero.setupHero(x,y,coll)
     lucifer = love.graphics.newQuad(64, 56, 16, 16, 96, 72) -- head facing south
 
 end
-
+function hero.herocoords()
+    --local hero = {}
+    herox,heroy = ourHero:center()
+    --print(camy)
+    return math.floor(heroy)
+end
 
 function hero.updateHero(dt,cam,speed,reached_bottom)
 	-- apply a downward force to the hero (=gravity)
-	
+	camx,heroy = ourHero:center()
+    print(reached_bottom)
     if reached_bottom == false then
-        ourHero:move(0,dt*speed) -- collider.move 
-        cam:move(0,dt*speed)     -- camera.move
-    else
-        ourHero:move(0,-dt*speed)
-        cam:move(0,-dt*speed)
+        if heroy < 2500 then
+            ourHero:move(0,dt*speed) -- collider.move 
+            cam:lookAt(400,heroy+offset+dt*speed)
+        else
+            ourHero:move(0,dt*speed)
+        end
+    elseif reached_bottom == true then
+        if heroy < 700 then
+            ourHero:move(0,-dt*speed)
+            
+        else
+            ourHero:move(0,-dt*speed)
+            cam:lookAt(400,heroy-offset+dt*speed)
+        end
     end
+
+    
 end
 
 
@@ -176,8 +195,6 @@ function hero.findSouls(map)
         --local x = map.layers["souls"]["objects"][i]["x"]
         --local collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
         local collObject = collider:addRectangle(obj.x, obj.y, 70, -122) -- hard coded according to soul image tile size
-        print(obj.width)
-        print(obj.height)
         collObject.type = "soul"
         collObject.key = i
         collObject.visible = true
