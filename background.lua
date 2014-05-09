@@ -14,7 +14,6 @@ end
 
 function background.drawBackground(bottom_reached)
 	
-
     -- movement of the scrolling movement of the background through Y-axis
     if bottom_reached == false then
         love.graphics.draw(background2, 120, background2y - bgheight )

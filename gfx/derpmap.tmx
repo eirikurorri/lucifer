@@ -78175,4 +78175,12 @@
    <tile gid="0"/>
   </data>
  </layer>
+ <objectgroup name="polygons" width="30" height="1300">
+  <object name="polygon" type="polygon" x="418" y="1260">
+   <properties>
+    <property name="polygon" value=""/>
+   </properties>
+   <polygon points="0,0 -89,138 115,138 369,-107"/>
+  </object>
+ </objectgroup>
 </map>

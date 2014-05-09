@@ -8,6 +8,7 @@ local lucifer
 local collx, colly = 0
 local camx, camy = 0
 local offset = 300
+local colliderobject
 
 function hero.setupHero(x,y,coll)
 	collider = coll
@@ -103,7 +104,7 @@ function hero.draw()
         love.graphics.draw(luciferSpritesheet, luciferNorthFacing, collx-24, colly-24, 0, 3)
     end
     -- print(collx, " ", colly)
-
+    colliderobject:draw('fill')
 end
 
 function hero.handleInput(dt,herospeed,speedmargin)
@@ -190,6 +191,55 @@ function hero.findSolidTilesLayer(map)
     return collidable_tiles
 end
 
+function hero.findPolygons(map)
+    local collidable_tiles = {}
+
+    --for x, y, tile in map("ledge"):iterate() do -- tile layer
+    --    -- love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
+    --    --if tile.properties.solid then
+    --        local ctile = collider:addRectangle((x)*32-120,(y)*32,32,32)
+    --        ctile.type = "collide"
+    --        collider:addToGroup("collide", ctile)
+    --        collider:setPassive(ctile)
+    --        table.insert(collidable_tiles, ctile)
+    --    --end
+    --end
+
+     for i, obj in ipairs( map("polygons").objects ) do
+         local collObject
+         local coordlist = {}
+         local crap = {}
+         -- now we check if the shape is a polygon or a rect
+            --print(pairs(obj.polygon)[1])
+            for j, k in ipairs(obj.polygon) do
+              --print(j, " ", k)
+              if j % 2 == 0 then
+                table.insert(coordlist, k + obj.y)
+                --print(k-120)
+              else
+                table.insert(coordlist, k + obj.x - 120)
+              end
+              --print(obj.x)
+            end
+            print(unpack(coordlist))
+           
+        -- if obj.name == "polygon" then -- polygons should have this name in Tiled
+             collObject = collider:addPolygon(unpack(coordlist))  
+        -- else 
+        --     collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
+        -- end
+        --print(collObject.)
+        print(collObject:center())
+         collObject.type = "collide"
+         collider:addToGroup("collide", collObject)
+         collider:setPassive(collObject)
+         table.insert(collidable_tiles, collObject)
+         colliderobject = collObject
+     end
+
+    return collidable_tiles
+end
+
 -- for the soulTiles layer
 function hero.findSouls(map)
     local souls = {}
@@ -207,7 +257,7 @@ function hero.findSouls(map)
 function hero.findSoulObjects(map)
     local souls = {}
     
-      for i, obj in pairs( map("souls").objects ) do
+      for i, obj in ipairs( map("souls").objects ) do
           -- debugging print statment
           -- for a, att in pairs(obj) do
           --     print(a, " ", att)
@@ -220,6 +270,7 @@ function hero.findSoulObjects(map)
         collider:addToGroup("soul", collObject)
         collider:setPassive(collObject)
         table.insert(souls, collObject)
+        print(collObject:center())
     end
 
     return souls

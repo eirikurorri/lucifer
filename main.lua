@@ -49,9 +49,11 @@ function love.load()
     collider = HC(100, on_collide)
     -- find all the tiles that we can collide with
     ourHero.setupHero(400,-300, collider)
+    print("wat")
     --allSolidTiles = ourHero.findSolidTiles(map)
-    deathtiles = ourHero.findSolidTilesLayer(map)
-    soulTiles = ourHero.findSoulObjects(map)
+    --deathtiles = ourHero.findSolidTilesLayer(map)
+    --soulTiles = ourHero.findSoulObjects(map)
+    polygonTiles = ourHero.findPolygons(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
 	-- background
@@ -88,7 +90,7 @@ function love.draw()
         
     elseif death == false then
         -- background drawing
-        background.drawBackground(reached_bottom)
+        background.drawBackground(reached_bottom,distance)
         --background.debugBackground()
         if (cam.y < distanceGoal/2 and reached_bottom == false)
          or (cam.y > distanceGoal/2 and reached_bottom == true) then
@@ -103,7 +105,7 @@ function love.draw()
         end
         love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200)
         love.graphics.print("Speed: "..math.floor(speed),1050,180)
-        --love.graphics.print(math.floor(distance),1050,220)
+        love.graphics.print(math.floor(distance),1050,220)
 
 
 
@@ -127,9 +129,12 @@ function love.draw()
         -- scrolling speed for ledge and soul
     else
         --love.graphics.draw(killed,0,-100)
-        love.graphics.draw(killed,0,0)
+        --love.graphics.draw(killed,0,0)
         --love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 20)
         love.graphics.print("Press Enter to restart", 400,400)
+        background.drawBackground(reached_bottom,distance)
+        cam:draw(drawCamera)
+
     end
 end
 
