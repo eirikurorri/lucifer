@@ -93,15 +93,15 @@ function love.draw()
         if (cam.y < distanceGoal/2 and reached_bottom == false)
          or (cam.y > distanceGoal/2 and reached_bottom == true) then
             if speed < maxspeed then
-                speed = speed + 0.3
+                speed = speed + 0.2
             end
         elseif  (cam.y > distanceGoal/2 and reached_bottom == false)
          or (cam.y < distanceGoal/2 and reached_bottom == true)  then
             if speed > 200 then
-                speed = speed - 0.3
+                speed = speed - 0.2
             end
         end
-        --love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200)
+        love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200)
         love.graphics.print("Speed: "..math.floor(speed),1050,180)
         --love.graphics.print(math.floor(distance),1050,220)
 
