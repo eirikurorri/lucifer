@@ -36,7 +36,7 @@ function love.load()
 	-- Tiled stuff
 	--map = loader.load("testmap.tmx")
     map = loader.load("derpmap.tmx")
-    map:setDrawRange(0,0,960,32000)
+    map:setDrawRange(0,0,960,41600)
     map.offsetX = 120
     -- map("object").visible = false -- makes object map invisible
 	-- End Tiled stuff
@@ -58,7 +58,7 @@ function love.load()
     background.loadBackground()
 
     --distance monitor and goal
-    distanceGoal = 32000
+    distanceGoal = 41600
     distance = 0
     -- Tiled stuff
     -- speedometer, use for different speeds
