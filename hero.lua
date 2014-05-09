@@ -11,7 +11,7 @@ local offset = 300
 
 function hero.setupHero(x,y,coll)
 	collider = coll
-	ourHero = collider:addRectangle(x,y,40,40) -- size of our hero
+	ourHero = collider:addRectangle(x,y,32,32) -- size of our hero
 	--ourHero.speed = 400
     luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.png')
     luciferNorthFacing = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
