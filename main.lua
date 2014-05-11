@@ -38,6 +38,9 @@ function love.load()
     map = loader.load("derpmap.tmx")
     map:setDrawRange(0,0,960,41600)
     map.offsetX = 120
+    map("polygons").visible = true
+    map("polygons").color = {255,0,0}
+    map("ledge").visible = false
     -- map("object").visible = false -- makes object map invisible
 	-- End Tiled stuff
     camY = 0
@@ -52,7 +55,7 @@ function love.load()
     print("wat")
     --allSolidTiles = ourHero.findSolidTiles(map)
     --deathtiles = ourHero.findSolidTilesLayer(map)
-    --soulTiles = ourHero.findSoulObjects(map)
+    soulTiles = ourHero.findSoulObjects(map)
     polygonTiles = ourHero.findPolygons(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false

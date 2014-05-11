@@ -104,7 +104,7 @@ function hero.draw()
         love.graphics.draw(luciferSpritesheet, luciferNorthFacing, collx-24, colly-24, 0, 3)
     end
     -- print(collx, " ", colly)
-    colliderobject:draw('fill')
+    --colliderobject:draw('fill')
 end
 
 function hero.handleInput(dt,herospeed,speedmargin)
@@ -194,17 +194,6 @@ end
 function hero.findPolygons(map)
     local collidable_tiles = {}
 
-    --for x, y, tile in map("ledge"):iterate() do -- tile layer
-    --    -- love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
-    --    --if tile.properties.solid then
-    --        local ctile = collider:addRectangle((x)*32-120,(y)*32,32,32)
-    --        ctile.type = "collide"
-    --        collider:addToGroup("collide", ctile)
-    --        collider:setPassive(ctile)
-    --        table.insert(collidable_tiles, ctile)
-    --    --end
-    --end
-
      for i, obj in ipairs( map("polygons").objects ) do
          local collObject
          local coordlist = {}
@@ -220,21 +209,16 @@ function hero.findPolygons(map)
                 table.insert(coordlist, k + obj.x - 120)
               end
               --print(obj.x)
-            end
-            print(unpack(coordlist))
-           
-        -- if obj.name == "polygon" then -- polygons should have this name in Tiled
-             collObject = collider:addPolygon(unpack(coordlist))  
-        -- else 
-        --     collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
-        -- end
-        --print(collObject.)
-        print(collObject:center())
+      end
+            --print(unpack(coordlist))
+            collObject = collider:addPolygon(unpack(coordlist))
+        --print(collObject:center())
          collObject.type = "collide"
          collider:addToGroup("collide", collObject)
          collider:setPassive(collObject)
          table.insert(collidable_tiles, collObject)
          colliderobject = collObject
+         --colliderobject:draw("fill")
      end
 
     return collidable_tiles
