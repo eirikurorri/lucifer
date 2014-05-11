@@ -2,8 +2,10 @@ local background = {}
 
 function background.loadBackground()
 	--background pictures loaded
-	background = love.graphics.newImage('gfx/cave.png')
-    background2 = love.graphics.newImage('gfx/cave.png')
+    background = love.graphics.newImage('gfx/tile3.jpg')
+    background2 = love.graphics.newImage('gfx/tile4.jpg')
+	--background = love.graphics.newImage('gfx/cave.png')
+    --background2 = love.graphics.newImage('gfx/cave.png')
     -- background Y coordinates set
     backgroundy = 0
     background2y = 0
@@ -12,16 +14,16 @@ function background.loadBackground()
 
 end  
 
-function background.drawBackground(bottom_reached)
+function background.drawBackground(bottom_reached, heroY)
 	
 
     -- movement of the scrolling movement of the background through Y-axis
     if bottom_reached == false then
         love.graphics.draw(background2, 120, background2y - bgheight )
-        love.graphics.draw(background, 120, backgroundy )
-        love.graphics.draw(background2, 120, background2y + bgheight )
-        backgroundy = backgroundy - 4
-        background2y = background2y - 4
+        love.graphics.draw(background, 120, heroY )
+        love.graphics.draw(background2, 120, heroY + bgheight )
+        backgroundy = backgroundy - heroY
+        background2y = background2y - heroY
         
         if backgroundy <= -bgheight then
             backgroundy = 0 
@@ -35,8 +37,8 @@ function background.drawBackground(bottom_reached)
         love.graphics.draw(background, 120, backgroundy )
         love.graphics.draw(background2, 120, background2y + bgheight )
         
-        backgroundy = backgroundy + 4
-        background2y = background2y + 4
+        backgroundy = backgroundy + heroY
+        background2y = background2y + heroY
 
         if backgroundy >= bgheight then
             backgroundy = 0 

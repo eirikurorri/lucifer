@@ -26,6 +26,7 @@ local herospeed = 0
 local speedmargin = 0.1
 local cameraoffset = 700
 
+local backgroundImage = love.graphics.newImage('gfx/tile5.jpg')
 local menuimage = love.graphics.newImage('gfx/fall-of-lucifer.jpg')
 
 love.window.setMode(1200, 800)
@@ -88,7 +89,8 @@ function love.draw()
         
     elseif death == false then
         -- background drawing
-        background.drawBackground(reached_bottom)
+        background.drawBackground(reached_bottom, heroy)
+        --love.graphics.draw(backgroundImage, 0,0)
         --background.debugBackground()
         if (cam.y < distanceGoal/2 and reached_bottom == false)
          or (cam.y > distanceGoal/2 and reached_bottom == true) then

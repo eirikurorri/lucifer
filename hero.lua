@@ -11,7 +11,8 @@ local offset = 300
 
 function hero.setupHero(x,y,coll)
 	collider = coll
-	ourHero = collider:addRectangle(x,y,32,32) -- size of our hero
+	-- ourHero = collider:addRectangle(x,y,32,32) -- size of our hero
+    ourHero = collider:addCircle(x,y,10) -- size of our hero
 	--ourHero.speed = 400
     luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.png')
     luciferNorthFacing = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
@@ -94,7 +95,7 @@ end
 
 function hero.draw()
 
-	-- ourHero:draw('fill')
+	--ourHero:draw('fill')
     collx, colly = ourHero:center()
     --love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
     if reached_bottom == false then
@@ -191,17 +192,17 @@ function hero.findSolidTilesLayer(map)
 end
 
 -- for the soulTiles layer
-function hero.findSouls(map)
-    local souls = {}
-        for x, y, tile in map("souls"):iterate() do -- tile layer
-            local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
-            ctile.type = "soul"
-            collider:addToGroup("soul", ctile)
-            collider:setPassive(ctile)
-            table.insert(souls, ctile)
-        end
-    return souls
-    end
+-- function hero.findSouls(map)
+--     local souls = {}
+--         for x, y, tile in map("souls"):iterate() do -- tile layer
+--             local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
+--             ctile.type = "soul"
+--             collider:addToGroup("soul", ctile)
+--             collider:setPassive(ctile)
+--             table.insert(souls, ctile)
+--         end
+--     return souls
+--     end
 
 -- for the souls object layer
 function hero.findSoulObjects(map)
@@ -213,6 +214,7 @@ function hero.findSoulObjects(map)
           --     print(a, " ", att)
           -- end
         local collObject = collider:addRectangle(obj.x-88, obj.y+14, 32, 56) -- hard coded according to soul image tile size
+    
         collObject.type = "soul"
         collObject.key = i
         collObject.visible = true
