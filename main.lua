@@ -40,7 +40,9 @@ function love.load()
     map.offsetX = 120
     map("polygons").visible = true
     map("polygons").color = {255,0,0}
+    map("side").color = {0,255,0}
     map("ledge").visible = false
+    map("sides").visible = false
     -- map("object").visible = false -- makes object map invisible
 	-- End Tiled stuff
     camY = 0
@@ -57,6 +59,7 @@ function love.load()
     --deathtiles = ourHero.findSolidTilesLayer(map)
     soulTiles = ourHero.findSoulObjects(map)
     polygonTiles = ourHero.findPolygons(map)
+    sidetiles = ourHero.findSide(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
 	-- background
@@ -81,7 +84,7 @@ end
 
 
 function on_collide(dt, shape_a, shape_b, mtv_x, mtv_y)
-    ourHero.on_collide(dt, shape_a, shape_b, mtv_x, mtv_y)
+    ourHero.on_collide(dt, shape_a, shape_b, mtv_x, mtv_y, herospeed)
 end
 
 

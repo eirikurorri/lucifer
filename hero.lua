@@ -9,6 +9,9 @@ local collx, colly = 0
 local camx, camy = 0
 local offset = 300
 local colliderobject
+local bounce = false
+local bounceevent = false
+local bouncetimer 
 
 function hero.setupHero(x,y,coll)
 	collider = coll
@@ -51,20 +54,28 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset)
 end
 
 
-function hero.on_collide(dt, shape_a, shape_b, mtv_x, mtv_y)
+function hero.on_collide(dt, shape_a, shape_b, mtv_x, mtv_y,herospeed)
 
-    hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
+    hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,herospeed)
 
 end
 
-function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
+function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,herospeed)
 
     -- sort out which one our hero shape is
    local hero_shape, tileshape
-   if shape_a == ourHero and shape_b.type == "tile" then
+   if shape_a == ourHero and shape_b.type == "side" then
         hero_shape = shape_a
-   elseif shape_b == ourHero and shape_a.type == "tile" then
+        if bounceevent == false and bounce == false then
+            bounce = true
+            --bouncetimer = love.timer.getTime()
+        end
+   elseif shape_b == ourHero and shape_a.type == "side" then
        hero_shape = shape_b
+       if bounceevent == false and bounce == false then
+            bounce = true
+            --bouncetimer = love.timer.getTime()
+        end
    elseif shape_a == ourHero and shape_b.type == "collide" then
        endgame()
        return
@@ -109,37 +120,73 @@ end
 
 function hero.handleInput(dt,herospeed,speedmargin)
     collx, colly = ourHero:center()
-    if love.keyboard.isDown("left") then
+    --print(bounce)
+    if bounce == true and bounceevent == false then
+        --bounceevent = true
         if herospeed > 0 then
-            herospeed = herospeed - 30
+        --print(math.floor(love.timer.getTime()))
+        --for i = 0, 1000000, 1 do
+            --print(dt)
+            --herospeed = 0
+            --if i % 600 == 0 then
+                --print(i)
+                --repeat
+                    herospeed = 0
+                    herospeed = herospeed - 1
+                    --love.timer.sleep(0.4)
+                    ourHero:move(herospeed*dt, 0)
         else
-            herospeed = herospeed - 12
-        end 
-    elseif love.keyboard.isDown("right") then
-        if herospeed < 0 then
-            herospeed = herospeed + 30
-        else
-            herospeed = herospeed + 12  
-        end  
-    else  
-            if herospeed < -speedmargin then 
-                herospeed = herospeed + 12
-            elseif herospeed > speedmargin then
-                herospeed = herospeed - 12
+                    herospeed = 0
+                    herospeed = herospeed + 1
+                    --love.timer.sleep(0.4)
+                    ourHero:move(herospeed*dt, 0)
+        end
+                --until math.floor(love.timer.getTime()) == math.floor(bouncetimer) + 1
+                --print(herospeed)
+            --end
+        --print(bouncetimer)
+        --end
+        
+        --if math.floor(love.timer.getTime()) == math.floor(bouncetimer) + 4 then
+            bounce = false
+            bounceevent = false
+            --print("DERP")
+            return 0
+        --end
+    else
+        if love.keyboard.isDown("left") then
+            if herospeed > 0 then
+                herospeed = herospeed - 30
             else
-                herospeed = 0
-            end
+                herospeed = herospeed - 12
+            end 
+        elseif love.keyboard.isDown("right") then
+            if herospeed < 0 then
+                herospeed = herospeed + 30
+            else
+                herospeed = herospeed + 12  
+            end  
+        else  
+                if herospeed < -speedmargin then 
+                    herospeed = herospeed + 12
+                elseif herospeed > speedmargin then
+                    herospeed = herospeed - 12
+                else
+                    herospeed = 0
+                end
+        end
+        ourHero:move(herospeed*dt, 0)
     end
     --print(collx, " ", colly)
     --print(herospeed)
-    if collx <= -27 and herospeed < 0 then
-        herospeed = 0
-        --print(herospeed)
-    elseif collx >= 748 and herospeed > 0 then
-        herospeed = 0
-    else
-        ourHero:move(herospeed*dt, 0)
-    end
+    --if collx <= -27 and herospeed < 0 then
+    --    herospeed = 0
+    --    --print(herospeed)
+    --elseif collx >= 748 and herospeed > 0 then
+    --    herospeed = 0
+    --else
+        
+    --end
     return herospeed
 end
 
@@ -215,6 +262,39 @@ function hero.findPolygons(map)
         --print(collObject:center())
          collObject.type = "collide"
          collider:addToGroup("collide", collObject)
+         collider:setPassive(collObject)
+         table.insert(collidable_tiles, collObject)
+         colliderobject = collObject
+         --colliderobject:draw("fill")
+     end
+
+    return collidable_tiles
+end
+
+function hero.findSide(map)
+    local collidable_tiles = {}
+
+     for i, obj in ipairs( map("side").objects ) do
+         local collObject
+         local coordlist = {}
+         local crap = {}
+         -- now we check if the shape is a polygon or a rect
+            --print(pairs(obj.polygon)[1])
+            for j, k in ipairs(obj.polygon) do
+              --print(j, " ", k)
+              if j % 2 == 0 then
+                table.insert(coordlist, k + obj.y)
+                --print(k-120)
+              else
+                table.insert(coordlist, k + obj.x - 120)
+              end
+              --print(obj.x)
+      end
+            --print(unpack(coordlist))
+            collObject = collider:addPolygon(unpack(coordlist))
+        --print(collObject:center())
+         collObject.type = "side"
+         collider:addToGroup("side", collObject)
          collider:setPassive(collObject)
          table.insert(collidable_tiles, collObject)
          colliderobject = collObject
