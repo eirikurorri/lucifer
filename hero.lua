@@ -17,10 +17,8 @@ local swiping = false
 local swipetimer = 0
 
 function hero.setupHero(x,y,coll)
-	collider = coll
-	-- ourHero = collider:addRectangle(x,y,32,32) -- size of our hero
+	  collider = coll
     ourHero = collider:addCircle(x,y,15) -- size of our hero
-	--ourHero.speed = 400
     luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.png')
     luciferNorthFacing = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
     luciferSouthFacing = love.graphics.newQuad(64, 56, 16, 16, 96, 72) -- head facing south
@@ -28,7 +26,7 @@ function hero.setupHero(x,y,coll)
 end
 
 function hero.initSwipe(x,y)
-  swipeobject = collider:addRectangle(x-16,y-16,32,32)
+  swipeobject = collider:addCircle(x,y,40)
   return swipeobject
 end
 
@@ -68,25 +66,40 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,s
         swiping = swipeaction
         swipetimer = elapsedtime
         swipex, swipey = swipeobject:center()
-        if swipex < herox then
-          swipeobject:move(5+herospeed*dt,dt*speed+10)
-        else
-          swipeobject:move(-5+herospeed*dt,dt*speed+10)
-        end
-        --print(swipeobject:center())
-        --swipex, swipey = swipeobject:center()
-        --print(ourHero:center())
-        --print(elapsedtime)
+        if swipex < herox and reached_bottom == false and slowdown == true then
+          swipeobject:move(2+herospeed*dt,5+dt*speed/2)
+        elseif swipex > herox and reached_bottom == false and slowdown == true then
+          swipeobject:move(-2+herospeed*dt,5+dt*speed/2)
+        elseif swipex < herox and reached_bottom == true and slowdown == true then
+          swipeobject:move(2+herospeed*dt,-5-dt*speed/2)
+        elseif swipex > herox and reached_bottom == true and slowdown == true then
+          swipeobject:move(-2+herospeed*dt,-5-dt*speed/2)
+        elseif swipex < herox and reached_bottom == false then
+          swipeobject:move(2+herospeed*dt,dt*speed+5)
+        elseif swipex > herox and reached_bottom == false then
+          swipeobject:move(-2+herospeed*dt,dt*speed+5)
+        elseif swipex < herox and reached_bottom == true then
+          swipeobject:move(2+herospeed*dt,-dt*speed-5)
+        elseif swipex > herox and reached_bottom == true then
+          swipeobject:move(-2+herospeed*dt,-dt*speed-5)
         
+        end
     end
 
     if reached_bottom == false and slowdown == true and heroy < slowdistance + 300 then
-        --print("hello")
-        ourHero:move(0,dt*speed/2) -- collider.move 
-        cam:lookAt(400,heroy+offset+dt*speed/2)
+        if heroy < distanceGoal - cameraoffset then
+          ourHero:move(0,dt*speed/2) -- collider.move 
+          cam:lookAt(400,heroy+offset+dt*speed/2)
+        else
+          ourHero:move(0,dt*speed/2)
+        end
     elseif reached_bottom == true and slowdown == true and heroy > slowdistance - 300 then
-        ourHero:move(0,-dt*speed/2) -- collider.move 
-        cam:lookAt(400,heroy-offset+dt*speed/2)
+        if heroy < cameraoffset then
+          ourHero:move(0,-dt*speed/2)
+        else 
+          ourHero:move(0,-dt*speed/2) -- collider.move 
+          cam:lookAt(400,heroy-offset+dt*speed/2)
+        end
     elseif reached_bottom == false then
         if heroy < distanceGoal - cameraoffset then
             ourHero:move(0,dt*speed) -- collider.move 
@@ -133,10 +146,24 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
             bouncedistance = colly
             --bouncetimer = love.timer.getTime()
         end
-   elseif shape_a == ourHero and shape_b.type == "collide" then
+   elseif shape_a == ourHero and shape_b.type == "bottom" then
+        hero_shape = shape_a
+        if bounce == false then
+            bounce = true
+            bouncedistance = colly
+            --bouncetimer = love.timer.getTime()
+        end
+   elseif shape_b == ourHero and shape_a.type == "bottom" then
+       hero_shape = shape_b
+       if bounce == false then
+            bounce = true
+            bouncedistance = colly
+            --bouncetimer = love.timer.getTime()
+        end
+   elseif shape_a == ourHero and shape_b.type == "top" then
        endgame()
        return
-   elseif shape_b == ourHero and shape_a.type == "collide" then
+   elseif shape_b == ourHero and shape_a.type == "top" then
        endgame()
        return
    elseif shape_a == swipeobject and shape_b.type == "soul" then
@@ -163,7 +190,7 @@ end
 
 function hero.draw()
 
-	ourHero:draw('fill')
+	--ourHero:draw('fill')
     collx, colly = ourHero:center()
     --love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
     if reached_bottom == false then
@@ -171,7 +198,7 @@ function hero.draw()
     else
         love.graphics.draw(luciferSpritesheet, luciferNorthFacing, collx-24, colly-24, 0, 3)
     end
-    if swiping == true and swipetimer <= 0.2 then
+    if swiping == true and swipetimer <= 0.5 then
       swipeobject:draw('fill')
       --print("drawing swipeobject")
     end
@@ -254,10 +281,10 @@ function hero.findSolidTilesLayer(map)
     return collidable_tiles
 end
 
-function hero.findPolygons(map)
+function hero.findToptiles(map)
     local collidable_tiles = {}
 
-     for i, obj in ipairs( map("polygons").objects ) do
+     for i, obj in ipairs( map("top").objects ) do
          local collObject
          local coordlist = {}
          local crap = {}
@@ -276,8 +303,41 @@ function hero.findPolygons(map)
             --print(unpack(coordlist))
             collObject = collider:addPolygon(unpack(coordlist))
         --print(collObject:center())
-         collObject.type = "collide"
-         collider:addToGroup("collide", collObject)
+         collObject.type = "top"
+         collider:addToGroup("top", collObject)
+         collider:setPassive(collObject)
+         table.insert(collidable_tiles, collObject)
+         colliderobject = collObject
+         --colliderobject:draw("fill")
+     end
+
+    return collidable_tiles
+end
+
+function hero.findbottomTiles(map)
+    local collidable_tiles = {}
+
+     for i, obj in ipairs( map("bottom").objects ) do
+         local collObject
+         local coordlist = {}
+         local crap = {}
+         -- now we check if the shape is a polygon or a rect
+            --print(pairs(obj.polygon)[1])
+            for j, k in ipairs(obj.polygon) do
+              --print(j, " ", k)
+              if j % 2 == 0 then
+                table.insert(coordlist, k + obj.y)
+                --print(k-120)
+              else
+                table.insert(coordlist, k + obj.x - 120)
+              end
+              --print(obj.x)
+      end
+            --print(unpack(coordlist))
+            collObject = collider:addPolygon(unpack(coordlist))
+        --print(collObject:center())
+         collObject.type = "bottom"
+         collider:addToGroup("bottom", collObject)
          collider:setPassive(collObject)
          table.insert(collidable_tiles, collObject)
          colliderobject = collObject
