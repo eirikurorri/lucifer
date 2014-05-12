@@ -25,6 +25,8 @@ local gamestate = "menu"
 local herospeed = 0
 local speedmargin = 0.1
 local cameraoffset = 700
+local slowdown = false
+local slowdistance = 0
 
 local menuimage = love.graphics.newImage('gfx/fall-of-lucifer.jpg')
 
@@ -176,9 +178,19 @@ function love.update(dt)
 
     else
         if death == false then
+            --print("derp")
+            if love.keyboard.isDown("lctrl") and slowdown == false then
+                print("slowdown")
+                slowdown = true
+                slowdistance = ourHero.herocoords()
+            elseif slowdown == true and ourHero.herocoords() > slowdistance + 300 then
+                print("slowdown over")
+                slowdown = false
+            end
+            
             herospeed = ourHero.handleInput(dt,herospeed,speedmargin)
             --print(herospeed)
-            ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset)
+            ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance)
             collider:update(dt) 
 
             if reached_bottom == false then

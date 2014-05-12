@@ -29,11 +29,18 @@ function hero.herocoords()
     return math.floor(heroy)
 end
 
-function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset)
+function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance)
 	-- apply a downward force to the hero (=gravity)
     --print(distanceGoal)
+    --print(slowdistance)
+    --print(slowdown)
 	camx,heroy = ourHero:center()
-    if reached_bottom == false then
+    if slowdown == true and heroy < slowdistance + 300 then
+        --print("hello")
+        ourHero:move(0,dt*speed/2) -- collider.move 
+        cam:lookAt(400,heroy+offset+dt*speed/2)
+
+    elseif reached_bottom == false then
         if heroy < distanceGoal - cameraoffset then
             ourHero:move(0,dt*speed) -- collider.move 
             cam:lookAt(400,heroy+offset+dt*speed)
@@ -121,36 +128,24 @@ end
 function hero.handleInput(dt,herospeed,speedmargin)
     collx, colly = ourHero:center()
     --print(bounce)
+    --bouncetimer = bouncetimer + dt
     if bounce == true and bounceevent == false then
-        --bounceevent = true
+        local eventtimer = bouncetimer
+        bounceevent = true
         if herospeed > 0 then
-        --print(math.floor(love.timer.getTime()))
-        --for i = 0, 1000000, 1 do
-            --print(dt)
-            --herospeed = 0
-            --if i % 600 == 0 then
-                --print(i)
-                --repeat
-                    herospeed = 0
-                    herospeed = herospeed - 1
+            herospeed = 0
+            herospeed = herospeed - 1
                     --love.timer.sleep(0.4)
-                    ourHero:move(herospeed*dt, 0)
+            ourHero:move(herospeed*dt, 0)
         else
-                    herospeed = 0
-                    herospeed = herospeed + 1
+            herospeed = 0
+            herospeed = herospeed + 1
                     --love.timer.sleep(0.4)
-                    ourHero:move(herospeed*dt, 0)
+            ourHero:move(herospeed*dt, 0)
         end
-                --until math.floor(love.timer.getTime()) == math.floor(bouncetimer) + 1
-                --print(herospeed)
-            --end
-        --print(bouncetimer)
-        --end
-        
-        --if math.floor(love.timer.getTime()) == math.floor(bouncetimer) + 4 then
+       
             bounce = false
             bounceevent = false
-            --print("DERP")
             return 0
         --end
     else
@@ -177,16 +172,7 @@ function hero.handleInput(dt,herospeed,speedmargin)
         end
         ourHero:move(herospeed*dt, 0)
     end
-    --print(collx, " ", colly)
-    --print(herospeed)
-    --if collx <= -27 and herospeed < 0 then
-    --    herospeed = 0
-    --    --print(herospeed)
-    --elseif collx >= 748 and herospeed > 0 then
-    --    herospeed = 0
-    --else
-        
-    --end
+
     return herospeed
 end
 
@@ -220,20 +206,6 @@ function hero.findSolidTilesLayer(map)
             table.insert(collidable_tiles, ctile)
         --end
     end
-
-    -- for i, obj in pairs( map("object").objects ) do
-    --     local collObject
-    --     -- now we check if the shape is a polygon or a rect
-    --     if obj.name == "polygon" then -- polygons should have this name in Tiled
-    --         collObject = collider:addPolygon(obj.polygon)  
-    --     else 
-    --         collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
-    --     end
-    --     collObject.type = "collide"
-    --     collider:addToGroup("collide", collObject)
-    --     collider:setPassive(collObject)
-    --     table.insert(collidable_tiles, collObject)
-    -- end
 
     return collidable_tiles
 end
@@ -334,7 +306,7 @@ function hero.findSoulObjects(map)
         collider:addToGroup("soul", collObject)
         collider:setPassive(collObject)
         table.insert(souls, collObject)
-        print(collObject:center())
+        --print(collObject:center())
     end
 
     return souls
