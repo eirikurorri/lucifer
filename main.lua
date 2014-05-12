@@ -64,6 +64,7 @@ function love.load()
     sidetiles = ourHero.findSide(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
+    slowdown = false
 	-- background
     background.loadBackground()
 
@@ -183,7 +184,10 @@ function love.update(dt)
                 print("slowdown")
                 slowdown = true
                 slowdistance = ourHero.herocoords()
-            elseif slowdown == true and ourHero.herocoords() > slowdistance + 300 then
+            elseif slowdown == true and reached_bottom == false and ourHero.herocoords() > slowdistance + 300 then
+                print("slowdown over")
+                slowdown = false
+            elseif slowdown == true and reached_bottom == false and ourHero.herocoords() < slowdistance - 300 then
                 print("slowdown over")
                 slowdown = false
             end

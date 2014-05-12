@@ -11,7 +11,7 @@ local offset = 300
 local colliderobject
 local bounce = false
 local bounceevent = false
-local bouncetimer 
+local bouncedistance = 0 
 
 function hero.setupHero(x,y,coll)
 	collider = coll
@@ -35,11 +35,13 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,s
     --print(slowdistance)
     --print(slowdown)
 	camx,heroy = ourHero:center()
-    if slowdown == true and heroy < slowdistance + 300 then
+    if reached_bottom == false and slowdown == true and heroy < slowdistance + 300 then
         --print("hello")
         ourHero:move(0,dt*speed/2) -- collider.move 
         cam:lookAt(400,heroy+offset+dt*speed/2)
-
+    elseif reached_bottom == true and slowdown == true and heroy > slowdistance - 300 then
+        ourHero:move(0,-dt*speed/2) -- collider.move 
+        cam:lookAt(400,heroy-offset+dt*speed/2)
     elseif reached_bottom == false then
         if heroy < distanceGoal - cameraoffset then
             ourHero:move(0,dt*speed) -- collider.move 
@@ -70,17 +72,20 @@ end
 function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,herospeed)
 
     -- sort out which one our hero shape is
+  collx, colly = ourHero:center()
    local hero_shape, tileshape
    if shape_a == ourHero and shape_b.type == "side" then
         hero_shape = shape_a
-        if bounceevent == false and bounce == false then
+        if bounce == false then
             bounce = true
+            bouncedistance = colly
             --bouncetimer = love.timer.getTime()
         end
    elseif shape_b == ourHero and shape_a.type == "side" then
        hero_shape = shape_b
-       if bounceevent == false and bounce == false then
+       if bounce == false then
             bounce = true
+            bouncedistance = colly
             --bouncetimer = love.timer.getTime()
         end
    elseif shape_a == ourHero and shape_b.type == "collide" then
@@ -129,25 +134,17 @@ function hero.handleInput(dt,herospeed,speedmargin)
     collx, colly = ourHero:center()
     --print(bounce)
     --bouncetimer = bouncetimer + dt
-    if bounce == true and bounceevent == false then
-        local eventtimer = bouncetimer
-        bounceevent = true
-        if herospeed > 0 then
-            herospeed = 0
-            herospeed = herospeed - 1
-                    --love.timer.sleep(0.4)
-            ourHero:move(herospeed*dt, 0)
-        else
-            herospeed = 0
-            herospeed = herospeed + 1
-                    --love.timer.sleep(0.4)
-            ourHero:move(herospeed*dt, 0)
+    if bounce == true then
+        --bounceevent = true
+        --herospeed = herospeed + 12
+        ourHero:move(-herospeed*dt/2, 0)
+        print(bouncedistance, colly)
+        if bounce == true and bouncedistance + 30 < colly then
+          --bounceevent = false
+          bounce = false
+          print("bounce event over")
+          return -herospeed/2
         end
-       
-            bounce = false
-            bounceevent = false
-            return 0
-        --end
     else
         if love.keyboard.isDown("left") then
             if herospeed > 0 then
