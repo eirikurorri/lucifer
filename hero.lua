@@ -11,7 +11,7 @@ local offset = 300
 local colliderobject
 local bounce = false
 local bounceevent = false
-local bouncetimer 
+local bouncedistance = 0 
 
 function hero.setupHero(x,y,coll)
 	collider = coll
@@ -30,11 +30,20 @@ function hero.herocoords()
     return math.floor(heroy)
 end
 
-function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset)
+function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance)
 	-- apply a downward force to the hero (=gravity)
     --print(distanceGoal)
+    --print(slowdistance)
+    --print(slowdown)
 	camx,heroy = ourHero:center()
-    if reached_bottom == false then
+    if reached_bottom == false and slowdown == true and heroy < slowdistance + 300 then
+        --print("hello")
+        ourHero:move(0,dt*speed/2) -- collider.move 
+        cam:lookAt(400,heroy+offset+dt*speed/2)
+    elseif reached_bottom == true and slowdown == true and heroy > slowdistance - 300 then
+        ourHero:move(0,-dt*speed/2) -- collider.move 
+        cam:lookAt(400,heroy-offset+dt*speed/2)
+    elseif reached_bottom == false then
         if heroy < distanceGoal - cameraoffset then
             ourHero:move(0,dt*speed) -- collider.move 
             cam:lookAt(400,heroy+offset+dt*speed)
@@ -64,17 +73,20 @@ end
 function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,herospeed)
 
     -- sort out which one our hero shape is
+  collx, colly = ourHero:center()
    local hero_shape, tileshape
    if shape_a == ourHero and shape_b.type == "side" then
         hero_shape = shape_a
-        if bounceevent == false and bounce == false then
+        if bounce == false then
             bounce = true
+            bouncedistance = colly
             --bouncetimer = love.timer.getTime()
         end
    elseif shape_b == ourHero and shape_a.type == "side" then
        hero_shape = shape_b
-       if bounceevent == false and bounce == false then
+       if bounce == false then
             bounce = true
+            bouncedistance = colly
             --bouncetimer = love.timer.getTime()
         end
    elseif shape_a == ourHero and shape_b.type == "collide" then
@@ -122,38 +134,18 @@ end
 function hero.handleInput(dt,herospeed,speedmargin)
     collx, colly = ourHero:center()
     --print(bounce)
-    if bounce == true and bounceevent == false then
+    --bouncetimer = bouncetimer + dt
+    if bounce == true then
         --bounceevent = true
-        if herospeed > 0 then
-        --print(math.floor(love.timer.getTime()))
-        --for i = 0, 1000000, 1 do
-            --print(dt)
-            --herospeed = 0
-            --if i % 600 == 0 then
-                --print(i)
-                --repeat
-                    herospeed = 0
-                    herospeed = herospeed - 1
-                    --love.timer.sleep(0.4)
-                    ourHero:move(herospeed*dt, 0)
-        else
-                    herospeed = 0
-                    herospeed = herospeed + 1
-                    --love.timer.sleep(0.4)
-                    ourHero:move(herospeed*dt, 0)
+        --herospeed = herospeed + 12
+        ourHero:move(-herospeed*dt/2, 0)
+        -- print(bouncedistance, colly)
+        if bounce == true and bouncedistance + 30 < colly then
+          --bounceevent = false
+          bounce = false
+         -- print("bounce event over")
+          return -herospeed/2
         end
-                --until math.floor(love.timer.getTime()) == math.floor(bouncetimer) + 1
-                --print(herospeed)
-            --end
-        --print(bouncetimer)
-        --end
-        
-        --if math.floor(love.timer.getTime()) == math.floor(bouncetimer) + 4 then
-            bounce = false
-            bounceevent = false
-            --print("DERP")
-            return 0
-        --end
     else
         if love.keyboard.isDown("left") then
             if herospeed > 0 then
@@ -178,16 +170,7 @@ function hero.handleInput(dt,herospeed,speedmargin)
         end
         ourHero:move(herospeed*dt, 0)
     end
-    --print(collx, " ", colly)
-    --print(herospeed)
-    --if collx <= -27 and herospeed < 0 then
-    --    herospeed = 0
-    --    --print(herospeed)
-    --elseif collx >= 748 and herospeed > 0 then
-    --    herospeed = 0
-    --else
-        
-    --end
+
     return herospeed
 end
 
@@ -221,20 +204,6 @@ function hero.findSolidTilesLayer(map)
             table.insert(collidable_tiles, ctile)
         --end
     end
-
-    -- for i, obj in pairs( map("object").objects ) do
-    --     local collObject
-    --     -- now we check if the shape is a polygon or a rect
-    --     if obj.name == "polygon" then -- polygons should have this name in Tiled
-    --         collObject = collider:addPolygon(obj.polygon)  
-    --     else 
-    --         collObject = collider:addRectangle(obj.x, obj.y, obj.width, obj.height)
-    --     end
-    --     collObject.type = "collide"
-    --     collider:addToGroup("collide", collObject)
-    --     collider:setPassive(collObject)
-    --     table.insert(collidable_tiles, collObject)
-    -- end
 
     return collidable_tiles
 end
@@ -336,7 +305,8 @@ function hero.findSoulObjects(map)
         collider:addToGroup("soul", collObject)
         collider:setPassive(collObject)
         table.insert(souls, collObject)
-        -- print(collObject:center())
+        --print(collObject:center())
+
     end
 
     return souls

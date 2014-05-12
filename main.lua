@@ -26,6 +26,8 @@ local gamestate = "menu"
 local herospeed = 0
 local speedmargin = 0.1
 local cameraoffset = 700
+local slowdown = false
+local slowdistance = 0
 
 local backgroundImage = love.graphics.newImage('gfx/tile5.jpg')
 local menuimage = love.graphics.newImage('gfx/fall-of-lucifer.jpg')
@@ -64,9 +66,11 @@ function love.load()
     sidetiles = ourHero.findSide(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
+    slowdown = false
 	-- background
-    background.loadBackground()
+    --background.loadBackground()
     foreground.loadForeground()
+    
 
     --distance monitor and goal
     distanceGoal = 41600
@@ -99,9 +103,10 @@ function love.draw()
         
     elseif death == false then
         -- background drawing
-        background.drawBackground(reached_bottom, heroy)
+        --background.drawBackground(reached_bottom, heroy)
         -- background.drawBackground(reached_bottom,distance)
         --background.debugBackground()
+
         if (cam.y < distanceGoal/2 and reached_bottom == false)
          or (cam.y > distanceGoal/2 and reached_bottom == true) then
             if speed < maxspeed then
@@ -142,7 +147,7 @@ function love.draw()
         --love.graphics.draw(killed,0,0)
         --love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 20)
         love.graphics.print("Press Enter to restart", 400,400)
-        background.drawBackground(reached_bottom,distance)
+        -- background.drawBackground(reached_bottom,distance)
 
         cam:draw(drawCamera)
 
@@ -182,9 +187,22 @@ function love.update(dt)
 
     else
         if death == false then
+            --print("derp")
+            if love.keyboard.isDown("lctrl") and slowdown == false then
+              --  print("slowdown")
+                slowdown = true
+                slowdistance = ourHero.herocoords()
+            elseif slowdown == true and reached_bottom == false and ourHero.herocoords() > slowdistance + 300 then
+             --   print("slowdown over")
+                slowdown = false
+            elseif slowdown == true and reached_bottom == false and ourHero.herocoords() < slowdistance - 300 then
+             --   print("slowdown over")
+                slowdown = false
+            end
+            
             herospeed = ourHero.handleInput(dt,herospeed,speedmargin)
             --print(herospeed)
-            ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset)
+            ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance)
             collider:update(dt) 
 
             if reached_bottom == false then
