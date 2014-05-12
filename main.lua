@@ -45,9 +45,10 @@ function love.load()
     map = loader.load("derpmap.tmx")
     map:setDrawRange(0,0,960,41600)
     map.offsetX = 120
-    map("polygons").visible = true
-    map("polygons").color = {255,0,0}
+    map("top").visible = true
+    map("top").color = {255,0,0}
     map("side").color = {0,255,0}
+    map("bottom").color = {0,0,255}
     map("ledge").visible = false
     map("sides").visible = false
     -- map("object").visible = false -- makes object map invisible
@@ -65,8 +66,9 @@ function love.load()
     --allSolidTiles = ourHero.findSolidTiles(map)
     --deathtiles = ourHero.findSolidTilesLayer(map)
     soulTiles = ourHero.findSoulObjects(map)
-    polygonTiles = ourHero.findPolygons(map)
+    toptiles = ourHero.findToptiles(map)
     sidetiles = ourHero.findSide(map)
+    bottomtiles = ourHero.findbottomTiles(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
     slowdown = false
@@ -193,51 +195,44 @@ function love.update(dt)
 
     else
         if death == false then
-            --print("derp")
+
             if love.keyboard.isDown("s") and slowdown == false then
-                --print("slowdown")
                 slowdown = true
                 slowdistance = ourHero.heroycoords()
             elseif slowdown == true and reached_bottom == false and ourHero.heroycoords() > slowdistance + 300 then
-                --print("slowdown over")
                 slowdown = false
             elseif slowdown == true and reached_bottom == true and ourHero.heroycoords() < slowdistance - 300 then
-                --print("slowdown over")
                 slowdown = false
             end
             swipex,swipey = 0
             if love.keyboard.isDown("a") and swipeaction == false then
-                --print("swipeleft")
                 swipeaction = true
                 swipe = ourHero.initSwipe(ourHero.heroxcoords()-50,ourHero.heroycoords())
-                --swipex,swipey = ourHero.swipecoords()
                 elapsedtime = 0
             elseif swipeaction == true then
                 elapsedtime = elapsedtime + dt
-                if elapsedtime >= 0.2 then
-                    swipeaction = false
+                if elapsedtime >= 0.5 then
+                    
                     ourHero.removeswipeobject()
-                    --print(elapsedtime)
-                    --print("swipeaction done")
+                end
+                if elapsedtime >= 1 then
+                    swipeaction = false
                 end
             end
             if love.keyboard.isDown("d") and swipeaction == false then
-                --print("swiperight")
                 swipeaction = true
                 swipe = ourHero.initSwipe(ourHero.heroxcoords()+50,ourHero.heroycoords())
-                --swipex,swipey = ourHero.swipecoords()
                 elapsedtime = 0
             elseif swipeaction == true then
                 elapsedtime = elapsedtime + dt
-                if elapsedtime >= 0.2 then
-                    swipeaction = false
+                if elapsedtime >= 0.5 then
                     ourHero.removeswipeobject()
-                    --print(elapsedtime)
-                    --print("swipeaction done")
+                end
+                if elapsedtime >= 1 then
+                    swipeaction = false
                 end
             end
             herospeed = ourHero.handleInput(dt,herospeed,speedmargin)
-            --print(herospeed)
             ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
             collider:update(dt) 
 
