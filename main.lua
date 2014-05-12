@@ -10,6 +10,7 @@ local HC = require "HardonCollider"
 local Camera = require "hump.camera"
 local gamemenu = require "menu"
 local souls = require "souls"
+local foreground = require "foreground"
 
 local scoresign
 local ourHero = require "hero"
@@ -29,6 +30,7 @@ local slowdown = false
 local slowdistance = 0
 local swipeaction = false
 
+local backgroundImage = love.graphics.newImage('gfx/tile5.jpg')
 local menuimage = love.graphics.newImage('gfx/fall-of-lucifer.jpg')
 
 love.window.setMode(1200, 800)
@@ -57,7 +59,7 @@ function love.load()
     collider = HC(100, on_collide)
     -- find all the tiles that we can collide with
     ourHero.setupHero(400,-300, collider)
-    print("wat")
+    -- print("wat")
     --allSolidTiles = ourHero.findSolidTiles(map)
     --deathtiles = ourHero.findSolidTilesLayer(map)
     soulTiles = ourHero.findSoulObjects(map)
@@ -68,7 +70,9 @@ function love.load()
     slowdown = false
     swipeaction = false
 	-- background
-    background.loadBackground()
+    --background.loadBackground()
+    foreground.loadForeground()
+    
 
     --distance monitor and goal
     distanceGoal = 41600
@@ -101,8 +105,10 @@ function love.draw()
         
     elseif death == false then
         -- background drawing
-        background.drawBackground(reached_bottom,distance)
+        --background.drawBackground(reached_bottom, heroy)
+        -- background.drawBackground(reached_bottom,distance)
         --background.debugBackground()
+
         if (cam.y < distanceGoal/2 and reached_bottom == false)
          or (cam.y > distanceGoal/2 and reached_bottom == true) then
             if speed < maxspeed then
@@ -143,7 +149,8 @@ function love.draw()
         --love.graphics.draw(killed,0,0)
         --love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 20)
         love.graphics.print("Press Enter to restart", 400,400)
-        background.drawBackground(reached_bottom,distance)
+        -- background.drawBackground(reached_bottom,distance)
+
         cam:draw(drawCamera)
 
     end
@@ -155,6 +162,7 @@ end
 
 function drawCamera()
 
+	foreground.drawForeground(reached_bottom)
     map:draw()
     ourHero.draw()
 
@@ -166,7 +174,7 @@ end
 function love.update(dt)
     -- player events handled
     --print(speedmargin)
-    
+  
 
     if love.keyboard.isDown("return") and gamestate == "menu"
         or love.keyboard.isDown("return") and death == true and gamestate == "playing" then
@@ -193,16 +201,40 @@ function love.update(dt)
                 --print("slowdown over")
                 slowdown = false
             end
-
+            swipex,swipey = 0
             if love.keyboard.isDown("a") and swipeaction == false then
-                print("swipe")
+                --print("swipeleft")
                 swipeaction = true
-                swipe = collider:addRectangle(ourHero.heroxcoords()-140,ourHero.heroycoords(),32,32)
-            --elseif 
+                swipe = ourHero.initSwipe(ourHero.heroxcoords()-50,ourHero.heroycoords())
+                --swipex,swipey = ourHero.swipecoords()
+                elapsedtime = 0
+            elseif swipeaction == true then
+                elapsedtime = elapsedtime + dt
+                if elapsedtime >= 0.2 then
+                    swipeaction = false
+                    ourHero.removeswipeobject()
+                    --print(elapsedtime)
+                    --print("swipeaction done")
+                end
+            end
+            if love.keyboard.isDown("d") and swipeaction == false then
+                --print("swiperight")
+                swipeaction = true
+                swipe = ourHero.initSwipe(ourHero.heroxcoords()+50,ourHero.heroycoords())
+                --swipex,swipey = ourHero.swipecoords()
+                elapsedtime = 0
+            elseif swipeaction == true then
+                elapsedtime = elapsedtime + dt
+                if elapsedtime >= 0.2 then
+                    swipeaction = false
+                    ourHero.removeswipeobject()
+                    --print(elapsedtime)
+                    --print("swipeaction done")
+                end
             end
             herospeed = ourHero.handleInput(dt,herospeed,speedmargin)
             --print(herospeed)
-            ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe)
+            ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
             collider:update(dt) 
 
             if reached_bottom == false then

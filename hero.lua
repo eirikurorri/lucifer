@@ -14,38 +14,69 @@ local bounceevent = false
 local bouncedistance = 0 
 local swipeobject
 local swiping = false
+local swipetimer = 0
 
 function hero.setupHero(x,y,coll)
 	collider = coll
-	ourHero = collider:addRectangle(x,y,32,32) -- size of our hero
+	-- ourHero = collider:addRectangle(x,y,32,32) -- size of our hero
+    ourHero = collider:addCircle(x,y,15) -- size of our hero
 	--ourHero.speed = 400
     luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.png')
     luciferNorthFacing = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
     luciferSouthFacing = love.graphics.newQuad(64, 56, 16, 16, 96, 72) -- head facing south
 
 end
+
+function hero.initSwipe(x,y)
+  swipeobject = collider:addRectangle(x-16,y-16,32,32)
+  return swipeobject
+end
+
 function hero.heroycoords()
     --local hero = {}
     herox,heroy = ourHero:center()
     --print(camy)
-    return math.floor(heroy)
+    return heroy
 end
 function hero.heroxcoords()
     herox,heroy = ourHero:center()
-    return math.floor(herox)
+    return herox
 end
 
-function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe)
+function hero.swipexcoords()
+    swipex,swipey = swipeobject:center()
+    return swipex
+end
+
+function hero.swipeycoords()
+    swipex,swipey = swipeobject:center()
+    return swipey
+end
+
+function hero.removeswipeobject()
+    collider:remove(swipeobject)
+    swiping = false
+    swipeaction = false
+end
+
+function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
 	-- apply a downward force to the hero (=gravity)
-	camx,heroy = ourHero:center()
+	herox,heroy = ourHero:center()
 
     if swipeaction == true then
-        print(swipeaction)
+        --print(swipeaction)
         swiping = swipeaction
-        swipeobject = swipe
-        swipeobject:move(0,dt*speed)
-        print(swipeobject:center())
-        print(ourHero:center())
+        swipetimer = elapsedtime
+        swipex, swipey = swipeobject:center()
+        if swipex < herox then
+          swipeobject:move(5+herospeed*dt,dt*speed+10)
+        else
+          swipeobject:move(-5+herospeed*dt,dt*speed+10)
+        end
+        --print(swipeobject:center())
+        --swipex, swipey = swipeobject:center()
+        --print(ourHero:center())
+        --print(elapsedtime)
         
     end
 
@@ -108,13 +139,13 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
    elseif shape_b == ourHero and shape_a.type == "collide" then
        endgame()
        return
-   elseif shape_a == ourHero and shape_b.type == "soul" then
+   elseif shape_a == swipeobject and shape_b.type == "soul" then
         map.layers["souls"]["objects"][shape_b.key]["visible"] = false
         -- map.layers["soulTiles"]["objects"][shape_b.key]["visible"] = false
         collider:remove(shape_b)
         scorecounter()
         return
-    elseif shape_b == ourHero and shape_a.type == "soul" then
+    elseif shape_b == swipeobject and shape_a.type == "soul" then
         map.layers["souls"]["objects"][shape_a.key]["visible"] = false
         --map.layers["soulTiles"]["objects"][shape_a.key]["visible"] = false
         collider:remove(shape_a)
@@ -132,7 +163,7 @@ end
 
 function hero.draw()
 
-	-- ourHero:draw('fill')
+	ourHero:draw('fill')
     collx, colly = ourHero:center()
     --love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
     if reached_bottom == false then
@@ -140,8 +171,9 @@ function hero.draw()
     else
         love.graphics.draw(luciferSpritesheet, luciferNorthFacing, collx-24, colly-24, 0, 3)
     end
-    if swiping == true then
+    if swiping == true and swipetimer <= 0.2 then
       swipeobject:draw('fill')
+      --print("drawing swipeobject")
     end
     -- print(collx, " ", colly)
     --colliderobject:draw('fill')
@@ -289,17 +321,17 @@ function hero.findSide(map)
 end
 
 -- for the soulTiles layer
-function hero.findSouls(map)
-    local souls = {}
-        for x, y, tile in map("souls"):iterate() do -- tile layer
-            local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
-            ctile.type = "soul"
-            collider:addToGroup("soul", ctile)
-            collider:setPassive(ctile)
-            table.insert(souls, ctile)
-        end
-    return souls
-    end
+-- function hero.findSouls(map)
+--     local souls = {}
+--         for x, y, tile in map("souls"):iterate() do -- tile layer
+--             local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
+--             ctile.type = "soul"
+--             collider:addToGroup("soul", ctile)
+--             collider:setPassive(ctile)
+--             table.insert(souls, ctile)
+--         end
+--     return souls
+--     end
 
 -- for the souls object layer
 function hero.findSoulObjects(map)
@@ -311,6 +343,7 @@ function hero.findSoulObjects(map)
           --     print(a, " ", att)
           -- end
         local collObject = collider:addRectangle(obj.x-88, obj.y+14, 32, 56) -- hard coded according to soul image tile size
+    
         collObject.type = "soul"
         collObject.key = i
         collObject.visible = true
@@ -319,6 +352,7 @@ function hero.findSoulObjects(map)
         collider:setPassive(collObject)
         table.insert(souls, collObject)
         --print(collObject:center())
+
     end
 
     return souls
