@@ -197,8 +197,11 @@ function love.update(dt)
         if death == false then
 
             if love.keyboard.isDown("s") and slowdown == false then
+            	--print("slo down!")
                 slowdown = true
                 slowdistance = ourHero.heroycoords()
+                --sounds.playSoundWithTimer(dt, chute)
+                TEsound.play(chute)
             elseif slowdown == true and reached_bottom == false and ourHero.heroycoords() > slowdistance + 300 then
                 slowdown = false
             elseif slowdown == true and reached_bottom == true and ourHero.heroycoords() < slowdistance - 300 then
