@@ -10,6 +10,7 @@ local HC = require "HardonCollider"
 local Camera = require "hump.camera"
 local gamemenu = require "menu"
 local souls = require "souls"
+local foreground = require "foreground"
 
 local scoresign
 local ourHero = require "hero"
@@ -39,6 +40,11 @@ function love.load()
     map = loader.load("derpmap.tmx")
     map:setDrawRange(0,0,960,41600)
     map.offsetX = 120
+    map("polygons").visible = true
+    map("polygons").color = {255,0,0}
+    map("side").color = {0,255,0}
+    map("ledge").visible = false
+    map("sides").visible = false
     -- map("object").visible = false -- makes object map invisible
 	-- End Tiled stuff
     camY = 0
@@ -50,13 +56,17 @@ function love.load()
     collider = HC(100, on_collide)
     -- find all the tiles that we can collide with
     ourHero.setupHero(400,-300, collider)
+    -- print("wat")
     --allSolidTiles = ourHero.findSolidTiles(map)
-    deathtiles = ourHero.findSolidTilesLayer(map)
+    --deathtiles = ourHero.findSolidTilesLayer(map)
     soulTiles = ourHero.findSoulObjects(map)
+    polygonTiles = ourHero.findPolygons(map)
+    sidetiles = ourHero.findSide(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
 	-- background
     background.loadBackground()
+    foreground.loadForeground()
 
     --distance monitor and goal
     distanceGoal = 41600
@@ -77,7 +87,7 @@ end
 
 
 function on_collide(dt, shape_a, shape_b, mtv_x, mtv_y)
-    ourHero.on_collide(dt, shape_a, shape_b, mtv_x, mtv_y)
+    ourHero.on_collide(dt, shape_a, shape_b, mtv_x, mtv_y, herospeed)
 end
 
 
@@ -90,7 +100,7 @@ function love.draw()
     elseif death == false then
         -- background drawing
         background.drawBackground(reached_bottom, heroy)
-        --love.graphics.draw(backgroundImage, 0,0)
+        -- background.drawBackground(reached_bottom,distance)
         --background.debugBackground()
         if (cam.y < distanceGoal/2 and reached_bottom == false)
          or (cam.y > distanceGoal/2 and reached_bottom == true) then
@@ -105,7 +115,7 @@ function love.draw()
         end
         love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200)
         love.graphics.print("Speed: "..math.floor(speed),1050,180)
-        --love.graphics.print(math.floor(distance),1050,220)
+        love.graphics.print(math.floor(distance),1050,220)
 
 
 
@@ -129,9 +139,13 @@ function love.draw()
         -- scrolling speed for ledge and soul
     else
         --love.graphics.draw(killed,0,-100)
-        love.graphics.draw(killed,0,0)
+        --love.graphics.draw(killed,0,0)
         --love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 20)
         love.graphics.print("Press Enter to restart", 400,400)
+        background.drawBackground(reached_bottom,distance)
+
+        cam:draw(drawCamera)
+
     end
 end
 
@@ -141,6 +155,7 @@ end
 
 function drawCamera()
 
+	foreground.drawForeground(reached_bottom)
     map:draw()
     ourHero.draw()
 
@@ -152,7 +167,7 @@ end
 function love.update(dt)
     -- player events handled
     --print(speedmargin)
-    
+  
 
     if love.keyboard.isDown("return") and gamestate == "menu"
         or love.keyboard.isDown("return") and death == true and gamestate == "playing" then
