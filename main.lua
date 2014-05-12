@@ -32,6 +32,8 @@ local swipeaction = false
 
 local backgroundImage = love.graphics.newImage('gfx/tile5.jpg')
 local menuimage = love.graphics.newImage('gfx/fall-of-lucifer.jpg')
+require('TEsound')
+local sounds = require('sounds')
 
 love.window.setMode(1200, 800)
 
@@ -87,7 +89,7 @@ function love.load()
     herospeed = 0
     -- menu loaded
     gamemenu.loadmenu()
-
+    TEsound.playLooping(wind)
 end
 
 
@@ -144,6 +146,7 @@ function love.draw()
         end
         --love.graphics.print(cam.y, 680, 80)
         -- scrolling speed for ledge and soul
+
     else
         --love.graphics.draw(killed,0,-100)
         --love.graphics.draw(killed,0,0)
@@ -154,6 +157,7 @@ function love.draw()
         cam:draw(drawCamera)
 
     end
+    
 end
 
 function scorecounter()
@@ -174,7 +178,7 @@ end
 function love.update(dt)
     -- player events handled
     --print(speedmargin)
-  
+  	TEsound.cleanup()
 
     if love.keyboard.isDown("return") and gamestate == "menu"
         or love.keyboard.isDown("return") and death == true and gamestate == "playing" then
