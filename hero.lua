@@ -12,6 +12,8 @@ local colliderobject
 local bounce = false
 local bounceevent = false
 local bouncedistance = 0 
+local swipeobject
+local swiping = false
 
 function hero.setupHero(x,y,coll)
 	collider = coll
@@ -22,19 +24,31 @@ function hero.setupHero(x,y,coll)
     luciferSouthFacing = love.graphics.newQuad(64, 56, 16, 16, 96, 72) -- head facing south
 
 end
-function hero.herocoords()
+function hero.heroycoords()
     --local hero = {}
     herox,heroy = ourHero:center()
     --print(camy)
     return math.floor(heroy)
 end
+function hero.heroxcoords()
+    herox,heroy = ourHero:center()
+    return math.floor(herox)
+end
 
-function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance)
+function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe)
 	-- apply a downward force to the hero (=gravity)
-    --print(distanceGoal)
-    --print(slowdistance)
-    --print(slowdown)
 	camx,heroy = ourHero:center()
+
+    if swipeaction == true then
+        print(swipeaction)
+        swiping = swipeaction
+        swipeobject = swipe
+        swipeobject:move(0,dt*speed)
+        print(swipeobject:center())
+        print(ourHero:center())
+        
+    end
+
     if reached_bottom == false and slowdown == true and heroy < slowdistance + 300 then
         --print("hello")
         ourHero:move(0,dt*speed/2) -- collider.move 
@@ -63,13 +77,13 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,s
 end
 
 
-function hero.on_collide(dt, shape_a, shape_b, mtv_x, mtv_y,herospeed)
+function hero.on_collide(dt, shape_a, shape_b, mtv_x, mtv_y)
 
-    hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,herospeed)
+    hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
 
 end
 
-function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,herospeed)
+function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
 
     -- sort out which one our hero shape is
   collx, colly = ourHero:center()
@@ -126,24 +140,25 @@ function hero.draw()
     else
         love.graphics.draw(luciferSpritesheet, luciferNorthFacing, collx-24, colly-24, 0, 3)
     end
+    if swiping == true then
+      swipeobject:draw('fill')
+    end
     -- print(collx, " ", colly)
     --colliderobject:draw('fill')
 end
-
-function hero.handleInput(dt,herospeed,speedmargin)
+  
+function hero.handleInput(dt,herospeed,speedmargin,swipeaction,swipe)
     collx, colly = ourHero:center()
-    --print(bounce)
-    --bouncetimer = bouncetimer + dt
+    
+
     if bounce == true then
-        --bounceevent = true
-        --herospeed = herospeed + 12
-        ourHero:move(-herospeed*dt/2, 0)
-        print(bouncedistance, colly)
+        ourHero:move(-herospeed*dt/2.5, 0)
+        --print(bouncedistance, colly)
         if bounce == true and bouncedistance + 30 < colly then
           --bounceevent = false
           bounce = false
-          print("bounce event over")
-          return -herospeed/2
+          --print("bounce event over")
+          return -herospeed/2.5
         end
     else
         if love.keyboard.isDown("left") then

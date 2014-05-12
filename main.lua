@@ -27,6 +27,7 @@ local speedmargin = 0.1
 local cameraoffset = 700
 local slowdown = false
 local slowdistance = 0
+local swipeaction = false
 
 local menuimage = love.graphics.newImage('gfx/fall-of-lucifer.jpg')
 
@@ -65,6 +66,7 @@ function love.load()
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
     slowdown = false
+    swipeaction = false
 	-- background
     background.loadBackground()
 
@@ -129,9 +131,9 @@ function love.draw()
        love.graphics.print("Hell Population: ", 1060, 46)
        love.graphics.print(scorecount, 1100, 61)
 	   -- end Tiled stuff
-	    if ourHero.herocoords() >= distanceGoal - 100 then
+	    if ourHero.heroycoords() >= distanceGoal - 100 then
             reached_bottom = true
-        elseif ourHero.herocoords() <= 100 then
+        elseif ourHero.heroycoords() <= 100 then
             reached_bottom = false
         end
         --love.graphics.print(cam.y, 680, 80)
@@ -180,27 +182,33 @@ function love.update(dt)
     else
         if death == false then
             --print("derp")
-            if love.keyboard.isDown("lctrl") and slowdown == false then
-                print("slowdown")
+            if love.keyboard.isDown("s") and slowdown == false then
+                --print("slowdown")
                 slowdown = true
-                slowdistance = ourHero.herocoords()
-            elseif slowdown == true and reached_bottom == false and ourHero.herocoords() > slowdistance + 300 then
-                print("slowdown over")
+                slowdistance = ourHero.heroycoords()
+            elseif slowdown == true and reached_bottom == false and ourHero.heroycoords() > slowdistance + 300 then
+                --print("slowdown over")
                 slowdown = false
-            elseif slowdown == true and reached_bottom == false and ourHero.herocoords() < slowdistance - 300 then
-                print("slowdown over")
+            elseif slowdown == true and reached_bottom == true and ourHero.heroycoords() < slowdistance - 300 then
+                --print("slowdown over")
                 slowdown = false
             end
-            
+
+            if love.keyboard.isDown("a") and swipeaction == false then
+                print("swipe")
+                swipeaction = true
+                swipe = collider:addRectangle(ourHero.heroxcoords()-140,ourHero.heroycoords(),32,32)
+            --elseif 
+            end
             herospeed = ourHero.handleInput(dt,herospeed,speedmargin)
             --print(herospeed)
-            ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance)
+            ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe)
             collider:update(dt) 
 
             if reached_bottom == false then
-                distance = ourHero.herocoords()
+                distance = ourHero.heroycoords()
             else
-                distance = ourHero.herocoords()
+                distance = ourHero.heroycoords()
             end 
         end
     end
