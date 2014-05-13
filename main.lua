@@ -29,7 +29,7 @@ local speedmargin = 0.1
 local cameraoffset = 700
 local slowdown = false
 local slowdowntimer 
-local slowdowninterval
+local slowdowninterval = 0
 local slowdowninitiate = false
 local slowdownstart = 0
 local slowdownend = 0
@@ -215,6 +215,8 @@ function drawCamera()
 	foreground.drawForeground(reached_bottom)
     love.graphics.setColor(140,17,37)
     love.graphics.print(scorecount, cam.x-40, cam.y+100,0,2,2)
+    --love.graphics.setColor(0,255,0)
+    love.graphics.rectangle("fill", cam.x-100, cam.y+200, slowdowninterval*40,20)
     love.graphics.setColor(255,255,255)
     map:draw()
     ourHero.draw()
@@ -288,6 +290,7 @@ function love.update(dt)
             elseif slowdown == true then
                 slowdownend = speed
                 slowdowntimer = slowdowntimer + dt
+                slowdowninterval = slowdowninterval + dt
                 slowdownstart = slowdownstart * 0.99
                 ourHero.updateHero(dt,cam,slowdownstart,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
                 --print(speed)
@@ -306,6 +309,7 @@ function love.update(dt)
                  end
                  if slowdowninterval >= 5 then
                     slowdowninitiate = false
+                    slowdowninterval = 0
                 end
             
             else

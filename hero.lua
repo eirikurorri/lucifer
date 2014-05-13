@@ -18,6 +18,7 @@ local swipetimer = 0
 local repeatTimer = 0 -- for swooshing sound
 local repeatDelay = 0.8 -- for swooshing sound
 local bouncetimer = 0
+local verticalspeed = 0
 
 function hero.setupHero(x,y,coll)
 	  collider = coll
@@ -80,13 +81,13 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,s
        -- elseif swipex > herox and reached_bottom == true and slowdown == true then
        --   swipeobject:move(-2+herospeed*dt,-5-dt*speed/2)
         if swipex < herox and reached_bottom == false then
-          swipeobject:move(2+herospeed*dt,dt*speed+5)
+          swipeobject:move(2+verticalspeed*dt,dt*speed+5)
         elseif swipex > herox and reached_bottom == false then
-          swipeobject:move(-2+herospeed*dt,dt*speed+5)
+          swipeobject:move(-2+verticalspeed*dt,dt*speed+5)
         elseif swipex < herox and reached_bottom == true then
-          swipeobject:move(2+herospeed*dt,-dt*speed-5)
+          swipeobject:move(2+verticalspeed*dt,-dt*speed-5)
         elseif swipex > herox and reached_bottom == true then
-          swipeobject:move(-2+herospeed*dt,-dt*speed-5)
+          swipeobject:move(-2+verticalspeed*dt,-dt*speed-5)
         
         end
     end
@@ -252,21 +253,25 @@ function hero.handleInput(dt,herospeed,speedmargin,swipeaction,swipe)
     collx, colly = ourHero:center()
     if bounce == true and herospeed > 0 then
         bouncetimer = bouncetimer + dt
+        verticalspeed = -herospeed/2.5
         ourHero:move(-herospeed*dt/2.5, 0)
         --print(bouncedistance, colly)
         if bouncetimer >= 0.2 then
           --bounceevent = false
           bounce = false
+          verticalspeed = -herospeed/2.5
           --print("bounce event over")
           return -herospeed/2.5
         end
     elseif bounce == true and herospeed < 0 then
         bouncetimer = bouncetimer + dt
+        verticalspeed = -herospeed/2.5
         ourHero:move(-herospeed*dt/2.5, 0)
         --print(bouncedistance, colly)
         if bouncetimer >= 0.2 then
           --bounceevent = false
           bounce = false
+          verticalspeed = -herospeed/2.5
           --print("bounce event over")
           return -herospeed/2.5
         end
@@ -298,8 +303,9 @@ function hero.handleInput(dt,herospeed,speedmargin,swipeaction,swipe)
            -- repeatTimer = 0
         end
         ourHero:move(herospeed*dt, 0)
+        verticalspeed = herospeed
     end
-
+    
     return herospeed
 end
 
