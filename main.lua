@@ -28,6 +28,9 @@ local herospeed = 0
 local speedmargin = 0.1
 local cameraoffset = 700
 local slowdown = false
+local slowdowntimer 
+local slowdowninterval
+local slowdowninitiate = false
 local slowdistance = 0
 local swipeaction = false
 
@@ -97,7 +100,7 @@ end
 
 
 function on_collide(dt, shape_a, shape_b, mtv_x, mtv_y)
-    ourHero.on_collide(dt, shape_a, shape_b, mtv_x, mtv_y, herospeed)
+    ourHero.on_collide(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bottom)
 end
 
 
@@ -196,16 +199,37 @@ function love.update(dt)
     else
         if death == false then
 
-            if love.keyboard.isDown("s") and slowdown == false then
+            if love.keyboard.isDown("s") and slowdowninitiate == false then
             	--print("slo down!")
+                --print(slowdowninterval)
                 slowdown = true
-                slowdistance = ourHero.heroycoords()
+                slowdowninitiate = true
+                slowdownstart = speed
                 --sounds.playSoundWithTimer(dt, chute)
                 TEsound.play(chute)
-            elseif slowdown == true and reached_bottom == false and ourHero.heroycoords() > slowdistance + 300 then
-                slowdown = false
-            elseif slowdown == true and reached_bottom == true and ourHero.heroycoords() < slowdistance - 300 then
-                slowdown = false
+                slowdowntimer = 0
+                slowdowninterval = 0
+            elseif slowdown == true and reached_bottom == false then
+                slowdowntimer = slowdowntimer + dt
+                speed = speed * 0.99
+                --print(speed)
+                if slowdowntimer >= 1.5 then
+                    slowdown = false
+                end
+            elseif slowdown == true and reached_bottom == true then
+                slowdowntimer = slowdowntimer + dt
+                speed = speed * 0.99
+                if slowdowntimer >= 1.5 then
+                    slowdown = false
+                end
+            elseif slowdowninitiate == true then
+                 slowdowninterval = slowdowninterval + dt 
+                 if slowdownstart >= speed then
+                    speed = speed * 1.01
+                 end
+                 if slowdowninterval >= 5 then
+                    slowdowninitiate = false
+                end
             end
             swipex,swipey = 0
             if love.keyboard.isDown("a") and swipeaction == false then
@@ -236,7 +260,7 @@ function love.update(dt)
                 end
             end
             herospeed = ourHero.handleInput(dt,herospeed,speedmargin)
-            ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
+            ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed,slowdownstart)
             collider:update(dt) 
 
             if reached_bottom == false then
