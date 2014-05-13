@@ -30,7 +30,7 @@ local slowdown = false
 local slowdistance = 0
 local swipeaction = false
 
-local backgroundImage = love.graphics.newImage('gfx/tile5.jpg')
+--local backgroundImage = love.graphics.newImage('gfx/tile5.jpg')
 local menuimage = love.graphics.newImage('gfx/fall-of-lucifer.jpg')
 require('TEsound')
 local sounds = require('sounds')
@@ -197,7 +197,7 @@ function love.update(dt)
         if death == false then
 
             if love.keyboard.isDown("s") and slowdown == false then
-            	--print("slo down!")
+            	--pixelprint("slo down!")
                 slowdown = true
                 slowdistance = ourHero.heroycoords()
                 --sounds.playSoundWithTimer(dt, chute)
