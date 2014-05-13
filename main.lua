@@ -70,8 +70,6 @@ function love.load()
     cam:cameraCoords(0,0)
 	-- Collider stuff
     scorecount = 0
-
-    
 	-- load HardonCollider, set callback to on_collide and size of 100
     collider = HC(100, on_collide)
     -- find all the tiles that we can collide with
@@ -95,7 +93,7 @@ function love.load()
     -- speedometer, use for different speeds
 	speed = 200
     death = false
-    killed = love.graphics.newImage('gfx/death3.jpg')
+    killed = love.graphics.newImage('gfx/skulls-red-black-bonesq.jpeg')
     scoresign = love.graphics.newImage('gfx/scoresign.png')
 	-- End Tiled stuff
     herospeed = 0
@@ -190,9 +188,6 @@ function drawCamera()
 
 end
 
-function reset()
-end
-
 function love.update(dt)
     -- player events handled
   	TEsound.cleanup()
@@ -200,7 +195,6 @@ function love.update(dt)
     if love.keyboard.isDown("return") and gamestate == "menu"
         or love.keyboard.isDown("return") and death == true and gamestate == "playing" then
         gamestate = "playing"
-        reset()
         love.load()
     elseif love.keyboard.isDown("escape") and death == true and gamestate == "playing" then
         gamestate = "menu"
@@ -216,8 +210,7 @@ function love.update(dt)
                 elapsedtime = 0
             elseif swipeaction == true then
                 elapsedtime = elapsedtime + dt
-                if elapsedtime >= 0.5 then
-                    
+                if elapsedtime >= 0.5 then   
                     ourHero.removeswipeobject()
                 end
                 if elapsedtime >= 1 then

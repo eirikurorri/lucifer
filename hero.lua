@@ -65,21 +65,12 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,s
 	-- apply a downward force to the hero (=gravity)
 	herox,heroy = ourHero:center()
     
-    
-
     if swipeaction == true then
         --print(swipeaction)
         swiping = swipeaction
         swipetimer = elapsedtime
         swipex, swipey = swipeobject:center()
-       -- if swipex < herox and reached_bottom == false and slowdown == true then
-       --   swipeobject:move(2+herospeed*dt,5+dt*speed/2)
-       -- elseif swipex > herox and reached_bottom == false and slowdown == true then
-       --   swipeobject:move(-2+herospeed*dt,5+dt*speed/2)
-       -- elseif swipex < herox and reached_bottom == true and slowdown == true then
-       --   swipeobject:move(2+herospeed*dt,-5-dt*speed/2)
-       -- elseif swipex > herox and reached_bottom == true and slowdown == true then
-       --   swipeobject:move(-2+herospeed*dt,-5-dt*speed/2)
+
         if swipex < herox and reached_bottom == false then
           swipeobject:move(2+objectspeed*dt,dt*speed+5)
         elseif swipex > herox and reached_bottom == false then
@@ -91,21 +82,6 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,s
         
         end
     end
-
-    --if reached_bottom == false and slowdown == true then
-    --    if heroy < distanceGoal - cameraoffset then
-    --      ourHero:move(0,dt*speed/2) -- collider.move 
-    --      cam:lookAt(400,heroy+offset+dt*speed/2)
-    --    else
-    --      ourHero:move(0,dt*speed/2)
-    --    end
-    --elseif reached_bottom == true and slowdown == true then
-    --    if heroy < cameraoffset then
-    --      ourHero:move(0,-dt*speed/2)
-    --    else 
-    --      ourHero:move(0,-dt*speed/2) -- collider.move 
-    --      cam:lookAt(400,heroy-offset+dt*speed/2)
-    --    end
     if reached_bottom == false then
         if heroy < distanceGoal - cameraoffset then
             ourHero:move(0,dt*speed) -- collider.move 
@@ -235,8 +211,6 @@ function hero.draw()
       swipeobject:draw('fill')
       --print("drawing swipeobject")
     end
-    -- print(collx, " ", colly)
-    --colliderobject:draw('fill')
 end
   
 function hero.playSoundWithTimer(dt, sound)
