@@ -209,13 +209,13 @@ function hero.draw()
 end
   
 function hero.swoosh(dt)
-    if repeatTimer >= repeatDelay then
-        TEsound.play(capeSwoosh)
-        -- print('Swoosh!')
-        repeatTimer = 0
-    else 
-        repeatTimer = repeatTimer + dt
-    end
+   if repeatTimer >= repeatDelay then
+       TEsound.play(capeSwoosh)
+       -- print('Swoosh!')
+       repeatTimer = 0
+   else 
+       repeatTimer = repeatTimer + dt
+   end
 end
 
 function hero.handleInput(dt,herospeed,speedmargin,swipeaction,swipe)

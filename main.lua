@@ -1,5 +1,6 @@
 --background layer loaded
 background = require "background"
+require('TEsound')
 
 -- Tiled stuff!
 local loader = require "AdvTiledLoader/Loader"
@@ -32,7 +33,6 @@ local swipeaction = false
 
 local backgroundImage = love.graphics.newImage('gfx/tile5.jpg')
 local menuimage = love.graphics.newImage('gfx/fall-of-lucifer.jpg')
-require('TEsound')
 local sounds = require('sounds')
 
 love.window.setMode(1200, 800)
