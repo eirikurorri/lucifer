@@ -17,6 +17,7 @@ local swiping = false
 local swipetimer = 0
 local repeatTimer = 0 -- for swooshing sound
 local repeatDelay = 0.8 -- for swooshing sound
+local bouncetimer = 0
 
 function hero.setupHero(x,y,coll)
 	  collider = coll
@@ -59,24 +60,26 @@ function hero.removeswipeobject()
     swipeaction = false
 end
 
-function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
+function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed,slowdownstart)
 	-- apply a downward force to the hero (=gravity)
 	herox,heroy = ourHero:center()
+    
+    
 
     if swipeaction == true then
         --print(swipeaction)
         swiping = swipeaction
         swipetimer = elapsedtime
         swipex, swipey = swipeobject:center()
-        if swipex < herox and reached_bottom == false and slowdown == true then
-          swipeobject:move(2+herospeed*dt,5+dt*speed/2)
-        elseif swipex > herox and reached_bottom == false and slowdown == true then
-          swipeobject:move(-2+herospeed*dt,5+dt*speed/2)
-        elseif swipex < herox and reached_bottom == true and slowdown == true then
-          swipeobject:move(2+herospeed*dt,-5-dt*speed/2)
-        elseif swipex > herox and reached_bottom == true and slowdown == true then
-          swipeobject:move(-2+herospeed*dt,-5-dt*speed/2)
-        elseif swipex < herox and reached_bottom == false then
+       -- if swipex < herox and reached_bottom == false and slowdown == true then
+       --   swipeobject:move(2+herospeed*dt,5+dt*speed/2)
+       -- elseif swipex > herox and reached_bottom == false and slowdown == true then
+       --   swipeobject:move(-2+herospeed*dt,5+dt*speed/2)
+       -- elseif swipex < herox and reached_bottom == true and slowdown == true then
+       --   swipeobject:move(2+herospeed*dt,-5-dt*speed/2)
+       -- elseif swipex > herox and reached_bottom == true and slowdown == true then
+       --   swipeobject:move(-2+herospeed*dt,-5-dt*speed/2)
+        if swipex < herox and reached_bottom == false then
           swipeobject:move(2+herospeed*dt,dt*speed+5)
         elseif swipex > herox and reached_bottom == false then
           swipeobject:move(-2+herospeed*dt,dt*speed+5)
@@ -88,21 +91,21 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,s
         end
     end
 
-    if reached_bottom == false and slowdown == true and heroy < slowdistance + 300 then
-        if heroy < distanceGoal - cameraoffset then
-          ourHero:move(0,dt*speed/2) -- collider.move 
-          cam:lookAt(400,heroy+offset+dt*speed/2)
-        else
-          ourHero:move(0,dt*speed/2)
-        end
-    elseif reached_bottom == true and slowdown == true and heroy > slowdistance - 300 then
-        if heroy < cameraoffset then
-          ourHero:move(0,-dt*speed/2)
-        else 
-          ourHero:move(0,-dt*speed/2) -- collider.move 
-          cam:lookAt(400,heroy-offset+dt*speed/2)
-        end
-    elseif reached_bottom == false then
+    --if reached_bottom == false and slowdown == true then
+    --    if heroy < distanceGoal - cameraoffset then
+    --      ourHero:move(0,dt*speed/2) -- collider.move 
+    --      cam:lookAt(400,heroy+offset+dt*speed/2)
+    --    else
+    --      ourHero:move(0,dt*speed/2)
+    --    end
+    --elseif reached_bottom == true and slowdown == true then
+    --    if heroy < cameraoffset then
+    --      ourHero:move(0,-dt*speed/2)
+    --    else 
+    --      ourHero:move(0,-dt*speed/2) -- collider.move 
+    --      cam:lookAt(400,heroy-offset+dt*speed/2)
+    --    end
+    if reached_bottom == false then
         if heroy < distanceGoal - cameraoffset then
             ourHero:move(0,dt*speed) -- collider.move 
             cam:lookAt(400,heroy+offset+dt*speed)
@@ -123,20 +126,22 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,s
 end
 
 
-function hero.on_collide(dt, shape_a, shape_b, mtv_x, mtv_y)
+function hero.on_collide(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bottom)
 
-    hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
+    hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bottom)
 
 end
 
-function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
+function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bottom)
 
+  --print(reached_bottom)
     -- sort out which one our hero shape is
   collx, colly = ourHero:center()
    local hero_shape, tileshape
    if shape_a == ourHero and shape_b.type == "side" then
         hero_shape = shape_a
         if bounce == false then
+            bouncetimer = 0
             bounce = true
             bouncedistance = colly
             --bouncetimer = love.timer.getTime()
@@ -144,28 +149,53 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y)
    elseif shape_b == ourHero and shape_a.type == "side" then
        hero_shape = shape_b
        if bounce == false then
+            bouncetimer = 0
             bounce = true
             bouncedistance = colly
             --bouncetimer = love.timer.getTime()
         end
-   elseif shape_a == ourHero and shape_b.type == "bottom" then
+   elseif shape_a == ourHero and shape_b.type == "bottom" and reached_bottom == false then
         hero_shape = shape_a
         if bounce == false then
+            bouncetimer = 0
             bounce = true
             bouncedistance = colly
             --bouncetimer = love.timer.getTime()
         end
-   elseif shape_b == ourHero and shape_a.type == "bottom" then
+   elseif shape_b == ourHero and shape_a.type == "bottom" and reached_bottom == false then
        hero_shape = shape_b
        if bounce == false then
+            bouncetimer = 0
             bounce = true
             bouncedistance = colly
             --bouncetimer = love.timer.getTime()
         end
-   elseif shape_a == ourHero and shape_b.type == "top" then
+    elseif shape_a == ourHero and shape_b.type == "bottom" and reached_bottom == true then
        endgame()
        return
-   elseif shape_b == ourHero and shape_a.type == "top" then
+   elseif shape_b == ourHero and shape_a.type == "bottom" and reached_bottom == true then
+       endgame()
+       return
+   elseif shape_a == ourHero and shape_b.type == "top" and reached_bottom == true then
+       hero_shape = shape_a
+        if bounce == false then
+            bouncetimer = 0
+            bounce = true
+            bouncedistance = colly
+            --bouncetimer = love.timer.getTime()
+        end
+   elseif shape_b == ourHero and shape_a.type == "top" and reached_bottom == true then
+       hero_shape = shape_b
+       if bounce == false then
+            bouncetimer = 0
+            bounce = true
+            bouncedistance = colly
+            --bouncetimer = love.timer.getTime()
+        end
+   elseif shape_a == ourHero and shape_b.type == "top" and reached_bottom == false then
+       endgame()
+       return
+   elseif shape_b == ourHero and shape_a.type == "top" and reached_bottom == false then
        endgame()
        return
    elseif shape_a == swipeobject and shape_b.type == "soul" then
@@ -220,10 +250,21 @@ end
 
 function hero.handleInput(dt,herospeed,speedmargin,swipeaction,swipe)
     collx, colly = ourHero:center()
-    if bounce == true then
+    if bounce == true and herospeed > 0 then
+        bouncetimer = bouncetimer + dt
         ourHero:move(-herospeed*dt/2.5, 0)
         --print(bouncedistance, colly)
-        if bounce == true and bouncedistance + 30 < colly then
+        if bouncetimer >= 0.2 then
+          --bounceevent = false
+          bounce = false
+          --print("bounce event over")
+          return -herospeed/2.5
+        end
+    elseif bounce == true and herospeed < 0 then
+        bouncetimer = bouncetimer + dt
+        ourHero:move(-herospeed*dt/2.5, 0)
+        --print(bouncedistance, colly)
+        if bouncetimer >= 0.2 then
           --bounceevent = false
           bounce = false
           --print("bounce event over")
