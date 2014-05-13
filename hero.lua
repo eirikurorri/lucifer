@@ -18,7 +18,7 @@ local swipetimer = 0
 local repeatTimer = 0 -- for swooshing sound
 local repeatDelay = 0.8 -- for swooshing sound
 local bouncetimer = 0
-local verticalspeed = 0
+local objectspeed = 0
 
 function hero.setupHero(x,y,coll)
 	  collider = coll
@@ -81,13 +81,13 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,s
        -- elseif swipex > herox and reached_bottom == true and slowdown == true then
        --   swipeobject:move(-2+herospeed*dt,-5-dt*speed/2)
         if swipex < herox and reached_bottom == false then
-          swipeobject:move(2+verticalspeed*dt,dt*speed+5)
+          swipeobject:move(2+objectspeed*dt,dt*speed+5)
         elseif swipex > herox and reached_bottom == false then
-          swipeobject:move(-2+verticalspeed*dt,dt*speed+5)
+          swipeobject:move(-2+objectspeed*dt,dt*speed+5)
         elseif swipex < herox and reached_bottom == true then
-          swipeobject:move(2+verticalspeed*dt,-dt*speed-5)
+          swipeobject:move(2+objectspeed*dt,-dt*speed-5)
         elseif swipex > herox and reached_bottom == true then
-          swipeobject:move(-2+verticalspeed*dt,-dt*speed-5)
+          swipeobject:move(-2+objectspeed*dt,-dt*speed-5)
         
         end
     end
@@ -253,26 +253,18 @@ function hero.handleInput(dt,herospeed,speedmargin,swipeaction,swipe)
     collx, colly = ourHero:center()
     if bounce == true and herospeed > 0 then
         bouncetimer = bouncetimer + dt
-        verticalspeed = -herospeed/2.5
+        objectspeed = -herospeed/2.5
         ourHero:move(-herospeed*dt/2.5, 0)
-        --print(bouncedistance, colly)
         if bouncetimer >= 0.2 then
-          --bounceevent = false
           bounce = false
-          verticalspeed = -herospeed/2.5
-          --print("bounce event over")
           return -herospeed/2.5
         end
     elseif bounce == true and herospeed < 0 then
         bouncetimer = bouncetimer + dt
-        verticalspeed = -herospeed/2.5
+        objectspeed = -herospeed/2.5
         ourHero:move(-herospeed*dt/2.5, 0)
-        --print(bouncedistance, colly)
         if bouncetimer >= 0.2 then
-          --bounceevent = false
           bounce = false
-          verticalspeed = -herospeed/2.5
-          --print("bounce event over")
           return -herospeed/2.5
         end
     else
@@ -300,47 +292,12 @@ function hero.handleInput(dt,herospeed,speedmargin,swipeaction,swipe)
             else
                 herospeed = 0
             end
-           -- repeatTimer = 0
         end
         ourHero:move(herospeed*dt, 0)
-        verticalspeed = herospeed
+        objectspeed = herospeed
     end
     
     return herospeed
-end
-
-function hero.findSolidTiles(map)
-    local collidable_tiles = {}
-
-    for x, y, tile in map("sides"):iterate() do
-        --love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
-        --if tile.properties.solid then
-            local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
-            ctile.type = "tile"
-            collider:addToGroup("tiles", ctile)
-            collider:setPassive(ctile)
-            table.insert(collidable_tiles, ctile)
-        --end
-    end
-
-    return collidable_tiles
-end
-
-function hero.findSolidTilesLayer(map)
-    local collidable_tiles = {}
-
-    for x, y, tile in map("ledge"):iterate() do -- tile layer
-        -- love.graphics.print(string.format("Tile at (%d,%d) has an id of %d", x, y, tile.id),10,10)
-        --if tile.properties.solid then
-            local ctile = collider:addRectangle((x)*32-120,(y)*32,32,32)
-            ctile.type = "collide"
-            collider:addToGroup("collide", ctile)
-            collider:setPassive(ctile)
-            table.insert(collidable_tiles, ctile)
-        --end
-    end
-
-    return collidable_tiles
 end
 
 function hero.findToptiles(map)
@@ -350,27 +307,19 @@ function hero.findToptiles(map)
          local collObject
          local coordlist = {}
          local crap = {}
-         -- now we check if the shape is a polygon or a rect
-            --print(pairs(obj.polygon)[1])
             for j, k in ipairs(obj.polygon) do
-              --print(j, " ", k)
               if j % 2 == 0 then
                 table.insert(coordlist, k + obj.y)
-                --print(k-120)
               else
                 table.insert(coordlist, k + obj.x - 120)
               end
-              --print(obj.x)
       end
-            --print(unpack(coordlist))
-            collObject = collider:addPolygon(unpack(coordlist))
-        --print(collObject:center())
+         collObject = collider:addPolygon(unpack(coordlist))
          collObject.type = "top"
          collider:addToGroup("top", collObject)
          collider:setPassive(collObject)
          table.insert(collidable_tiles, collObject)
          colliderobject = collObject
-         --colliderobject:draw("fill")
      end
 
     return collidable_tiles
@@ -383,27 +332,19 @@ function hero.findbottomTiles(map)
          local collObject
          local coordlist = {}
          local crap = {}
-         -- now we check if the shape is a polygon or a rect
-            --print(pairs(obj.polygon)[1])
             for j, k in ipairs(obj.polygon) do
-              --print(j, " ", k)
               if j % 2 == 0 then
                 table.insert(coordlist, k + obj.y)
-                --print(k-120)
               else
                 table.insert(coordlist, k + obj.x - 120)
               end
-              --print(obj.x)
       end
-            --print(unpack(coordlist))
-            collObject = collider:addPolygon(unpack(coordlist))
-        --print(collObject:center())
+         collObject = collider:addPolygon(unpack(coordlist))
          collObject.type = "bottom"
          collider:addToGroup("bottom", collObject)
          collider:setPassive(collObject)
          table.insert(collidable_tiles, collObject)
          colliderobject = collObject
-         --colliderobject:draw("fill")
      end
 
     return collidable_tiles
@@ -416,65 +357,39 @@ function hero.findSide(map)
          local collObject
          local coordlist = {}
          local crap = {}
-         -- now we check if the shape is a polygon or a rect
-            --print(pairs(obj.polygon)[1])
             for j, k in ipairs(obj.polygon) do
-              --print(j, " ", k)
               if j % 2 == 0 then
                 table.insert(coordlist, k + obj.y)
-                --print(k-120)
               else
                 table.insert(coordlist, k + obj.x - 120)
               end
-              --print(obj.x)
       end
-            --print(unpack(coordlist))
-            collObject = collider:addPolygon(unpack(coordlist))
-        --print(collObject:center())
+         collObject = collider:addPolygon(unpack(coordlist))
          collObject.type = "side"
          collider:addToGroup("side", collObject)
          collider:setPassive(collObject)
          table.insert(collidable_tiles, collObject)
          colliderobject = collObject
-         --colliderobject:draw("fill")
+
      end
 
     return collidable_tiles
 end
 
--- for the soulTiles layer
--- function hero.findSouls(map)
---     local souls = {}
---         for x, y, tile in map("souls"):iterate() do -- tile layer
---             local ctile = collider:addRectangle((x)*32,(y)*32,32,32)
---             ctile.type = "soul"
---             collider:addToGroup("soul", ctile)
---             collider:setPassive(ctile)
---             table.insert(souls, ctile)
---         end
---     return souls
---     end
 
 -- for the souls object layer
 function hero.findSoulObjects(map)
     local souls = {}
     
       for i, obj in ipairs( map("souls").objects ) do
-          -- debugging print statment
-          -- for a, att in pairs(obj) do
-          --     print(a, " ", att)
-          -- end
         local collObject = collider:addRectangle(obj.x-88, obj.y+14, 32, 56) -- hard coded according to soul image tile size
     
         collObject.type = "soul"
         collObject.key = i
         collObject.visible = true
-        --obj.draw(obj.x,obj.y)
         collider:addToGroup("soul", collObject)
         collider:setPassive(collObject)
         table.insert(souls, collObject)
-        --print(collObject:center())
-
     end
 
     return souls

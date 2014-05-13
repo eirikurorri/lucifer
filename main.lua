@@ -77,8 +77,6 @@ function love.load()
     -- find all the tiles that we can collide with
     ourHero.setupHero(400,-300, collider)
     -- print("wat")
-    --allSolidTiles = ourHero.findSolidTiles(map)
-    --deathtiles = ourHero.findSolidTilesLayer(map)
     soulTiles = ourHero.findSoulObjects(map)
     toptiles = ourHero.findToptiles(map)
     sidetiles = ourHero.findSide(map)
@@ -90,8 +88,6 @@ function love.load()
 	-- background
     --background.loadBackground()
     foreground.loadForeground()
-    
-
     --distance monitor and goal
     distanceGoal = 41600
     distance = 0
@@ -125,21 +121,6 @@ function love.draw()
         love.graphics.setColor(255,255,255)
         
     elseif death == false then
-        -- background drawing
-        --background.drawBackground(reached_bottom, heroy)
-        -- background.drawBackground(reached_bottom,distance)
-        --background.debugBackground()
-
-        --if (distance < distanceGoal/2 and reached_bottom == false)
-        -- or (distance > distanceGoal/2 and reached_bottom == true) then
-        --    if speed < maxspeed then
-        --        speed = speed + 0.2
-        --    end
-        --else 
-        --    if speed > 200 then
-        --        speed = speed - 0.2
-        --    end
-        --end
         if reached_bottom == false then
             if distance < distanceGoal/2 then
                 if speed < maxspeed then
@@ -167,29 +148,16 @@ function love.draw()
         love.graphics.print("Slowdown Speed: "..math.floor(slowdownstart),1000,80,0,0.5,0.5)
         love.graphics.print("Slowdownend speed: "..math.floor(slowdownend),1000,100,0,0.5,0.5)
         love.graphics.print(math.floor(distance),1050,220,0,0.5,0.5)
-
-
-
-
         -- FPS meter and memory counter
         love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 140,0,0.5,0.5)
         
-        --love.graphics.setColor(255,255,255)
-	   -- Tiled stuff
+	    cam:draw(drawCamera)
 
-	   cam:draw(drawCamera)
-       --souls.drawSouls(map) -- uncomment for soul drawing action!
-       --love.graphics.draw(scoresign, 1050, 20)
-       
-       --love.graphics.print(math.floor(soundtimer), 1100, 61)
-	   -- end Tiled stuff
 	    if ourHero.heroycoords() >= distanceGoal - 100 then
             reached_bottom = true
         elseif ourHero.heroycoords() <= 100 then
             reached_bottom = false
         end
-        --love.graphics.print(cam.y, 680, 80)
-        -- scrolling speed for ledge and soul
 
     else
         love.graphics.draw(killed,0,-100)
@@ -201,7 +169,6 @@ function love.draw()
         -- background.drawBackground(reached_bottom,distance)
 
         --cam:draw(drawCamera)
-
     end
     
 end
@@ -228,7 +195,6 @@ end
 
 function love.update(dt)
     -- player events handled
-    --print(speedmargin)
   	TEsound.cleanup()
     soundtimer = soundtimer + dt
     if love.keyboard.isDown("return") and gamestate == "menu"
@@ -244,9 +210,6 @@ function love.update(dt)
 
     else
         if death == false then
-            --masterspeed = speed
-           
-            
             if love.keyboard.isDown("a") and swipeaction == false then
                 swipeaction = true
                 swipe = ourHero.initSwipe(ourHero.heroxcoords()-50,ourHero.heroycoords())
@@ -276,14 +239,10 @@ function love.update(dt)
             end
 
              if love.keyboard.isDown("s") and slowdowninitiate == false then
-                --print("slo down!")
-                --print(slowdowninterval)
                 slowdownstart = 0
                 slowdown = true
                 slowdowninitiate = true
                 slowdownstart = speed
-                --slowdownend = speed
-                --sounds.playSoundWithTimer(dt, chute)
                 TEsound.play(chute)
                 slowdowntimer = 0
                 slowdowninterval = 0
@@ -293,11 +252,9 @@ function love.update(dt)
                 slowdowninterval = slowdowninterval + dt
                 slowdownstart = slowdownstart * 0.99
                 ourHero.updateHero(dt,cam,slowdownstart,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
-                --print(speed)
                 if slowdowntimer >= 1.5 then
                     slowdown = false
                 end
-
             elseif slowdowninitiate == true then
                  slowdowninterval = slowdowninterval + dt 
                  slowdownend = speed
