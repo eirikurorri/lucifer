@@ -31,6 +31,8 @@ local slowdown = false
 local slowdowntimer 
 local slowdowninterval
 local slowdowninitiate = false
+local slowdownstart = 0
+local slowdownend = 0
 local slowdistance = 0
 local swipeaction = false
 local soundtimer = 0
@@ -128,28 +130,51 @@ function love.draw()
         -- background.drawBackground(reached_bottom,distance)
         --background.debugBackground()
 
-        if (cam.y < distanceGoal/2 and reached_bottom == false)
-         or (cam.y > distanceGoal/2 and reached_bottom == true) then
-            if speed < maxspeed then
-                speed = speed + 0.2
+        --if (distance < distanceGoal/2 and reached_bottom == false)
+        -- or (distance > distanceGoal/2 and reached_bottom == true) then
+        --    if speed < maxspeed then
+        --        speed = speed + 0.2
+        --    end
+        --else 
+        --    if speed > 200 then
+        --        speed = speed - 0.2
+        --    end
+        --end
+        if reached_bottom == false then
+            if distance < distanceGoal/2 then
+                if speed < maxspeed then
+                    speed = speed + 0.2
+                end
+            else
+                if speed > 200 then
+                    speed = speed - 0.2
+                end
             end
-        elseif  (cam.y > distanceGoal/2 and reached_bottom == false)
-         or (cam.y < distanceGoal/2 and reached_bottom == true)  then
-            if speed > 200 then
-                speed = speed - 0.2
+        else
+            if distance > distanceGoal/2 then
+                if speed < maxspeed then
+                    speed = speed + 0.2
+                end
+            else
+                if speed > 200 then
+                    speed = speed - 0.2
+                end
             end
         end
-        love.graphics.setColor(140,17,37)
+        --love.graphics.setColor(140,17,37)
         love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200,0,0.5,0.5)
         love.graphics.print("Speed: "..math.floor(speed),1050,180,0,0.5,0.5)
+        love.graphics.print("Slowdown Speed: "..math.floor(slowdownstart),1000,80,0,0.5,0.5)
+        love.graphics.print("Slowdownend speed: "..math.floor(slowdownend),1000,100,0,0.5,0.5)
         love.graphics.print(math.floor(distance),1050,220,0,0.5,0.5)
+
 
 
 
         -- FPS meter and memory counter
         love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 140,0,0.5,0.5)
         
-        love.graphics.setColor(255,255,255)
+        --love.graphics.setColor(255,255,255)
 	   -- Tiled stuff
 
 	   cam:draw(drawCamera)
@@ -218,35 +243,8 @@ function love.update(dt)
     else
         if death == false then
             --masterspeed = speed
-            if love.keyboard.isDown("s") and slowdowninitiate == false then
-            	--print("slo down!")
-                --print(slowdowninterval)
-                slowdownstart = 0
-                slowdown = true
-                slowdowninitiate = true
-                slowdownstart = speed
-                --sounds.playSoundWithTimer(dt, chute)
-                TEsound.play(chute)
-                slowdowntimer = 0
-                slowdowninterval = 0
-            elseif slowdown == true then
-                slowdowntimer = slowdowntimer + dt
-                speed = speed * 0.99
-                --print(speed)
-                if slowdowntimer >= 1.5 then
-                    slowdown = false
-                end
-
-            elseif slowdowninitiate == true then
-                 slowdowninterval = slowdowninterval + dt 
-                 if slowdownstart >= speed then
-                    speed = speed * 1.01
-                 end
-                 if slowdowninterval >= 5 then
-                    slowdowninitiate = false
-                end
-            end
-            swipex,swipey = 0
+           
+            
             if love.keyboard.isDown("a") and swipeaction == false then
                 swipeaction = true
                 swipe = ourHero.initSwipe(ourHero.heroxcoords()-50,ourHero.heroycoords())
@@ -274,9 +272,47 @@ function love.update(dt)
                     swipeaction = false
                 end
             end
+
+             if love.keyboard.isDown("s") and slowdowninitiate == false then
+                --print("slo down!")
+                --print(slowdowninterval)
+                slowdownstart = 0
+                slowdown = true
+                slowdowninitiate = true
+                slowdownstart = speed
+                --slowdownend = speed
+                --sounds.playSoundWithTimer(dt, chute)
+                TEsound.play(chute)
+                slowdowntimer = 0
+                slowdowninterval = 0
+            elseif slowdown == true then
+                slowdownend = speed
+                slowdowntimer = slowdowntimer + dt
+                slowdownstart = slowdownstart * 0.99
+                ourHero.updateHero(dt,cam,slowdownstart,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
+                --print(speed)
+                if slowdowntimer >= 1.5 then
+                    slowdown = false
+                end
+
+            elseif slowdowninitiate == true then
+                 slowdowninterval = slowdowninterval + dt 
+                 slowdownend = speed
+                 if slowdownstart <= slowdownend then
+                    slowdownstart = slowdownstart * 1.01
+                    ourHero.updateHero(dt,cam,slowdownstart,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
+                 else
+                    ourHero.updateHero(dt,cam,slowdownstart,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
+                 end
+                 if slowdowninterval >= 5 then
+                    slowdowninitiate = false
+                end
+            
+            else
+                ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
+            end 
             herospeed = ourHero.handleInput(dt,herospeed,speedmargin)
-            ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed,slowdownstart)
-            collider:update(dt) 
+            collider:update(dt)
 
             if reached_bottom == false then
                 distance = ourHero.heroycoords()

@@ -60,7 +60,7 @@ function hero.removeswipeobject()
     swipeaction = false
 end
 
-function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed,slowdownstart)
+function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
 	-- apply a downward force to the hero (=gravity)
 	herox,heroy = ourHero:center()
     
