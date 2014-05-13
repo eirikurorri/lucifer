@@ -16,7 +16,7 @@ local swipeobject
 local swiping = false
 local swipetimer = 0
 local repeatTimer = 0 -- for swooshing sound
-local repeatDelay = 0.5 -- for swooshing sound
+local repeatDelay = 0.8 -- for swooshing sound
 
 function hero.setupHero(x,y,coll)
 	  collider = coll
@@ -208,14 +208,14 @@ function hero.draw()
     --colliderobject:draw('fill')
 end
   
-function hero.swoosh(dt)
-   if repeatTimer >= repeatDelay then
-       TEsound.play(capeSwoosh)
-       -- print('Swoosh!')
-       repeatTimer = 0
-   else 
-       repeatTimer = repeatTimer + dt
-   end
+function hero.playSoundWithTimer(dt, sound)
+    if repeatTimer >= repeatDelay then
+        TEsound.play(sound)
+        -- print('Swoosh!')
+        repeatTimer = 0
+    else 
+        repeatTimer = repeatTimer + dt
+    end
 end
 
 function hero.handleInput(dt,herospeed,speedmargin,swipeaction,swipe)
@@ -231,7 +231,7 @@ function hero.handleInput(dt,herospeed,speedmargin,swipeaction,swipe)
         end
     else
         if love.keyboard.isDown("left") then
-            hero.swoosh(dt)
+            hero.playSoundWithTimer(dt, capeSwoosh)
             if herospeed > 0 then
                 herospeed = herospeed - 30
 
@@ -240,7 +240,7 @@ function hero.handleInput(dt,herospeed,speedmargin,swipeaction,swipe)
                
             end 
         elseif love.keyboard.isDown("right") then
-            hero.swoosh(dt)
+            hero.playSoundWithTimer(dt, capeSwoosh)
             if herospeed < 0 then
                 herospeed = herospeed + 30
             else
