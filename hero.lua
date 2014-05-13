@@ -118,7 +118,7 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,s
             
         else
             ourHero:move(0,-dt*speed)
-            cam:lookAt(400,heroy-offset+dt*speed)
+            cam:lookAt(400,heroy-offset-dt*speed)
         end
     end
 

@@ -33,6 +33,9 @@ local slowdowninterval
 local slowdowninitiate = false
 local slowdistance = 0
 local swipeaction = false
+local soundtimer = 0
+
+local mainfont = love.graphics.setNewFont("font/ufonts.com_goatbeard.ttf", 40)
 
 local backgroundImage = love.graphics.newImage('gfx/tile5.jpg')
 local menuimage = love.graphics.newImage('gfx/fall-of-lucifer.jpg')
@@ -45,6 +48,10 @@ function love.load()
     --print("lol")
 	-- Tiled stuff
 	--map = loader.load("testmap.tmx")
+
+    love.graphics.setFont(mainfont)
+
+
     map = loader.load("derpmap.tmx")
     map:setDrawRange(0,0,960,41600)
     map.offsetX = 120
@@ -61,6 +68,8 @@ function love.load()
     cam:cameraCoords(0,0)
 	-- Collider stuff
     scorecount = 0
+
+    
 	-- load HardonCollider, set callback to on_collide and size of 100
     collider = HC(100, on_collide)
     -- find all the tiles that we can collide with
@@ -106,9 +115,12 @@ end
 
 function love.draw()
     --love.graphics.scale(0.25, 0.25)
+
     if gamestate == "menu" then
         love.graphics.draw(menuimage, 0, 0)
+        love.graphics.setColor(140,17,37)
         love.graphics.print("Press Enter to begin", 400,400)
+        love.graphics.setColor(255,255,255)
         
     elseif death == false then
         -- background drawing
@@ -127,22 +139,24 @@ function love.draw()
                 speed = speed - 0.2
             end
         end
-        love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200)
-        love.graphics.print("Speed: "..math.floor(speed),1050,180)
-        love.graphics.print(math.floor(distance),1050,220)
+        love.graphics.setColor(140,17,37)
+        love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200,0,0.5,0.5)
+        love.graphics.print("Speed: "..math.floor(speed),1050,180,0,0.5,0.5)
+        love.graphics.print(math.floor(distance),1050,220,0,0.5,0.5)
 
 
 
         -- FPS meter and memory counter
-        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 140)
+        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 140,0,0.5,0.5)
         
-        
+        love.graphics.setColor(255,255,255)
 	   -- Tiled stuff
+
 	   cam:draw(drawCamera)
        --souls.drawSouls(map) -- uncomment for soul drawing action!
-       love.graphics.draw(scoresign, 1050, 20)
-       love.graphics.print("Hell Population: ", 1060, 46)
-       love.graphics.print(scorecount, 1100, 61)
+       --love.graphics.draw(scoresign, 1050, 20)
+       
+       --love.graphics.print(math.floor(soundtimer), 1100, 61)
 	   -- end Tiled stuff
 	    if ourHero.heroycoords() >= distanceGoal - 100 then
             reached_bottom = true
@@ -153,13 +167,15 @@ function love.draw()
         -- scrolling speed for ledge and soul
 
     else
-        --love.graphics.draw(killed,0,-100)
-        --love.graphics.draw(killed,0,0)
+        love.graphics.draw(killed,0,-100)
+        love.graphics.draw(killed,0,0)
         --love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 20)
+        love.graphics.setColor(140,17,37)
         love.graphics.print("Press Enter to restart", 400,400)
+        love.graphics.setColor(255,255,255)
         -- background.drawBackground(reached_bottom,distance)
 
-        cam:draw(drawCamera)
+        --cam:draw(drawCamera)
 
     end
     
@@ -172,6 +188,9 @@ end
 function drawCamera()
 
 	foreground.drawForeground(reached_bottom)
+    love.graphics.setColor(140,17,37)
+    love.graphics.print(scorecount, cam.x-40, cam.y+100,0,2,2)
+    love.graphics.setColor(255,255,255)
     map:draw()
     ourHero.draw()
 
@@ -184,7 +203,7 @@ function love.update(dt)
     -- player events handled
     --print(speedmargin)
   	TEsound.cleanup()
-
+    soundtimer = soundtimer + dt
     if love.keyboard.isDown("return") and gamestate == "menu"
         or love.keyboard.isDown("return") and death == true and gamestate == "playing" then
         gamestate = "playing"
@@ -198,10 +217,11 @@ function love.update(dt)
 
     else
         if death == false then
-
+            --masterspeed = speed
             if love.keyboard.isDown("s") and slowdowninitiate == false then
             	--print("slo down!")
                 --print(slowdowninterval)
+                slowdownstart = 0
                 slowdown = true
                 slowdowninitiate = true
                 slowdownstart = speed
@@ -209,19 +229,14 @@ function love.update(dt)
                 TEsound.play(chute)
                 slowdowntimer = 0
                 slowdowninterval = 0
-            elseif slowdown == true and reached_bottom == false then
+            elseif slowdown == true then
                 slowdowntimer = slowdowntimer + dt
                 speed = speed * 0.99
                 --print(speed)
                 if slowdowntimer >= 1.5 then
                     slowdown = false
                 end
-            elseif slowdown == true and reached_bottom == true then
-                slowdowntimer = slowdowntimer + dt
-                speed = speed * 0.99
-                if slowdowntimer >= 1.5 then
-                    slowdown = false
-                end
+
             elseif slowdowninitiate == true then
                  slowdowninterval = slowdowninterval + dt 
                  if slowdownstart >= speed then
