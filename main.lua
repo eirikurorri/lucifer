@@ -305,7 +305,7 @@ function love.update(dt)
 end
 
 function endgame()
-    
+    TEsound.play(splat)
     death = true
     speed = 0
 end
