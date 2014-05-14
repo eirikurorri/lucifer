@@ -37,7 +37,7 @@ local slowdistance = 0
 local swipeaction = false
 local soundtimer = 0
 
-local mainfont = love.graphics.setNewFont("font/ufonts.com_goatbeard.ttf", 40)
+local mainfont = love.graphics.setNewFont("font/ufonts.com_goatbeard.ttf", 120)
 
 --local backgroundImage = love.graphics.newImage('gfx/tile5.jpg')
 local menuimage = love.graphics.newImage('gfx/fall-of-lucifer.jpg')
@@ -63,6 +63,9 @@ function love.load()
    -- map("bottom").color = {0,0,255}
     map("ledge").visible = false
     map("sides").visible = false
+    map("top").visible = false
+    map("side").visible = false
+    map("bottom").visible = false
     -- map("object").visible = false -- makes object map invisible
 	-- End Tiled stuff
     camY = 0
@@ -87,7 +90,7 @@ function love.load()
     --background.loadBackground()
     foreground.loadForeground()
     --distance monitor and goal
-    distanceGoal = 41600
+    distanceGoal = 4160
     distance = 0
     -- Tiled stuff
     -- speedometer, use for different speeds
@@ -178,10 +181,30 @@ end
 function drawCamera()
 
 	foreground.drawForeground(reached_bottom)
-    love.graphics.setColor(140,17,37)
-    love.graphics.print(scorecount, cam.x-40, cam.y+100,0,2,2)
+    love.graphics.setColor(140,17,37,128)
+    if reached_bottom == false then
+        if scorecount < 10 then
+            love.graphics.print(scorecount, cam.x-50, cam.y,0,2,2)
+        elseif scorecount < 100 and scorecount > 10 then
+            love.graphics.print(scorecount, cam.x-90, cam.y,0,2,2)
+        else
+            love.graphics.print(scorecount, cam.x-130, cam.y,0,2,2)
+        end
+    else
+        if scorecount < 10 then
+            love.graphics.print(scorecount, cam.x-50, cam.y-300,0,2,2)
+        elseif scorecount < 100 and scorecount > 10 then
+            love.graphics.print(scorecount, cam.x-90, cam.y-300,0,2,2)
+        else
+            love.graphics.print(scorecount, cam.x-130, cam.y-300,0,2,2)
+        end
+    end
     --love.graphics.setColor(0,255,0)
-    love.graphics.rectangle("fill", cam.x-100, cam.y+200, slowdowninterval*40,20)
+    if reached_bottom == false then
+        love.graphics.rectangle("fill", cam.x-100, cam.y+200, 200-slowdowninterval*40,20)
+    else
+        love.graphics.rectangle("fill", cam.x-100, cam.y-100, 200-slowdowninterval*40,20)
+    end
     love.graphics.setColor(255,255,255)
     map:draw()
     ourHero.draw()
