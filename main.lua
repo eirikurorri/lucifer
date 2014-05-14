@@ -37,6 +37,8 @@ local slowdistance = 0
 local swipeaction = false
 local soundtimer = 0
 
+local stage = 1
+
 local mainfont = love.graphics.setNewFont("font/ufonts.com_goatbeard.ttf", 120)
 
 --local backgroundImage = love.graphics.newImage('gfx/tile5.jpg')
@@ -103,6 +105,8 @@ function love.load()
     -- menu loaded
     gamemenu.loadmenu()
     TEsound.playLooping(wind)
+
+    stage = 1
 end
 
 
@@ -118,46 +122,72 @@ function love.draw()
     if gamestate == "menu" then
         love.graphics.draw(menuimage, 0, 0)
         love.graphics.setColor(140,17,37)
-        love.graphics.print("Press Enter to begin", 400,400)
+        love.graphics.print("Press Enter to begin", 400,400,0,0.5,0.5)
         love.graphics.setColor(255,255,255)
         
     elseif death == false then
-        if reached_bottom == false then
-            if distance < distanceGoal/2 then
-                if speed < maxspeed then
-                    speed = speed + 0.2
+        if stage < 3 then
+            if reached_bottom == false then
+                if distance < distanceGoal/2 then
+                    if speed < maxspeed then
+                        speed = speed + 0.2
+                    end
+                else
+                    if speed > 200 then
+                        speed = speed - 0.2
+                    end
                 end
             else
-                if speed > 200 then
-                    speed = speed - 0.2
+                if distance > distanceGoal/2 then
+                    if speed < maxspeed then
+                        speed = speed + 0.2
+                    end
+                else
+                    if speed > 200 then
+                        speed = speed - 0.2
+                    end
                 end
             end
         else
-            if distance > distanceGoal/2 then
-                if speed < maxspeed then
-                    speed = speed + 0.2
-                end
+            if distance < distanceGoal/4 then
+                    if speed < maxspeed then
+                        speed = speed + 0.3
+                    end
             else
-                if speed > 200 then
-                    speed = speed - 0.2
-                end
+                    if speed > 0 then
+                        speed = speed - 0.2
+                    end
+                    if distance >= distanceGoal/2 then
+                        speed = 0    
+                    end
+            
             end
         end
         --love.graphics.setColor(140,17,37)
-        love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200,0,0.5,0.5)
-        love.graphics.print("Speed: "..math.floor(speed),1050,180,0,0.5,0.5)
-        love.graphics.print("Slowdown Speed: "..math.floor(slowdownstart),1000,80,0,0.5,0.5)
-        love.graphics.print("Slowdownend speed: "..math.floor(slowdownend),1000,100,0,0.5,0.5)
-        love.graphics.print(math.floor(distance),1050,220,0,0.5,0.5)
+        love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200,0,0.25,0.25)
+        love.graphics.print("Speed: "..math.floor(speed),1050,180,0,0.25,0.25)
+        love.graphics.print("Slowdown Speed: "..math.floor(slowdownstart),1000,80,0,0.25,0.25)
+        love.graphics.print("Slowdownend speed: "..math.floor(slowdownend),1000,100,0,0.25,0.25)
+        love.graphics.print(math.floor(distance),1050,220,0,0.25,0.25)
         -- FPS meter and memory counter
-        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 140,0,0.5,0.5)
+        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 140,0,0.25,0.25)
         
 	    cam:draw(drawCamera)
 
 	    if ourHero.heroycoords() >= distanceGoal - 100 then
+            if reached_bottom == false then
+                stage = stage + 1
+            end
             reached_bottom = true
+            
+            print(stage)
         elseif ourHero.heroycoords() <= 100 then
+            if reached_bottom == true then
+                stage = stage + 1
+            end
             reached_bottom = false
+            
+            print(stage)
         end
 
     else
@@ -165,7 +195,7 @@ function love.draw()
         love.graphics.draw(killed,0,0)
         --love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 20)
         love.graphics.setColor(140,17,37)
-        love.graphics.print("Press Enter to restart", 400,400)
+        love.graphics.print("Press Enter to restart", 400,400,0,0.5,0.5)
         love.graphics.setColor(255,255,255)
         -- background.drawBackground(reached_bottom,distance)
 
@@ -181,7 +211,7 @@ end
 function drawCamera()
 
 	foreground.drawForeground(reached_bottom)
-    love.graphics.setColor(140,17,37,128)
+    love.graphics.setColor(82,74,74,128)
     if reached_bottom == false then
         if scorecount < 10 then
             love.graphics.print(scorecount, cam.x-50, cam.y,0,2,2)
