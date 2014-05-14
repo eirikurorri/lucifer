@@ -120,6 +120,7 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
    if shape_a == ourHero and shape_b.type == "side" then
         hero_shape = shape_a
         if bounce == false then
+            TEsound.play(thuds)
             bouncetimer = 0
             bounce = true
             bouncedistance = colly
@@ -128,6 +129,7 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
    elseif shape_b == ourHero and shape_a.type == "side" then
        hero_shape = shape_b
        if bounce == false then
+            TEsound.play(thuds)
             bouncetimer = 0
             bounce = true
             bouncedistance = colly
