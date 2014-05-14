@@ -78338,6 +78338,9 @@
   <object x="354" y="33955">
    <polygon points="0,0 60,-2 124,32 191,97 222,160 255,257 126,243"/>
   </object>
+  <object x="863" y="31492">
+   <polygon points="0,0 -31,-1 -61,29 -25,32"/>
+  </object>
  </objectgroup>
  <objectgroup name="side" width="30" height="1300">
   <object x="964" y="9">
@@ -78635,9 +78638,6 @@
   </object>
   <object x="357" y="31425">
    <polygon points="0,0 -68,32 -131,32 -163,-1"/>
-  </object>
-  <object x="863" y="31492">
-   <polygon points="0,0 -31,-1 -61,29 -25,32"/>
   </object>
   <object x="863" y="31682">
    <polygon points="0,0 -28,-1 -62,-31 -23,-36"/>
