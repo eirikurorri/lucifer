@@ -232,6 +232,7 @@ function love.update(dt)
                 swipeaction = true
                 swipe = ourHero.initSwipe(ourHero.heroxcoords()-50,ourHero.heroycoords())
                 elapsedtime = 0
+                TEsound.play(pitchFork)
             elseif swipeaction == true then
                 elapsedtime = elapsedtime + dt
                 if elapsedtime >= 0.5 then   
@@ -245,6 +246,7 @@ function love.update(dt)
                 swipeaction = true
                 swipe = ourHero.initSwipe(ourHero.heroxcoords()+50,ourHero.heroycoords())
                 elapsedtime = 0
+                TEsound.play(pitchFork)
             elseif swipeaction == true then
                 elapsedtime = elapsedtime + dt
                 if elapsedtime >= 0.5 then

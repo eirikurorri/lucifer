@@ -7,3 +7,4 @@ Implemented using the Löve game engine.
 
 Sounds:
 http://www.freesound.org/people/felix.blume/sounds/154794/
+http://www.freesound.org/people/J.Zazvurek/sounds/153235/
