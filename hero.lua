@@ -26,8 +26,8 @@ function hero.setupHero(x,y,coll)
     luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.png')
     luciferNorthFacing = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
     luciferSouthFacing = love.graphics.newQuad(64, 56, 16, 16, 96, 72) -- head facing south
-    luciferFiresheet = love.graphics.newImage("gfx/fire19pv.png")
-    luciferFireEffect1 = love.graphics.newQuad(0, 0, 16, 16, 72, 48)
+    --luciferFiresheet = love.graphics.newImage("gfx/fire19pv.png")
+    --luciferFireEffect1 = love.graphics.newQuad(0, 0, 16, 16, 72, 48)
     --luciferFireEffect2 = love.graphics.newQuad(24, 24, 16, 16, 72, 48)
     --luciferFireEffect3 = love.graphics.newQuad(36, 36, 16, 16, 72, 48)
 end
@@ -75,14 +75,13 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,s
         swipex, swipey = swipeobject:center()
 
         if swipex < herox and reached_bottom == false then
-          swipeobject:move(2+objectspeed*dt,dt*speed+5)
+          swipeobject:move(4+objectspeed*dt,dt*speed+5)
         elseif swipex > herox and reached_bottom == false then
-          swipeobject:move(-2+objectspeed*dt,dt*speed+5)
+          swipeobject:move(-4+objectspeed*dt,dt*speed+5)
         elseif swipex < herox and reached_bottom == true then
-          swipeobject:move(2+objectspeed*dt,-dt*speed-5)
+          swipeobject:move(4+objectspeed*dt,-dt*speed-5)
         elseif swipex > herox and reached_bottom == true then
-          swipeobject:move(-2+objectspeed*dt,-dt*speed-5)
-        
+          swipeobject:move(-4+objectspeed*dt,-dt*speed-5)
         end
     end
     if reached_bottom == false then
@@ -207,7 +206,7 @@ function hero.draw()
     --love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
     if reached_bottom == false then
         love.graphics.draw(luciferSpritesheet, luciferSouthFacing, collx-24, colly-24, 0, 3)
-        love.graphics.draw(luciferFiresheet,luciferFireEffect1,collx-72,colly-6,-1.5,7)
+        --love.graphics.draw(luciferFiresheet,luciferFireEffect1,collx-72,colly-6,-1.5,7)
         --love.graphics.draw(luciferFiresheet,luciferFireEffect2,collx-72,colly-6,-1.5,7)
         --love.graphics.draw(luciferFiresheet,luciferFireEffect3,collx-68,colly-6,-1.5,7)
     else
