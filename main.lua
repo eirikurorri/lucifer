@@ -48,10 +48,10 @@ function love.load()
     map = loader.load("derpmap.tmx")
     map:setDrawRange(0,0,960,41600)
     map.offsetX = 120
-    map("top").visible = true
-    map("top").color = {255,0,0}
-    map("side").color = {0,255,0}
-    map("bottom").color = {0,0,255}
+    map("top").visible = false --true
+   -- map("top").color = {255,0,0}
+   -- map("side").color = {0,255,0}
+   -- map("bottom").color = {0,0,255}
     map("ledge").visible = false
     map("sides").visible = false
     -- map("object").visible = false -- makes object map invisible
