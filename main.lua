@@ -81,9 +81,9 @@ function love.load()
     ourHero.setupHero(400,-300, collider)
     -- print("wat")
     soulTiles = ourHero.findSoulObjects(map)
-    toptiles = ourHero.findToptiles(map)
-    sidetiles = ourHero.findSide(map)
-    bottomtiles = ourHero.findbottomTiles(map)
+    --toptiles = ourHero.findToptiles(map)
+    --sidetiles = ourHero.findSide(map)
+    --bottomtiles = ourHero.findbottomTiles(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
     slowdown = false
@@ -92,7 +92,7 @@ function love.load()
     --background.loadBackground()
     foreground.loadForeground()
     --distance monitor and goal
-    distanceGoal = 4160
+    distanceGoal = 41600
     distance = 0
     -- Tiled stuff
     -- speedometer, use for different speeds
@@ -149,19 +149,14 @@ function love.draw()
                 end
             end
         else
-            if distance < distanceGoal/4 then
-                    if speed < maxspeed then
-                        speed = speed + 0.3
-                    end
-            else
-                    if speed > 0 then
-                        speed = speed - 0.2
-                    end
-                    if distance >= distanceGoal/2 then
-                        speed = 0    
-                    end
-            
+            if speed < maxspeed then
+                speed = speed + 0.4
             end
+            if distance >= distanceGoal/2 then
+                speed = 0    
+            end
+            
+            
         end
         --love.graphics.setColor(140,17,37)
         love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200,0,0.25,0.25)
@@ -300,7 +295,7 @@ function love.update(dt)
                 slowdowntimer = slowdowntimer + dt
                 slowdowninterval = slowdowninterval + dt
                 slowdownstart = slowdownstart * 0.99
-                ourHero.updateHero(dt,cam,slowdownstart,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
+                ourHero.updateHero(dt,cam,slowdownstart,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed,stage)
                 if slowdowntimer >= 1.5 then
                     slowdown = false
                 end
@@ -309,9 +304,9 @@ function love.update(dt)
                  slowdownend = speed
                  if slowdownstart <= slowdownend then
                     slowdownstart = slowdownstart * 1.01
-                    ourHero.updateHero(dt,cam,slowdownstart,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
+                    ourHero.updateHero(dt,cam,slowdownstart,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed,stage)
                  else
-                    ourHero.updateHero(dt,cam,slowdownstart,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
+                    ourHero.updateHero(dt,cam,slowdownstart,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed,stage)
                  end
                  if slowdowninterval >= 5 then
                     slowdowninitiate = false
@@ -319,7 +314,7 @@ function love.update(dt)
                 end
             
             else
-                ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
+                ourHero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed,stage)
             end 
             herospeed = ourHero.handleInput(dt,herospeed,speedmargin)
             collider:update(dt)
