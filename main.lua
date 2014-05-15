@@ -92,7 +92,7 @@ function love.load()
     --background.loadBackground()
     foreground.loadForeground()
     --distance monitor and goal
-    distanceGoal = 4160
+    distanceGoal = 41600
     distance = 0
     -- Tiled stuff
     -- speedometer, use for different speeds
@@ -105,6 +105,8 @@ function love.load()
     -- menu loaded
     gamemenu.loadmenu()
     TEsound.playLooping(wind)
+    TEsound.playLooping(fire, 'hellfire', nil, fireVolume)
+    --TEsound.volume(hellfire, 0)
 
     stage = 1
 end
@@ -190,6 +192,14 @@ function love.draw()
             print(stage)
         end
 
+        if ourHero.heroycoords() <= distanceGoal/2 then
+        	TEsound.volume("hellfire", ourHero.heroycoords()/(distanceGoal/2))
+        else
+        	reversedY = distanceGoal - ourHero.heroycoords()
+        	TEsound.volume("hellfire", reversedY/(distanceGoal/2))
+        end
+        
+        -- print(fireVolume)
     else
         love.graphics.draw(killed,0,-100)
         love.graphics.draw(killed,0,0)
