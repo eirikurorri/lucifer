@@ -64,7 +64,7 @@ function hero.removeswipeobject()
     swipeaction = false
 end
 
-function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed)
+function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,slowdown,slowdistance,swipeaction,swipe,elapsedtime,herospeed,stage)
 	-- apply a downward force to the hero (=gravity)
 	herox,heroy = ourHero:center()
     
@@ -84,23 +84,32 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,s
           swipeobject:move(-4+objectspeed*dt,-dt*speed-5)
         end
     end
-    if reached_bottom == false then
-        if heroy < distanceGoal - cameraoffset then
+    if stage < 3 then 
+        if reached_bottom == false then
+            if heroy < distanceGoal - cameraoffset then
+                ourHero:move(0,dt*speed) -- collider.move 
+                cam:lookAt(400,heroy+offset+dt*speed)
+            else
+                ourHero:move(0,dt*speed)
+            end
+        elseif reached_bottom == true then
+            if heroy < cameraoffset then
+                ourHero:move(0,-dt*speed)
+                
+            else
+                ourHero:move(0,-dt*speed)
+                cam:lookAt(400,heroy-offset-dt*speed)
+            end
+        end
+    else
+        print(stage)
+        if heroy < distanceGoal/2 - cameraoffset then
             ourHero:move(0,dt*speed) -- collider.move 
             cam:lookAt(400,heroy+offset+dt*speed)
         else
-            ourHero:move(0,dt*speed)
-        end
-    elseif reached_bottom == true then
-        if heroy < cameraoffset then
-            ourHero:move(0,-dt*speed)
-            
-        else
-            ourHero:move(0,-dt*speed)
-            cam:lookAt(400,heroy-offset-dt*speed)
+            ourHero:move(0,dt*speed/3)
         end
     end
-
     
 end
 
