@@ -81,9 +81,9 @@ function love.load()
     ourHero.setupHero(400,-300, collider)
     -- print("wat")
     soulTiles = ourHero.findSoulObjects(map)
-    --toptiles = ourHero.findToptiles(map)
-    --sidetiles = ourHero.findSide(map)
-    --bottomtiles = ourHero.findbottomTiles(map)
+    toptiles = ourHero.findToptiles(map)
+    sidetiles = ourHero.findSide(map)
+    bottomtiles = ourHero.findbottomTiles(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
     slowdown = false
