@@ -48,17 +48,12 @@ local game = {}
 
 	    -- speedometer, use for different speeds
 		speed = 200
-	    -- death = false
-	    --killed = love.graphics.newImage('gfx/skulls-red-black-bonesq.jpeg')
-	    --scoresign = love.graphics.newImage('gfx/scoresign.png')
-		-- End Tiled stuff
 
 		--collider
 		ourHero.moveTo(400, -300)
 
 		maxspeed = 800
-		--death
-		--scorecount
+
 		herospeed = 0
 		speedmargin = 0.1
 		cameraoffset = 700
