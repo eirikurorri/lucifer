@@ -23,9 +23,10 @@ local objectspeed = 0
 function hero.setupHero(x,y,coll)
 	collider = coll
     ourHero = collider:addCircle(x,y,15) -- size of our hero
-    luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.png')
-    luciferNorthFacing = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
-    luciferSouthFacing = love.graphics.newQuad(64, 56, 16, 16, 96, 72) -- head facing south
+    --luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.png')
+    --luciferSpritesheet = love.graphics.newImage('gfx/lucifer_spritesheet.png')
+    --luciferNorthFacing = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
+    --luciferSouthFacing = love.graphics.newQuad(64, 56, 16, 16, 96, 72) -- head facing south
     --luciferFiresheet = love.graphics.newImage("gfx/fire19pv.png")
     --luciferFireEffect1 = love.graphics.newQuad(0, 0, 16, 16, 72, 48)
     --luciferFireEffect2 = love.graphics.newQuad(24, 24, 16, 16, 72, 48)
@@ -216,16 +217,22 @@ end
 
 function hero.draw()
 
-	--ourHero:draw('fill')
+	ourHero:draw('fill')
     collx, colly = ourHero:center()
+    
     --love.graphics.draw(luciferSpritesheet, lucifer, collx-24, colly-24, 0, 3)
     if reached_bottom == false then
-        love.graphics.draw(luciferSpritesheet, luciferSouthFacing, collx-24, colly-24, 0, 3)
+        --animation = animation:flipV()
+        southBound:draw(south, collx-89, colly-100, nil, 0.5)
+
+
+--here is where lucifer is drawn        love.graphics.draw(luciferSpritesheet, luciferSouthFacing, collx-24, colly-24, 0, 3)
         --love.graphics.draw(luciferFiresheet,luciferFireEffect1,collx-72,colly-6,-1.5,7)
         --love.graphics.draw(luciferFiresheet,luciferFireEffect2,collx-72,colly-6,-1.5,7)
         --love.graphics.draw(luciferFiresheet,luciferFireEffect3,collx-68,colly-6,-1.5,7)
     else
-        love.graphics.draw(luciferSpritesheet, luciferNorthFacing, collx-24, colly-24, 0, 3)
+        animation:draw(image, collx-170, colly-254)
+--here is where lucifer is drawn        love.graphics.draw(luciferSpritesheet, luciferNorthFacing, collx-24, colly-24, 0, 3)
     end
     if swiping == true and swipetimer <= 0.5 then
       swipeobject:draw('fill')

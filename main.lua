@@ -4,6 +4,7 @@ require('TEsound')
 
 -- Tiled stuff
 loader = require "AdvTiledLoader/Loader"
+anim8 = require "anim8-master/anim8"
 -- set the path to the Tiled map files
 loader.path = "gfx/"
 -- End Tiled stuff
@@ -34,8 +35,6 @@ love.window.setMode(1200, 800)
 function love.load()
 
     love.graphics.setFont(mainfont)
-
-
 
     TEsound.playLooping(wind)
     TEsound.playLooping(fire, 'hellfire', nil, fireVolume)

@@ -5,7 +5,7 @@ local game = {}
 		map = loader.load("derpmap.tmx")
 		map:setDrawRange(0,0,960,41600)
 	    map.offsetX = 120
-	    map("top").visible = false --true
+	    
 
 	   -- uncomment below to show collision polygons
 	   -- map("top").color = {255,0,0}
@@ -13,28 +13,35 @@ local game = {}
 	   -- map("bottom").color = {0,0,255}
 	   -- end display collision polygons
 
+		map("top").visible = false
 	    map("ledge").visible = false
 	    map("sides").visible = false
 	    map("top").visible = false
 	    map("side").visible = false
 	    map("bottom").visible = false
-	    -- map("object").visible = false -- makes object map invisible
 
 	    camY = 0
 	    cam = Camera(0,0)
 	    cam:cameraCoords(0,0)
-		-- Collider stuff
-	    scorecount = 0
-		
-	    
-		--collider = HC(100, on_collide)
+
+		-- Collider stuff	
 	    ourHero.setupHero(400,-300, collider)
-	    -- print("wat")
+
 	    soulTiles = ourHero.findSoulObjects(map)
 	    toptiles = ourHero.findToptiles(map)
 	    sidetiles = ourHero.findSide(map)
 	    bottomtiles = ourHero.findbottomTiles(map)
-	    -- set up the hero object, set him to position 32, 32
+	    
+	    north = love.graphics.newImage('gfx/lucifer_spritesheet_north.png')
+	    south = love.graphics.newImage('gfx/lucifer_spritesheet_south.png')
+	    
+	    local n = anim8.newGrid(354, 454, north:getWidth(), north:getHeight())
+	    local s = anim8.newGrid(354, 454, north:getWidth(), north:getHeight())
+  		--animation = anim8.newAnimation(g('1-3',1), 0.1)
+  		northBound = anim8.newAnimation(n('1-3',1), 0.1)
+  		southBound = anim8.newAnimation(s('1-3',2), 0.1)
+
+
 	end
 
 	function game:enter()
@@ -49,6 +56,7 @@ local game = {}
 	    --distance monitor and goal
 	    distanceGoal = 41600
 	    distance = 0
+	    scorecount = 0
 
 	    -- speedometer, use for different speeds
 		speed = 200
@@ -78,6 +86,7 @@ local game = {}
 	end
 
 	function game:draw()
+
         if stage < 3 then
             if reached_bottom == false then
                 if distance < distanceGoal/2 then
@@ -131,6 +140,7 @@ local game = {}
                 stage = stage + 1
             end
             reached_bottom = false
+
             
             --print(stage)
         end
@@ -146,6 +156,9 @@ local game = {}
 	end
 
 	function game:update(dt)
+
+		northBound:update(dt)
+		southBound:update(dt)
 
 	   	TEsound.cleanup()
 	    soundtimer = soundtimer + dt
