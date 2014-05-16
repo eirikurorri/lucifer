@@ -21,7 +21,7 @@ local bouncetimer = 0
 local objectspeed = 0
 
 function hero.setupHero(x,y,coll)
-	  collider = coll
+	collider = coll
     ourHero = collider:addCircle(x,y,15) -- size of our hero
     luciferSpritesheet = love.graphics.newImage('gfx/tinySatan.png')
     luciferNorthFacing = love.graphics.newQuad(0, 0, 16, 16, 96, 72) -- head facing north
@@ -30,6 +30,10 @@ function hero.setupHero(x,y,coll)
     --luciferFireEffect1 = love.graphics.newQuad(0, 0, 16, 16, 72, 48)
     --luciferFireEffect2 = love.graphics.newQuad(24, 24, 16, 16, 72, 48)
     --luciferFireEffect3 = love.graphics.newQuad(36, 36, 16, 16, 72, 48)
+end
+
+function hero.moveTo(x,y)
+    ourHero:moveTo(x,y)
 end
 
 function hero.initSwipe(x,y)
@@ -161,10 +165,10 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
             --bouncetimer = love.timer.getTime()
         end
     elseif shape_a == ourHero and shape_b.type == "bottom" and reached_bottom == true then
-       endgame()
+       Gamestate.switch(gameover)
        return
    elseif shape_b == ourHero and shape_a.type == "bottom" and reached_bottom == true then
-       endgame()
+       Gamestate.switch(gameover)
        return
    elseif shape_a == ourHero and shape_b.type == "top" and reached_bottom == true then
        hero_shape = shape_a
@@ -183,10 +187,10 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
             --bouncetimer = love.timer.getTime()
         end
    elseif shape_a == ourHero and shape_b.type == "top" and reached_bottom == false then
-       endgame()
+       Gamestate.switch(gameover)
        return
    elseif shape_b == ourHero and shape_a.type == "top" and reached_bottom == false then
-       endgame()
+       Gamestate.switch(gameover)
        return
    elseif shape_a == swipeobject and shape_b.type == "soul" then
         map.layers["souls"]["objects"][shape_b.key]["visible"] = false

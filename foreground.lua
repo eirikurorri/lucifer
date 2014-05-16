@@ -23,7 +23,7 @@ function fg.loadForeground()
 	fgScalingFactor = 1 -- was 2.2429906542
 end
 
-function fg.drawForeground(turningPoint)
+function fg.drawForeground()
 	i = 1
 	for i=1,16,1 do
 		love.graphics.draw(fg[i], -120, i*fgImageHeight+fgXoffset, 0, fgScalingFactor)
