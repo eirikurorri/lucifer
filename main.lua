@@ -40,7 +40,7 @@ function love.load()
     TEsound.playLooping(wind)
     TEsound.playLooping(fire, 'hellfire', nil, fireVolume)
 
-    
+    -- load HardonCollider, set callback to on_collide and size of 100
     collider = HC(100, on_collide)
 
     Gamestate.registerEvents()

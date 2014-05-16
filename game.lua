@@ -6,9 +6,13 @@ local game = {}
 		map:setDrawRange(0,0,960,41600)
 	    map.offsetX = 120
 	    map("top").visible = false --true
+
+	   -- uncomment below to show collision polygons
 	   -- map("top").color = {255,0,0}
 	   -- map("side").color = {0,255,0}
 	   -- map("bottom").color = {0,0,255}
+	   -- end display collision polygons
+
 	    map("ledge").visible = false
 	    map("sides").visible = false
 	    map("top").visible = false
@@ -21,7 +25,7 @@ local game = {}
 	    cam:cameraCoords(0,0)
 		-- Collider stuff
 	    scorecount = 0
-		-- load HardonCollider, set callback to on_collide and size of 100
+		
 	    
 		--collider = HC(100, on_collide)
 	    ourHero.setupHero(400,-300, collider)
