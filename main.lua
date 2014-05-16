@@ -1,6 +1,7 @@
 --background layer loaded
 background = require "background"
 require('TEsound')
+require('utf8')
 
 -- Tiled stuff!
 local loader = require "AdvTiledLoader/Loader"
@@ -12,6 +13,8 @@ local Camera = require "hump.camera"
 local gamemenu = require "menu"
 local souls = require "souls"
 local foreground = require "foreground"
+local http = require "socket.http"
+local ltn12 = require "ltn12"
 
 local scoresign
 local ourHero = require "hero"
@@ -37,6 +40,10 @@ local slowdistance = 0
 local swipeaction = false
 local soundtimer = 0
 
+local text = ""
+
+local postscore = false
+
 local stage = 1
 
 local mainfont = love.graphics.setNewFont("font/ufonts.com_goatbeard.ttf", 120)
@@ -45,6 +52,8 @@ local mainfont = love.graphics.setNewFont("font/ufonts.com_goatbeard.ttf", 120)
 local menuimage = love.graphics.newImage('gfx/fall-of-lucifer.jpg')
 local sounds = require('sounds')
 
+
+love.keyboard.setTextInput(disable)
 love.window.setMode(1200, 800)
 
 function love.load()
@@ -81,13 +90,14 @@ function love.load()
     ourHero.setupHero(400,-300, collider)
     -- print("wat")
     soulTiles = ourHero.findSoulObjects(map)
-    --toptiles = ourHero.findToptiles(map)
-    --sidetiles = ourHero.findSide(map)
-    --bottomtiles = ourHero.findbottomTiles(map)
+    toptiles = ourHero.findToptiles(map)
+    sidetiles = ourHero.findSide(map)
+    bottomtiles = ourHero.findbottomTiles(map)
     -- set up the hero object, set him to position 32, 32
     reached_bottom = false
     slowdown = false
     swipeaction = false
+    slowdowninitiate = false
 	-- background
     --background.loadBackground()
     foreground.loadForeground()
@@ -98,6 +108,7 @@ function love.load()
     -- speedometer, use for different speeds
 	speed = 200
     death = false
+    postscore = false
     killed = love.graphics.newImage('gfx/skulls-red-black-bonesq.jpeg')
     scoresign = love.graphics.newImage('gfx/scoresign.png')
 	-- End Tiled stuff
@@ -203,6 +214,10 @@ function love.draw()
         love.graphics.print("Press Enter to restart", 400,400,0,0.5,0.5)
         love.graphics.setColor(255,255,255)
         -- background.drawBackground(reached_bottom,distance)
+
+        
+        love.graphics.print(text, 300, 500)
+        love.graphics.print("Score: " ..scorecount, 300,600)
 
         --cam:draw(drawCamera)
     end
@@ -333,10 +348,62 @@ function love.update(dt)
                 distance = ourHero.heroycoords()
             else
                 distance = ourHero.heroycoords()
-            end 
+            end
+        else
+            if postscore == false then
+            --arnarth.pythonanywhere.com/save/
+
+            
+            --local respbody = {} -- for the response body
+            --local result = http.request("http://arnarth.pythonanywhere.com/save/"..name.."/"..score.."/".."lucifer")
+            --local result = http.request("http://arnarth.pythonanywhere.com/load/lucifer")
+
+            text = ""
+            enabled = love.keyboard.hasTextInput( )
+            print(enabled)    
+            love.keyboard.setTextInput(true)
+            enabled = love.keyboard.hasTextInput( )
+            print(enabled)
+
+            --local einn = string.gmatch(result,'"score":%s"(%d+)"')
+            --local tveir = string.gmatch(result,'"name":%s"(%a+)"')
+            --for w in einn do 
+            --    print(w)
+            --end
+            --for x in tveir do
+            --    print(x)
+            --end
+            --print(result)
+            --print(einn)
+            --print(tveir)
+            
+            postscore = true
+            end
+
+            
+
+            --love.graphics.setColor(255,255,255)
+            --love.graphics.printf(text, 400, 400, love.graphics.getWidth())
         end
     end
     
+end
+
+function love.keyreleased(key)
+    if key == "backspace" then
+        text = text:utf8sub(1,-2) 
+    end
+    if key == "return" then
+        --http.request("http://arnarth.pythonanywhere.com/save/"..text.."/"..scorecount.."/".."lucifer")
+        print(scorecount)
+        love.keyboard.setTextInput(false)
+    end
+    print(scorecount)
+end
+
+function love.textinput(t)
+    text = text .. t
+    print(text)
 end
 
 function endgame()
