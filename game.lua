@@ -32,24 +32,38 @@ local game = {}
 	    sidetiles = ourHero.findSide(map)
 	    bottomtiles = ourHero.findbottomTiles(map)
 	    
-	    north = love.graphics.newImage('gfx/lucifer_spritesheet_north.png')
-	    south = love.graphics.newImage('gfx/lucifer_spritesheet_south.png')
 	    
-	    local n = anim8.newGrid(354, 454, north:getWidth(), north:getHeight())
-	    local s = anim8.newGrid(354, 454, north:getWidth(), north:getHeight())
-  		--animation = anim8.newAnimation(g('1-3',1), 0.1)
-  		northBound = anim8.newAnimation(n('1-3',1), 0.1)
-  		southBound = anim8.newAnimation(s('1-3',2), 0.1)
+	    south = love.graphics.newImage('gfx/lucifer_spritesheet.png')
+	    north = love.graphics.newImage('gfx/lucifer_spritesheet_north.png')
+	    --southFlipped = love.graphics.newImage('gfx/lucifer_spritesheet_south_flipped.png')
+	    
+	    local grid = anim8.newGrid(354, 454, south:getWidth(), south:getHeight())
 
+	    animations = {
+	    	-- left and right refers to the gamer's perspective
+
+	  		northBoundForkL = anim8.newAnimation(grid(3,2, 4,2, 1,3), 0.1),
+	  		northBoundForkR = anim8.newAnimation(grid(1,1, 2,1, 3,1), 0.1),
+	  		northBoundSwipeL = anim8.newAnimation(grid(2,3, 3,3, 4,3), 0.1),
+	  		northBoundSwipeR = anim8.newAnimation(grid(4,1, 1,2, 2,2), 0.1),
+
+	  		southBoundForkL = anim8.newAnimation(grid(4,3, 3,3, 2,3), 0.1),
+	  		southBoundForkR = anim8.newAnimation(grid(4,1, 1,2, 2,2), 0.1),
+	  		southBoundSwipeL = anim8.newAnimation(grid(1,2, 4,2, 3,2), 0.1),
+	  		southBoundSwipeR = anim8.newAnimation(grid(3,1, 2,1, 1,1), 0.1)
+		}
+
+		
 
 	end
 
 	function game:enter()
 		print("game:enter")
-		
+		animation = animations.southBoundForkL
 	    reached_bottom = false
 	    slowdown = false
 	    swipeaction = false
+	    swipeToTheLeft = true
 		-- background
 	    --background.loadBackground()
 	    foreground.loadForeground()
@@ -118,13 +132,13 @@ local game = {}
             end           
         end
         --love.graphics.setColor(140,17,37)
-        love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200,0,0.25,0.25)
-        love.graphics.print("Speed: "..math.floor(speed),1050,180,0,0.25,0.25)
-        love.graphics.print("Slowdown Speed: "..math.floor(slowdownstart),1000,80,0,0.25,0.25)
-        love.graphics.print("Slowdownend speed: "..math.floor(slowdownend),1000,100,0,0.25,0.25)
-        love.graphics.print(math.floor(distance),1050,220,0,0.25,0.25)
+        -- love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200,0,0.25,0.25)
+        -- love.graphics.print("Speed: "..math.floor(speed),1050,180,0,0.25,0.25)
+        -- love.graphics.print("Slowdown Speed: "..math.floor(slowdownstart),1000,80,0,0.25,0.25)
+        -- love.graphics.print("Slowdownend speed: "..math.floor(slowdownend),1000,100,0,0.25,0.25)
+        -- love.graphics.print(math.floor(distance),1050,220,0,0.25,0.25)
         -- FPS meter and memory counter
-        love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 140,0,0.25,0.25)
+        --love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 140,0,0.25,0.25)
         
 	    cam:draw(drawCamera)
 
@@ -157,14 +171,14 @@ local game = {}
 
 	function game:update(dt)
 
-		northBound:update(dt)
-		southBound:update(dt)
+		animation:update(dt)
 
 	   	TEsound.cleanup()
 	    soundtimer = soundtimer + dt
 
 	    if love.keyboard.isDown("a") and swipeaction == false then
 	        swipeaction = true
+	        swipeToTheLeft = true
 	        swipe = ourHero.initSwipe(ourHero.heroxcoords()-50,ourHero.heroycoords())
 	        elapsedtime = 0
 	        TEsound.play(pitchFork)
@@ -179,6 +193,7 @@ local game = {}
 	    end
 	    if love.keyboard.isDown("d") and swipeaction == false then
 	        swipeaction = true
+	        swipeToTheLeft = false
 	        swipe = ourHero.initSwipe(ourHero.heroxcoords()+50,ourHero.heroycoords())
 	        elapsedtime = 0
 	        TEsound.play(pitchFork)
