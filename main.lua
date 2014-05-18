@@ -44,6 +44,7 @@ local sounds = require('sounds')
 
 love.keyboard.setTextInput(disable)
 love.window.setMode(1200, 800)
+--love.window.setFullscreen(true)
 
 function love.load()
 
@@ -148,7 +149,7 @@ function love.keyreleased(key)
         print(scorecount)
         love.keyboard.setTextInput(false)
     end
-    print(scorecount)
+    --print(scorecount)
 end
 
 function love.textinput(t)

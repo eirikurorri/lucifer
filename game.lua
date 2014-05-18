@@ -24,6 +24,7 @@ local game = {}
 	    cam = Camera(0,0)
 	    cam:cameraCoords(0,0)
 
+	    collider = HC(100, on_collide)
 		-- Collider stuff	
 	    ourHero.setupHero(400,-300, collider)
 
@@ -77,8 +78,11 @@ local game = {}
 	    -- speedometer, use for different speeds
 		speed = 200
 
-		--collider
-		ourHero.moveTo(400, -300)
+		--collider reset
+		ourHero.moveTo(400, 0)
+
+		--map = loader.load("derpmap.tmx")
+		--soulTiles = ourHero.findSoulObjects(map)
 
 		maxspeed = 800
 
