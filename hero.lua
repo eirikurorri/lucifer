@@ -20,6 +20,9 @@ local repeatDelay = 0.8 -- for swooshing sound
 local bouncetimer = 0
 local objectspeed = 0
 
+local souls = {}
+caughtSouls = {}
+
 function hero.setupHero(x,y,coll)
 	collider = coll
     ourHero = collider:addCircle(x,y,15) -- size of our hero
@@ -188,12 +191,14 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
    elseif shape_a == swipeobject and shape_b.type == "soul" then
         map.layers["souls"]["objects"][shape_b.key]["visible"] = false
         -- map.layers["soulTiles"]["objects"][shape_b.key]["visible"] = false
+        table.insert(caughtSouls, shape_b)
         collider:remove(shape_b)
         scorecounter()
         return
     elseif shape_b == swipeobject and shape_a.type == "soul" then
         map.layers["souls"]["objects"][shape_a.key]["visible"] = false
         --map.layers["soulTiles"]["objects"][shape_a.key]["visible"] = false
+        table.insert(caughtSouls, shape_a)
         collider:remove(shape_a)
         scorecounter()
         return
@@ -388,10 +393,33 @@ function hero.findSide(map)
     return collidable_tiles
 end
 
+function hero.reloadSoulObjects(map)
+    print('reloading Soul Objects...')
+    -- for i, obj in pairs(caughtSouls) do
+    --     print('inserting caughtSoul ', obj)
+        
+    --     --table.insert(souls, obj)
+    --     local collObject = collider:addRectangle(obj.x-88, obj.y+14, 32, 56) -- hard coded according to soul image tile size
+    --     collObject.type = "soul"
+    --     collObject.key = i
+    --     collObject.visible = true
+    --     collider:addToGroup("soul", collObject)
+    --     collider:setPassive(collObject)
+    --     table.insert(souls, collObject)
+    --     table.remove(caughtSouls, obj)
+    -- end
+
+    -- for i, obj in ipairs( map("souls").objects ) do
+    --     obj.visible = true
+    -- end
+end
+
 
 -- for the souls object layer
 function hero.findSoulObjects(map)
-    local souls = {}
+    --local souls = {}
+
+    print('finding Soul Objects...')
     
       for i, obj in ipairs( map("souls").objects ) do
         local collObject = collider:addRectangle(obj.x-88, obj.y+14, 32, 56) -- hard coded according to soul image tile size

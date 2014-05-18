@@ -27,10 +27,11 @@ local game = {}
 		-- Collider stuff	
 	    ourHero.setupHero(400,-300, collider)
 
-	    soulTiles = ourHero.findSoulObjects(map)
+	    
 	    toptiles = ourHero.findToptiles(map)
 	    sidetiles = ourHero.findSide(map)
 	    bottomtiles = ourHero.findbottomTiles(map)
+	    soulTiles = ourHero.findSoulObjects(map)
 	    
 	    
 	    south = love.graphics.newImage('gfx/lucifer_spritesheet.png')
@@ -67,6 +68,7 @@ local game = {}
 		-- background
 	    --background.loadBackground()
 	    foreground.loadForeground()
+	    ourHero.reloadSoulObjects(map)
 	    --distance monitor and goal
 	    distanceGoal = 41600
 	    distance = 0
@@ -93,6 +95,14 @@ local game = {}
 		swipeaction = false
 		soundtimer = 0	
 		stage = 1
+	end
+
+	function reloadSoulObjects()
+		-- for i, obj in pairs(soulTiles) do
+		-- 	if i.visible == true then
+		-- 		print("visible!")
+		-- 	end
+		-- end
 	end
 
 	function game:leave()
