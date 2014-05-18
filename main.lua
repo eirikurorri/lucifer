@@ -1,5 +1,5 @@
 --background layer loaded
-background = require "background"
+--background = require "background"
 require('TEsound')
 require('utf8')
 
@@ -55,12 +55,15 @@ function love.load()
     TEsound.playLooping(fire, 'hellfire', nil, fireVolume)
 
     -- load HardonCollider, set callback to on_collide and size of 100
-    collider = HC(100, on_collide)
+    --collider = HC(100, on_collide)
 
     Gamestate.registerEvents()
     Gamestate.switch(menu)
 end
 
+function love.draw()
+	
+end
 
 
 function on_collide(dt, shape_a, shape_b, mtv_x, mtv_y)

@@ -21,7 +21,7 @@ local bouncetimer = 0
 local objectspeed = 0
 
 local souls = {}
-caughtSouls = {}
+local caughtSouls = {}
 
 function hero.setupHero(x,y,coll)
 	collider = coll
@@ -183,24 +183,38 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
             --bouncetimer = love.timer.getTime()
         end
    elseif shape_a == ourHero and shape_b.type == "top" and reached_bottom == false then
-       Gamestate.switch(gameover)
+        TEsound.play(splat)
+        Gamestate.switch(gameover)
        return
    elseif shape_b == ourHero and shape_a.type == "top" and reached_bottom == false then
-       Gamestate.switch(gameover)
-       return
+        TEsound.play(splat)
+        Gamestate.switch(gameover)
+        return
    elseif shape_a == swipeobject and shape_b.type == "soul" then
         map.layers["souls"]["objects"][shape_b.key]["visible"] = false
-        -- map.layers["soulTiles"]["objects"][shape_b.key]["visible"] = false
+        -- local timer = 0
         table.insert(caughtSouls, shape_b)
         collider:remove(shape_b)
         scorecounter()
+        -- if timer <= 0.01 then
+        --     print(timer)
+        --     timer = timer+dt
+        -- else
+        --     map.layers["souls"]["objects"][shape_b.key]["visible"] = true
+        -- end
         return
     elseif shape_b == swipeobject and shape_a.type == "soul" then
         map.layers["souls"]["objects"][shape_a.key]["visible"] = false
-        --map.layers["soulTiles"]["objects"][shape_a.key]["visible"] = false
+        --local timer = 0
         table.insert(caughtSouls, shape_a)
         collider:remove(shape_a)
         scorecounter()
+        -- if timer <= 0.01 then
+        --     print(timer)
+        --     timer = timer+dt
+        -- else
+        --     map.layers["souls"]["objects"][shape_a.key]["visible"] = true
+        -- end      
         return
    else
        -- none of the two shapes is a tile, return to upper function
@@ -213,7 +227,7 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
 end
 
 function hero.draw()
-
+    map:draw()
 	--ourHero:draw('fill')
     collx, colly = ourHero:center()
     
@@ -395,23 +409,61 @@ end
 
 function hero.reloadSoulObjects(map)
     print('reloading Soul Objects...')
-    -- for i, obj in pairs(caughtSouls) do
-    --     print('inserting caughtSoul ', obj)
-        
-    --     --table.insert(souls, obj)
-    --     local collObject = collider:addRectangle(obj.x-88, obj.y+14, 32, 56) -- hard coded according to soul image tile size
-    --     collObject.type = "soul"
-    --     collObject.key = i
-    --     collObject.visible = true
-    --     collider:addToGroup("soul", collObject)
-    --     collider:setPassive(collObject)
-    --     table.insert(souls, collObject)
-    --     table.remove(caughtSouls, obj)
-    -- end
+    -- map.layers["souls"]["objects"][shape_b.key]["visible"] = false
 
-    -- for i, obj in ipairs( map("souls").objects ) do
+    -- pusha key numerinu a stack
+    -- nota key sem index a map
+    -- setja map.souls.index.visible sem true
+
+    -- eda bara luppa gegnum allt souls mappid og gera allt visible
+
+    -- for i, soul in pairs(map.layers["souls"]["objects"]) do
+    --     for property, value in pairs(soul) do
+    --         --print(property, ", ", value)
+    --         if property == "visible" then
+    --             if value == false then
+    --                 print(value)
+    --                 value = true
+    --                 print("put value to be true, like this: ", value)
+    --             end
+    --         end
+    --     end
+
+    for i, soul in pairs( map("souls").objects ) do
+        for property, value in pairs(soul) do
+            --print(property, ", ", value)
+            if property == "visible" then
+                if value == false then
+                    print(value)
+                    value = true
+                    print("put value to be true, like this: ", value)
+                end
+            end
+        end
+
+
+
+     for i, obj in pairs(caughtSouls) do
+    --     print('inserting caughtSoul ', obj)
+    --     for j, k in pairs(obj) do
+    --         print(j, ": ", k)
+    --     end
+    --     collider:addRectangle(obj.x-88, obj.y+14, 32, 56)
+    --     collider:addToGroup("soul", obj)
+    --     collider:setPassive(obj)
     --     obj.visible = true
-    -- end
+         table.insert(souls, obj)
+    end
+    --     -- --table.insert(souls, obj)
+    --     -- local collObject = collider:addRectangle(obj.x-88, obj.y+14, 32, 56) -- hard coded according to soul image tile size
+    --     -- collObject.type = "soul"
+    --     -- collObject.key = i
+    --     -- collObject.visible = true
+    --     -- collider:addToGroup("soul", collObject)
+    --     -- collider:setPassive(collObject)
+    --     -- table.insert(souls, collObject)
+    --     -- table.remove(caughtSouls, obj)
+    end
 end
 
 
@@ -427,6 +479,9 @@ function hero.findSoulObjects(map)
         collObject.type = "soul"
         collObject.key = i
         collObject.visible = true
+        for j, k in pairs(collObject) do
+           -- print(j, ": ", k)
+        end
         collider:addToGroup("soul", collObject)
         collider:setPassive(collObject)
         table.insert(souls, collObject)

@@ -4,7 +4,7 @@ local gameover = {}
 
 	function gameover:init()
 		gameoverImage = love.graphics.newImage('gfx/skulls-red-black-bonesq.jpeg')
-        TEsound.play(splat)
+        
         speed = 0
 		print('game over.init')
 	end

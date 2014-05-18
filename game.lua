@@ -2,42 +2,16 @@ local game = {}
 	
 	function game:init()
 		print('game:init')
-		map = loader.load("derpmap.tmx")
-		map:setDrawRange(0,0,960,41600)
-	    map.offsetX = 120
-	    
 
-	   -- uncomment below to show collision polygons
-	   -- map("top").color = {255,0,0}
-	   -- map("side").color = {0,255,0}
-	   -- map("bottom").color = {0,0,255}
-	   -- end display collision polygons
-
-		map("top").visible = false
-	    map("ledge").visible = false
-	    map("sides").visible = false
-	    map("top").visible = false
-	    map("side").visible = false
-	    map("bottom").visible = false
 
 	    camY = 0
 	    cam = Camera(0,0)
 	    cam:cameraCoords(0,0)
 
-	    collider = HC(100, on_collide)
-		-- Collider stuff	
-	    ourHero.setupHero(400,-300, collider)
-
-	    
-	    toptiles = ourHero.findToptiles(map)
-	    sidetiles = ourHero.findSide(map)
-	    bottomtiles = ourHero.findbottomTiles(map)
-	    soulTiles = ourHero.findSoulObjects(map)
-	    
+		foreground.loadForeground()	    
 	    
 	    south = love.graphics.newImage('gfx/lucifer_spritesheet.png')
 	    north = love.graphics.newImage('gfx/lucifer_spritesheet_north.png')
-	    --southFlipped = love.graphics.newImage('gfx/lucifer_spritesheet_south_flipped.png')
 	    
 	    local grid = anim8.newGrid(354, 454, south:getWidth(), south:getHeight())
 
@@ -61,6 +35,40 @@ local game = {}
 
 	function game:enter()
 		print("game:enter")
+
+		map = loader.load("derpmap.tmx")
+		map:setDrawRange(0,0,960,41600)
+	    map.offsetX = 120
+	    
+
+	   -- uncomment below to show collision polygons
+	   -- map("top").color = {255,0,0}
+	   -- map("side").color = {0,255,0}
+	   -- map("bottom").color = {0,0,255}
+	   -- end display collision polygons
+
+		map("top").visible = false
+	    map("ledge").visible = false
+	    map("sides").visible = false
+	    map("top").visible = false
+	    map("side").visible = false
+	    map("bottom").visible = false
+
+		collider = HC(100, on_collide)
+		-- Collider stuff	
+	    ourHero.setupHero(400,-300, collider)
+
+	    
+	    toptiles = ourHero.findToptiles(map)
+	    sidetiles = ourHero.findSide(map)
+	    bottomtiles = ourHero.findbottomTiles(map)
+	    
+	   	
+	    ourHero.reloadSoulObjects(map)
+		soulTiles = ourHero.findSoulObjects(map)
+
+		--map("souls").visible = true
+
 		animation = animations.southBoundForkL
 	    reached_bottom = false
 	    slowdown = false
@@ -68,8 +76,8 @@ local game = {}
 	    swipeToTheLeft = true
 		-- background
 	    --background.loadBackground()
-	    foreground.loadForeground()
-	    ourHero.reloadSoulObjects(map)
+	    
+
 	    --distance monitor and goal
 	    distanceGoal = 41600
 	    distance = 0
@@ -80,9 +88,6 @@ local game = {}
 
 		--collider reset
 		ourHero.moveTo(400, 0)
-
-		--map = loader.load("derpmap.tmx")
-		--soulTiles = ourHero.findSoulObjects(map)
 
 		maxspeed = 800
 
@@ -101,16 +106,9 @@ local game = {}
 		stage = 1
 	end
 
-	function reloadSoulObjects()
-		-- for i, obj in pairs(soulTiles) do
-		-- 	if i.visible == true then
-		-- 		print("visible!")
-		-- 	end
-		-- end
-	end
-
 	function game:leave()
 		print('game:leave')
+		--collider = nil
 	end
 
 	function game:draw()
@@ -154,7 +152,9 @@ local game = {}
         -- FPS meter and memory counter
         --love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 140,0,0.25,0.25)
         
+
 	    cam:draw(drawCamera)
+
 
 	    if ourHero.heroycoords() >= distanceGoal - 100 then
             if reached_bottom == false then
@@ -179,7 +179,7 @@ local game = {}
         	reversedY = distanceGoal - ourHero.heroycoords()
         	TEsound.volume("hellfire", reversedY/(distanceGoal/2))
         end
-        
+        map:draw()
         -- print(fireVolume)
 	end
 

@@ -1,0 +1,3473 @@
+menu.init
+menu:enter
+false
+true
+nil
+menu:leave
+game:init
+game:enter
+finding Soul Objects...
+reloading Soul Objects...
+layer	, 	table: 0x0ee01f00
+x	, 	98
+drawInfo	, 	table: 0x0edf6e48
+y	, 	1282
+properties	, 	table: 0x0edf6830
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	279
+drawInfo	, 	table: 0x0ede7338
+y	, 	2305
+properties	, 	table: 0x0edef6d8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	221
+drawInfo	, 	table: 0x0eddff70
+y	, 	2731
+properties	, 	table: 0x0ede3ed0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	487
+drawInfo	, 	table: 0x0edd80b0
+y	, 	2892
+properties	, 	table: 0x0eddc4f0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	331
+drawInfo	, 	table: 0x0e997380
+y	, 	3040
+properties	, 	table: 0x0edd8ce0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	355
+drawInfo	, 	table: 0x0e98bde8
+y	, 	2660
+properties	, 	table: 0x0e98f868
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	93
+drawInfo	, 	table: 0x0e9884a0
+y	, 	2482
+properties	, 	table: 0x10da5ea8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	263
+drawInfo	, 	table: 0x0e980ac0
+y	, 	440
+properties	, 	table: 0x0e9804a8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	599
+drawInfo	, 	table: 0x0e974dd8
+y	, 	647
+properties	, 	table: 0x0e97d040
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	311
+drawInfo	, 	table: 0x0e971970
+y	, 	878
+properties	, 	table: 0x0e971358
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	513
+drawInfo	, 	table: 0x0e965c88
+y	, 	1006
+properties	, 	table: 0x0e96db48
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	754
+drawInfo	, 	table: 0x0e95e2a8
+y	, 	966
+properties	, 	table: 0x0e962340
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	649
+drawInfo	, 	table: 0x0e956ee0
+y	, 	1102
+properties	, 	table: 0x0e95a960
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	159
+drawInfo	, 	table: 0x0e94eee8
+y	, 	1154
+properties	, 	table: 0x0e953598
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	790
+drawInfo	, 	table: 0x0e94b6d8
+y	, 	3063
+properties	, 	table: 0x0e94b0c0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	795
+drawInfo	, 	table: 0x0e943e30
+y	, 	3833
+properties	, 	table: 0x0e943818
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	615
+drawInfo	, 	table: 0x0e93c450
+y	, 	4323
+properties	, 	table: 0x0e93fed0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	815
+drawInfo	, 	table: 0x0e934458
+y	, 	3972
+properties	, 	table: 0x0e9384f0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	812
+drawInfo	, 	table: 0x0e930c48
+y	, 	4166
+properties	, 	table: 0x0e930630
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	786
+drawInfo	, 	table: 0x0e919d70
+y	, 	4418
+properties	, 	table: 0x0e91de08
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	696
+drawInfo	, 	table: 0x0e911d78
+y	, 	4641
+properties	, 	table: 0x0e9162f0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	103
+drawInfo	, 	table: 0x0e906f30
+y	, 	4933
+properties	, 	table: 0x0e906918
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	751
+drawInfo	, 	table: 0x0e8fef38
+y	, 	4992
+properties	, 	table: 0x0e902fd0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	740
+drawInfo	, 	table: 0x0f1ab020
+y	, 	6026
+properties	, 	table: 0x0f1aa8f8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	94
+drawInfo	, 	table: 0x0f1abfe0
+y	, 	6588
+properties	, 	table: 0x0f1abec8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	737
+drawInfo	, 	table: 0x0f1add20
+y	, 	7239
+properties	, 	table: 0x0f1adc08
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	662
+drawInfo	, 	table: 0x0f1ae040
+y	, 	7436
+properties	, 	table: 0x0f1adf50
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	621
+drawInfo	, 	table: 0x0e72ab08
+y	, 	7587
+properties	, 	table: 0x0f1ae270
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	575
+drawInfo	, 	table: 0x0e72b4e0
+y	, 	7786
+properties	, 	table: 0x0e72b198
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	552
+drawInfo	, 	table: 0x0e727ae8
+y	, 	7966
+properties	, 	table: 0x0e7277a0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	552
+drawInfo	, 	table: 0x0e7240f0
+y	, 	8114
+properties	, 	table: 0x0e723da8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	523
+drawInfo	, 	table: 0x0e7206f8
+y	, 	8287
+properties	, 	table: 0x0e724780
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	523
+drawInfo	, 	table: 0x0e7210d0
+y	, 	8424
+properties	, 	table: 0x0e720d88
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	534
+drawInfo	, 	table: 0x0e71d6d8
+y	, 	8551
+properties	, 	table: 0x0e71d390
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	566
+drawInfo	, 	table: 0x0e719ce0
+y	, 	8676
+properties	, 	table: 0x0e719998
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	583
+drawInfo	, 	table: 0x0e7162e8
+y	, 	8780
+properties	, 	table: 0x0e71a370
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	595
+drawInfo	, 	table: 0x0e716cc0
+y	, 	8933
+properties	, 	table: 0x0e716978
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	589
+drawInfo	, 	table: 0x0e7132c8
+y	, 	9156
+properties	, 	table: 0x0e712f80
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	514
+drawInfo	, 	table: 0x0e70f8d0
+y	, 	9350
+properties	, 	table: 0x0e70f588
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	436
+drawInfo	, 	table: 0x0e70be88
+y	, 	9524
+properties	, 	table: 0x0e70ff60
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	340
+drawInfo	, 	table: 0x0e70c860
+y	, 	9640
+properties	, 	table: 0x0e70c518
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	303
+drawInfo	, 	table: 0x0e708e68
+y	, 	10202
+properties	, 	table: 0x0e708b20
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	184
+drawInfo	, 	table: 0x0e705470
+y	, 	10338
+properties	, 	table: 0x0e705128
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	152
+drawInfo	, 	table: 0x0e701a78
+y	, 	10480
+properties	, 	table: 0x0e705b00
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	97
+drawInfo	, 	table: 0x0e702450
+y	, 	10651
+properties	, 	table: 0x0e702108
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	713
+drawInfo	, 	table: 0x0e6f0f98
+y	, 	11600
+properties	, 	table: 0x0e6f0c50
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	719
+drawInfo	, 	table: 0x0e6ed5a0
+y	, 	11783
+properties	, 	table: 0x0e6ed258
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	599
+drawInfo	, 	table: 0x0e6e9ba8
+y	, 	11878
+properties	, 	table: 0x0e6edc30
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	473
+drawInfo	, 	table: 0x0e6ea580
+y	, 	11407
+properties	, 	table: 0x0e6ea238
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	748
+drawInfo	, 	table: 0x0e6e6b88
+y	, 	10777
+properties	, 	table: 0x0e6e6840
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	166
+drawInfo	, 	table: 0x0e6e3190
+y	, 	12791
+properties	, 	table: 0x0e6e2e48
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	612
+drawInfo	, 	table: 0x0e6df798
+y	, 	12797
+properties	, 	table: 0x0e6e3820
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	546
+drawInfo	, 	table: 0x0e6e0170
+y	, 	13749
+properties	, 	table: 0x0e6dfe28
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	523
+drawInfo	, 	table: 0x0e6dc778
+y	, 	14059
+properties	, 	table: 0x0e6dc430
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	502
+drawInfo	, 	table: 0x0e6d8d80
+y	, 	14783
+properties	, 	table: 0x0e6d8a38
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	135
+drawInfo	, 	table: 0x0e6d5388
+y	, 	14966
+properties	, 	table: 0x0e6d9410
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	737
+drawInfo	, 	table: 0x0e6d5d60
+y	, 	15357
+properties	, 	table: 0x0e6d5a18
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	667
+drawInfo	, 	table: 0x0e6d2368
+y	, 	15965
+properties	, 	table: 0x0e6d2020
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	184
+drawInfo	, 	table: 0x0e6ce970
+y	, 	16553
+properties	, 	table: 0x0e6ce628
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	523
+drawInfo	, 	table: 0x0e6caf78
+y	, 	17358
+properties	, 	table: 0x0e6cf000
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	181
+drawInfo	, 	table: 0x0e6cb950
+y	, 	17784
+properties	, 	table: 0x0e6cb608
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	363
+drawInfo	, 	table: 0x0e6c7f58
+y	, 	18044
+properties	, 	table: 0x0e6c7c10
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	491
+drawInfo	, 	table: 0x0e6c4218
+y	, 	18441
+properties	, 	table: 0x0784e460
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	372
+drawInfo	, 	table: 0x0e6c4bf0
+y	, 	18812
+properties	, 	table: 0x0e6c48a8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	178
+drawInfo	, 	table: 0x0e6c11f8
+y	, 	19249
+properties	, 	table: 0x0e6c0eb0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	818
+drawInfo	, 	table: 0x0e6bd800
+y	, 	19379
+properties	, 	table: 0x0e6bd4b8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	776
+drawInfo	, 	table: 0x0e6b9e08
+y	, 	19916
+properties	, 	table: 0x0e6bde90
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	111
+drawInfo	, 	table: 0x0e6ba7e0
+y	, 	20541
+properties	, 	table: 0x0e6ba498
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	346
+drawInfo	, 	table: 0x0e6b6de8
+y	, 	21146
+properties	, 	table: 0x0e6b6aa0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	175
+drawInfo	, 	table: 0x0e6b33f0
+y	, 	21583
+properties	, 	table: 0x0e6b30a8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	818
+drawInfo	, 	table: 0x0e6af9f8
+y	, 	22956
+properties	, 	table: 0x0e6b3a80
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	581
+drawInfo	, 	table: 0x0e6b03d0
+y	, 	22733
+properties	, 	table: 0x0e6b0088
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	801
+drawInfo	, 	table: 0x0e6a9328
+y	, 	24140
+properties	, 	table: 0x0e6a8fe0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	221
+drawInfo	, 	table: 0x0e6a5930
+y	, 	25574
+properties	, 	table: 0x0e6a55e8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	233
+drawInfo	, 	table: 0x0e6a1f38
+y	, 	25846
+properties	, 	table: 0x0e6a5fc0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	395
+drawInfo	, 	table: 0x0e6a2910
+y	, 	27390
+properties	, 	table: 0x0e6a25c8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	190
+drawInfo	, 	table: 0x0e69ef18
+y	, 	27028
+properties	, 	table: 0x0e69ebd0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	795
+drawInfo	, 	table: 0x0e69b520
+y	, 	26686
+properties	, 	table: 0x0e69b1d8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	407
+drawInfo	, 	table: 0x0e697b28
+y	, 	26275
+properties	, 	table: 0x0e69bbb0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	158
+drawInfo	, 	table: 0x0e698500
+y	, 	26457
+properties	, 	table: 0x0e6981b8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	679
+drawInfo	, 	table: 0x0e694b08
+y	, 	28198
+properties	, 	table: 0x0e6947c0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	381
+drawInfo	, 	table: 0x0e691110
+y	, 	28655
+properties	, 	table: 0x0e690dc8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	164
+drawInfo	, 	table: 0x0e68d718
+y	, 	28351
+properties	, 	table: 0x0e6917a0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	146
+drawInfo	, 	table: 0x0e68e0f0
+y	, 	29194
+properties	, 	table: 0x0e68dda8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	641
+drawInfo	, 	table: 0x0e68a6f8
+y	, 	30095
+properties	, 	table: 0x0e68a3b0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	676
+drawInfo	, 	table: 0x0e686d00
+y	, 	29930
+properties	, 	table: 0x0e6869b8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	430
+drawInfo	, 	table: 0x0e683308
+y	, 	30222
+properties	, 	table: 0x0e687390
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	143
+drawInfo	, 	table: 0x0e683ce0
+y	, 	30810
+properties	, 	table: 0x0e683998
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	835
+drawInfo	, 	table: 0x0e6802e8
+y	, 	31490
+properties	, 	table: 0x0e67ffa0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	329
+drawInfo	, 	table: 0x0e67c8f0
+y	, 	31624
+properties	, 	table: 0x0e67c5a8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	80
+drawInfo	, 	table: 0x0e637eb0
+y	, 	31803
+properties	, 	table: 0x0e67cf80
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	644
+drawInfo	, 	table: 0x0e6798d0
+y	, 	31800
+properties	, 	table: 0x0e679588
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	662
+drawInfo	, 	table: 0x0e634e90
+y	, 	31097
+properties	, 	table: 0x0e634b48
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	401
+drawInfo	, 	table: 0x0e631498
+y	, 	30677
+properties	, 	table: 0x0e631150
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	135
+drawInfo	, 	table: 0x0e62daa0
+y	, 	30274
+properties	, 	table: 0x0e631b28
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	337
+drawInfo	, 	table: 0x0e62e478
+y	, 	33080
+properties	, 	table: 0x0e62e130
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	744
+drawInfo	, 	table: 0x0e62aa80
+y	, 	32551
+properties	, 	table: 0x0e62a738
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	587
+drawInfo	, 	table: 0x0e627088
+y	, 	32921
+properties	, 	table: 0x0e626d40
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	138
+drawInfo	, 	table: 0x0e623680
+y	, 	33284
+properties	, 	table: 0x0e627718
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	292
+drawInfo	, 	table: 0x0e624068
+y	, 	33509
+properties	, 	table: 0x0e623d20
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	491
+drawInfo	, 	table: 0x0e620660
+y	, 	33661
+properties	, 	table: 0x0e620318
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	736
+drawInfo	, 	table: 0x0e61cc68
+y	, 	33932
+properties	, 	table: 0x0e61c920
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	761
+drawInfo	, 	table: 0x0e619270
+y	, 	34438
+properties	, 	table: 0x0e61d2f8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	751
+drawInfo	, 	table: 0x0e619c48
+y	, 	34210
+properties	, 	table: 0x0e619900
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	121
+drawInfo	, 	table: 0x0e616250
+y	, 	34354
+properties	, 	table: 0x0e615f08
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	207
+drawInfo	, 	table: 0x0e612858
+y	, 	34639
+properties	, 	table: 0x0e612510
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	483
+drawInfo	, 	table: 0x0e60ee60
+y	, 	34883
+properties	, 	table: 0x0e612ee8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	647
+drawInfo	, 	table: 0x0e60f838
+y	, 	35235
+properties	, 	table: 0x0e60f4f0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	399
+drawInfo	, 	table: 0x0e60be40
+y	, 	36509
+properties	, 	table: 0x0e60baf8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	528
+drawInfo	, 	table: 0x0e608448
+y	, 	36596
+properties	, 	table: 0x0e608100
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	717
+drawInfo	, 	table: 0x0e604a50
+y	, 	36733
+properties	, 	table: 0x0e608ad8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	791
+drawInfo	, 	table: 0x0e605428
+y	, 	36894
+properties	, 	table: 0x0e6050e0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	719
+drawInfo	, 	table: 0x0e601a30
+y	, 	37088
+properties	, 	table: 0x0e6016e8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	615
+drawInfo	, 	table: 0x0e5fe038
+y	, 	37252
+properties	, 	table: 0x0e5fdcf0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	533
+drawInfo	, 	table: 0x0e5fa640
+y	, 	37473
+properties	, 	table: 0x0e5fe6c8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	478
+drawInfo	, 	table: 0x0e5fb018
+y	, 	37681
+properties	, 	table: 0x0e5facd0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	466
+drawInfo	, 	table: 0x0e5f7620
+y	, 	37818
+properties	, 	table: 0x0e5f72d8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	463
+drawInfo	, 	table: 0x0e5f3c28
+y	, 	37937
+properties	, 	table: 0x0e5f38e0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	476
+drawInfo	, 	table: 0x0e5f0230
+y	, 	38071
+properties	, 	table: 0x0e5f42b8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	573
+drawInfo	, 	table: 0x0e5f0c08
+y	, 	38188
+properties	, 	table: 0x0e5f08c0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	587
+drawInfo	, 	table: 0x0e5ed210
+y	, 	38344
+properties	, 	table: 0x0e5ecec8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	635
+drawInfo	, 	table: 0x0e5e9818
+y	, 	38461
+properties	, 	table: 0x0e5e94d0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	682
+drawInfo	, 	table: 0x0e5e5e20
+y	, 	38675
+properties	, 	table: 0x0e5e9ea8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	652
+drawInfo	, 	table: 0x0e5e67f8
+y	, 	38563
+properties	, 	table: 0x0e5e64b0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	702
+drawInfo	, 	table: 0x0e5e2e00
+y	, 	38836
+properties	, 	table: 0x0e5e2ab8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	677
+drawInfo	, 	table: 0x0e5df408
+y	, 	38983
+properties	, 	table: 0x0e5df0c0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	620
+drawInfo	, 	table: 0x0e5dba10
+y	, 	39117
+properties	, 	table: 0x0e5dfa98
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	585
+drawInfo	, 	table: 0x0e5dc3e8
+y	, 	39199
+properties	, 	table: 0x0e5dc0a0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	543
+drawInfo	, 	table: 0x0e5d89f0
+y	, 	39266
+properties	, 	table: 0x0e5d86a8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	505
+drawInfo	, 	table: 0x0e5d4ff8
+y	, 	39372
+properties	, 	table: 0x0e5d4cb0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	545
+drawInfo	, 	table: 0x0e5d1600
+y	, 	39469
+properties	, 	table: 0x0e5d5688
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	610
+drawInfo	, 	table: 0x0e5d1fd8
+y	, 	39618
+properties	, 	table: 0x0e5d1c90
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	659
+drawInfo	, 	table: 0x0e5ce5e0
+y	, 	39765
+properties	, 	table: 0x0e5ce298
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	682
+drawInfo	, 	table: 0x0e5cabe8
+y	, 	39894
+properties	, 	table: 0x0e5ca8a0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	669
+drawInfo	, 	table: 0x0e5c71f0
+y	, 	40006
+properties	, 	table: 0x0e5cb278
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	289
+drawInfo	, 	table: 0x0e5c7bc8
+y	, 	39281
+properties	, 	table: 0x0e5c7880
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	617
+drawInfo	, 	table: 0x0e5c41d0
+y	, 	40117
+properties	, 	table: 0x0e5c3e88
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	491
+drawInfo	, 	table: 0x0e5c07d8
+y	, 	40207
+properties	, 	table: 0x0e5c0490
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	352
+drawInfo	, 	table: 0x0e5bcde0
+y	, 	40326
+properties	, 	table: 0x0e5c0e68
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	220
+drawInfo	, 	table: 0x0e5bd7b8
+y	, 	40577
+properties	, 	table: 0x0e5bd470
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	245
+drawInfo	, 	table: 0x0e5b9dc0
+y	, 	40795
+properties	, 	table: 0x0e5b9a78
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	347
+drawInfo	, 	table: 0x0e5b63c8
+y	, 	41044
+properties	, 	table: 0x0e5b6080
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	553
+drawInfo	, 	table: 0x0e5b29d0
+y	, 	41136
+properties	, 	table: 0x0e5b6a58
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	744
+drawInfo	, 	table: 0x0e5b33a8
+y	, 	41158
+properties	, 	table: 0x0e5b3060
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	736
+drawInfo	, 	table: 0x0e5af9b0
+y	, 	41337
+properties	, 	table: 0x0e5af668
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	612
+drawInfo	, 	table: 0x0e5abfb8
+y	, 	41436
+properties	, 	table: 0x0e5abc70
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	414
+drawInfo	, 	table: 0x0e5a85c0
+y	, 	41431
+properties	, 	table: 0x0e5ac648
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	235
+drawInfo	, 	table: 0x0e5a8f98
+y	, 	41277
+properties	, 	table: 0x0e5a8c50
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	158
+drawInfo	, 	table: 0x0e5a55a0
+y	, 	41078
+properties	, 	table: 0x0e5a5258
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	272
+drawInfo	, 	table: 0x0e5a1ba8
+y	, 	40443
+properties	, 	table: 0x0e5a1860
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	756
+drawInfo	, 	table: 0x0e59e1b0
+y	, 	36330
+properties	, 	table: 0x0e5a2238
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	294
+drawInfo	, 	table: 0x0e59eb88
+y	, 	37003
+properties	, 	table: 0x0e59e840
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	230
+drawInfo	, 	table: 0x0e59b190
+y	, 	9776
+properties	, 	table: 0x0e59ae48
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	606
+drawInfo	, 	table: 0x0e597798
+y	, 	22304
+properties	, 	table: 0x0e597450
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	623
+drawInfo	, 	table: 0x0e593da0
+y	, 	22410
+properties	, 	table: 0x0e597e28
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	619
+drawInfo	, 	table: 0x0e594778
+y	, 	22530
+properties	, 	table: 0x0e594430
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	596
+drawInfo	, 	table: 0x0e590d80
+y	, 	22636
+properties	, 	table: 0x0e590a38
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+game:leave
+game over.init
+gameover:enter
+3
+pressed enter from gameover state
+gameover:leave
+game:enter
+finding Soul Objects...
+reloading Soul Objects...
+layer	, 	table: 0x0ee01f00
+x	, 	98
+drawInfo	, 	table: 0x0edf6e48
+y	, 	1282
+properties	, 	table: 0x0edf6830
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	279
+drawInfo	, 	table: 0x0ede7338
+y	, 	2305
+properties	, 	table: 0x0edef6d8
+visible	, 	false
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	221
+drawInfo	, 	table: 0x0eddff70
+y	, 	2731
+properties	, 	table: 0x0ede3ed0
+visible	, 	false
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	487
+drawInfo	, 	table: 0x0edd80b0
+y	, 	2892
+properties	, 	table: 0x0eddc4f0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	331
+drawInfo	, 	table: 0x0e997380
+y	, 	3040
+properties	, 	table: 0x0edd8ce0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	355
+drawInfo	, 	table: 0x0e98bde8
+y	, 	2660
+properties	, 	table: 0x0e98f868
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	93
+drawInfo	, 	table: 0x0e9884a0
+y	, 	2482
+properties	, 	table: 0x10da5ea8
+visible	, 	false
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	263
+drawInfo	, 	table: 0x0e980ac0
+y	, 	440
+properties	, 	table: 0x0e9804a8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	599
+drawInfo	, 	table: 0x0e974dd8
+y	, 	647
+properties	, 	table: 0x0e97d040
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	311
+drawInfo	, 	table: 0x0e971970
+y	, 	878
+properties	, 	table: 0x0e971358
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	513
+drawInfo	, 	table: 0x0e965c88
+y	, 	1006
+properties	, 	table: 0x0e96db48
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	754
+drawInfo	, 	table: 0x0e95e2a8
+y	, 	966
+properties	, 	table: 0x0e962340
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	649
+drawInfo	, 	table: 0x0e956ee0
+y	, 	1102
+properties	, 	table: 0x0e95a960
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	159
+drawInfo	, 	table: 0x0e94eee8
+y	, 	1154
+properties	, 	table: 0x0e953598
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	790
+drawInfo	, 	table: 0x0e94b6d8
+y	, 	3063
+properties	, 	table: 0x0e94b0c0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	795
+drawInfo	, 	table: 0x0e943e30
+y	, 	3833
+properties	, 	table: 0x0e943818
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	615
+drawInfo	, 	table: 0x0e93c450
+y	, 	4323
+properties	, 	table: 0x0e93fed0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	815
+drawInfo	, 	table: 0x0e934458
+y	, 	3972
+properties	, 	table: 0x0e9384f0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	812
+drawInfo	, 	table: 0x0e930c48
+y	, 	4166
+properties	, 	table: 0x0e930630
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	786
+drawInfo	, 	table: 0x0e919d70
+y	, 	4418
+properties	, 	table: 0x0e91de08
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	696
+drawInfo	, 	table: 0x0e911d78
+y	, 	4641
+properties	, 	table: 0x0e9162f0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	103
+drawInfo	, 	table: 0x0e906f30
+y	, 	4933
+properties	, 	table: 0x0e906918
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	751
+drawInfo	, 	table: 0x0e8fef38
+y	, 	4992
+properties	, 	table: 0x0e902fd0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	740
+drawInfo	, 	table: 0x0f1ab020
+y	, 	6026
+properties	, 	table: 0x0f1aa8f8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	94
+drawInfo	, 	table: 0x0f1abfe0
+y	, 	6588
+properties	, 	table: 0x0f1abec8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	737
+drawInfo	, 	table: 0x0f1add20
+y	, 	7239
+properties	, 	table: 0x0f1adc08
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	662
+drawInfo	, 	table: 0x0f1ae040
+y	, 	7436
+properties	, 	table: 0x0f1adf50
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	621
+drawInfo	, 	table: 0x0e72ab08
+y	, 	7587
+properties	, 	table: 0x0f1ae270
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	575
+drawInfo	, 	table: 0x0e72b4e0
+y	, 	7786
+properties	, 	table: 0x0e72b198
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	552
+drawInfo	, 	table: 0x0e727ae8
+y	, 	7966
+properties	, 	table: 0x0e7277a0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	552
+drawInfo	, 	table: 0x0e7240f0
+y	, 	8114
+properties	, 	table: 0x0e723da8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	523
+drawInfo	, 	table: 0x0e7206f8
+y	, 	8287
+properties	, 	table: 0x0e724780
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	523
+drawInfo	, 	table: 0x0e7210d0
+y	, 	8424
+properties	, 	table: 0x0e720d88
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	534
+drawInfo	, 	table: 0x0e71d6d8
+y	, 	8551
+properties	, 	table: 0x0e71d390
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	566
+drawInfo	, 	table: 0x0e719ce0
+y	, 	8676
+properties	, 	table: 0x0e719998
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	583
+drawInfo	, 	table: 0x0e7162e8
+y	, 	8780
+properties	, 	table: 0x0e71a370
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	595
+drawInfo	, 	table: 0x0e716cc0
+y	, 	8933
+properties	, 	table: 0x0e716978
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	589
+drawInfo	, 	table: 0x0e7132c8
+y	, 	9156
+properties	, 	table: 0x0e712f80
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	514
+drawInfo	, 	table: 0x0e70f8d0
+y	, 	9350
+properties	, 	table: 0x0e70f588
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	436
+drawInfo	, 	table: 0x0e70be88
+y	, 	9524
+properties	, 	table: 0x0e70ff60
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	340
+drawInfo	, 	table: 0x0e70c860
+y	, 	9640
+properties	, 	table: 0x0e70c518
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	303
+drawInfo	, 	table: 0x0e708e68
+y	, 	10202
+properties	, 	table: 0x0e708b20
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	184
+drawInfo	, 	table: 0x0e705470
+y	, 	10338
+properties	, 	table: 0x0e705128
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	152
+drawInfo	, 	table: 0x0e701a78
+y	, 	10480
+properties	, 	table: 0x0e705b00
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	97
+drawInfo	, 	table: 0x0e702450
+y	, 	10651
+properties	, 	table: 0x0e702108
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	713
+drawInfo	, 	table: 0x0e6f0f98
+y	, 	11600
+properties	, 	table: 0x0e6f0c50
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	719
+drawInfo	, 	table: 0x0e6ed5a0
+y	, 	11783
+properties	, 	table: 0x0e6ed258
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	599
+drawInfo	, 	table: 0x0e6e9ba8
+y	, 	11878
+properties	, 	table: 0x0e6edc30
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	473
+drawInfo	, 	table: 0x0e6ea580
+y	, 	11407
+properties	, 	table: 0x0e6ea238
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	748
+drawInfo	, 	table: 0x0e6e6b88
+y	, 	10777
+properties	, 	table: 0x0e6e6840
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	166
+drawInfo	, 	table: 0x0e6e3190
+y	, 	12791
+properties	, 	table: 0x0e6e2e48
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	612
+drawInfo	, 	table: 0x0e6df798
+y	, 	12797
+properties	, 	table: 0x0e6e3820
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	546
+drawInfo	, 	table: 0x0e6e0170
+y	, 	13749
+properties	, 	table: 0x0e6dfe28
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	523
+drawInfo	, 	table: 0x0e6dc778
+y	, 	14059
+properties	, 	table: 0x0e6dc430
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	502
+drawInfo	, 	table: 0x0e6d8d80
+y	, 	14783
+properties	, 	table: 0x0e6d8a38
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	135
+drawInfo	, 	table: 0x0e6d5388
+y	, 	14966
+properties	, 	table: 0x0e6d9410
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	737
+drawInfo	, 	table: 0x0e6d5d60
+y	, 	15357
+properties	, 	table: 0x0e6d5a18
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	667
+drawInfo	, 	table: 0x0e6d2368
+y	, 	15965
+properties	, 	table: 0x0e6d2020
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	184
+drawInfo	, 	table: 0x0e6ce970
+y	, 	16553
+properties	, 	table: 0x0e6ce628
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	523
+drawInfo	, 	table: 0x0e6caf78
+y	, 	17358
+properties	, 	table: 0x0e6cf000
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	181
+drawInfo	, 	table: 0x0e6cb950
+y	, 	17784
+properties	, 	table: 0x0e6cb608
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	363
+drawInfo	, 	table: 0x0e6c7f58
+y	, 	18044
+properties	, 	table: 0x0e6c7c10
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	491
+drawInfo	, 	table: 0x0e6c4218
+y	, 	18441
+properties	, 	table: 0x0784e460
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	372
+drawInfo	, 	table: 0x0e6c4bf0
+y	, 	18812
+properties	, 	table: 0x0e6c48a8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	178
+drawInfo	, 	table: 0x0e6c11f8
+y	, 	19249
+properties	, 	table: 0x0e6c0eb0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	818
+drawInfo	, 	table: 0x0e6bd800
+y	, 	19379
+properties	, 	table: 0x0e6bd4b8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	776
+drawInfo	, 	table: 0x0e6b9e08
+y	, 	19916
+properties	, 	table: 0x0e6bde90
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	111
+drawInfo	, 	table: 0x0e6ba7e0
+y	, 	20541
+properties	, 	table: 0x0e6ba498
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	346
+drawInfo	, 	table: 0x0e6b6de8
+y	, 	21146
+properties	, 	table: 0x0e6b6aa0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	175
+drawInfo	, 	table: 0x0e6b33f0
+y	, 	21583
+properties	, 	table: 0x0e6b30a8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	818
+drawInfo	, 	table: 0x0e6af9f8
+y	, 	22956
+properties	, 	table: 0x0e6b3a80
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	581
+drawInfo	, 	table: 0x0e6b03d0
+y	, 	22733
+properties	, 	table: 0x0e6b0088
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	801
+drawInfo	, 	table: 0x0e6a9328
+y	, 	24140
+properties	, 	table: 0x0e6a8fe0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	221
+drawInfo	, 	table: 0x0e6a5930
+y	, 	25574
+properties	, 	table: 0x0e6a55e8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	233
+drawInfo	, 	table: 0x0e6a1f38
+y	, 	25846
+properties	, 	table: 0x0e6a5fc0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	395
+drawInfo	, 	table: 0x0e6a2910
+y	, 	27390
+properties	, 	table: 0x0e6a25c8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	190
+drawInfo	, 	table: 0x0e69ef18
+y	, 	27028
+properties	, 	table: 0x0e69ebd0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	795
+drawInfo	, 	table: 0x0e69b520
+y	, 	26686
+properties	, 	table: 0x0e69b1d8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	407
+drawInfo	, 	table: 0x0e697b28
+y	, 	26275
+properties	, 	table: 0x0e69bbb0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	158
+drawInfo	, 	table: 0x0e698500
+y	, 	26457
+properties	, 	table: 0x0e6981b8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	679
+drawInfo	, 	table: 0x0e694b08
+y	, 	28198
+properties	, 	table: 0x0e6947c0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	381
+drawInfo	, 	table: 0x0e691110
+y	, 	28655
+properties	, 	table: 0x0e690dc8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	164
+drawInfo	, 	table: 0x0e68d718
+y	, 	28351
+properties	, 	table: 0x0e6917a0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	146
+drawInfo	, 	table: 0x0e68e0f0
+y	, 	29194
+properties	, 	table: 0x0e68dda8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	641
+drawInfo	, 	table: 0x0e68a6f8
+y	, 	30095
+properties	, 	table: 0x0e68a3b0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	676
+drawInfo	, 	table: 0x0e686d00
+y	, 	29930
+properties	, 	table: 0x0e6869b8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	430
+drawInfo	, 	table: 0x0e683308
+y	, 	30222
+properties	, 	table: 0x0e687390
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	143
+drawInfo	, 	table: 0x0e683ce0
+y	, 	30810
+properties	, 	table: 0x0e683998
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	835
+drawInfo	, 	table: 0x0e6802e8
+y	, 	31490
+properties	, 	table: 0x0e67ffa0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	329
+drawInfo	, 	table: 0x0e67c8f0
+y	, 	31624
+properties	, 	table: 0x0e67c5a8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	80
+drawInfo	, 	table: 0x0e637eb0
+y	, 	31803
+properties	, 	table: 0x0e67cf80
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	644
+drawInfo	, 	table: 0x0e6798d0
+y	, 	31800
+properties	, 	table: 0x0e679588
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	662
+drawInfo	, 	table: 0x0e634e90
+y	, 	31097
+properties	, 	table: 0x0e634b48
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	401
+drawInfo	, 	table: 0x0e631498
+y	, 	30677
+properties	, 	table: 0x0e631150
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	135
+drawInfo	, 	table: 0x0e62daa0
+y	, 	30274
+properties	, 	table: 0x0e631b28
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	337
+drawInfo	, 	table: 0x0e62e478
+y	, 	33080
+properties	, 	table: 0x0e62e130
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	744
+drawInfo	, 	table: 0x0e62aa80
+y	, 	32551
+properties	, 	table: 0x0e62a738
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	587
+drawInfo	, 	table: 0x0e627088
+y	, 	32921
+properties	, 	table: 0x0e626d40
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	138
+drawInfo	, 	table: 0x0e623680
+y	, 	33284
+properties	, 	table: 0x0e627718
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	292
+drawInfo	, 	table: 0x0e624068
+y	, 	33509
+properties	, 	table: 0x0e623d20
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	491
+drawInfo	, 	table: 0x0e620660
+y	, 	33661
+properties	, 	table: 0x0e620318
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	736
+drawInfo	, 	table: 0x0e61cc68
+y	, 	33932
+properties	, 	table: 0x0e61c920
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	761
+drawInfo	, 	table: 0x0e619270
+y	, 	34438
+properties	, 	table: 0x0e61d2f8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	751
+drawInfo	, 	table: 0x0e619c48
+y	, 	34210
+properties	, 	table: 0x0e619900
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	121
+drawInfo	, 	table: 0x0e616250
+y	, 	34354
+properties	, 	table: 0x0e615f08
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	207
+drawInfo	, 	table: 0x0e612858
+y	, 	34639
+properties	, 	table: 0x0e612510
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	483
+drawInfo	, 	table: 0x0e60ee60
+y	, 	34883
+properties	, 	table: 0x0e612ee8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	647
+drawInfo	, 	table: 0x0e60f838
+y	, 	35235
+properties	, 	table: 0x0e60f4f0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	399
+drawInfo	, 	table: 0x0e60be40
+y	, 	36509
+properties	, 	table: 0x0e60baf8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	528
+drawInfo	, 	table: 0x0e608448
+y	, 	36596
+properties	, 	table: 0x0e608100
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	717
+drawInfo	, 	table: 0x0e604a50
+y	, 	36733
+properties	, 	table: 0x0e608ad8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	791
+drawInfo	, 	table: 0x0e605428
+y	, 	36894
+properties	, 	table: 0x0e6050e0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	719
+drawInfo	, 	table: 0x0e601a30
+y	, 	37088
+properties	, 	table: 0x0e6016e8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	615
+drawInfo	, 	table: 0x0e5fe038
+y	, 	37252
+properties	, 	table: 0x0e5fdcf0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	533
+drawInfo	, 	table: 0x0e5fa640
+y	, 	37473
+properties	, 	table: 0x0e5fe6c8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	478
+drawInfo	, 	table: 0x0e5fb018
+y	, 	37681
+properties	, 	table: 0x0e5facd0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	466
+drawInfo	, 	table: 0x0e5f7620
+y	, 	37818
+properties	, 	table: 0x0e5f72d8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	463
+drawInfo	, 	table: 0x0e5f3c28
+y	, 	37937
+properties	, 	table: 0x0e5f38e0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	476
+drawInfo	, 	table: 0x0e5f0230
+y	, 	38071
+properties	, 	table: 0x0e5f42b8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	573
+drawInfo	, 	table: 0x0e5f0c08
+y	, 	38188
+properties	, 	table: 0x0e5f08c0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	587
+drawInfo	, 	table: 0x0e5ed210
+y	, 	38344
+properties	, 	table: 0x0e5ecec8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	635
+drawInfo	, 	table: 0x0e5e9818
+y	, 	38461
+properties	, 	table: 0x0e5e94d0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	682
+drawInfo	, 	table: 0x0e5e5e20
+y	, 	38675
+properties	, 	table: 0x0e5e9ea8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	652
+drawInfo	, 	table: 0x0e5e67f8
+y	, 	38563
+properties	, 	table: 0x0e5e64b0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	702
+drawInfo	, 	table: 0x0e5e2e00
+y	, 	38836
+properties	, 	table: 0x0e5e2ab8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	677
+drawInfo	, 	table: 0x0e5df408
+y	, 	38983
+properties	, 	table: 0x0e5df0c0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	620
+drawInfo	, 	table: 0x0e5dba10
+y	, 	39117
+properties	, 	table: 0x0e5dfa98
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	585
+drawInfo	, 	table: 0x0e5dc3e8
+y	, 	39199
+properties	, 	table: 0x0e5dc0a0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	543
+drawInfo	, 	table: 0x0e5d89f0
+y	, 	39266
+properties	, 	table: 0x0e5d86a8
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	505
+drawInfo	, 	table: 0x0e5d4ff8
+y	, 	39372
+properties	, 	table: 0x0e5d4cb0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	545
+drawInfo	, 	table: 0x0e5d1600
+y	, 	39469
+properties	, 	table: 0x0e5d5688
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	610
+drawInfo	, 	table: 0x0e5d1fd8
+y	, 	39618
+properties	, 	table: 0x0e5d1c90
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	659
+drawInfo	, 	table: 0x0e5ce5e0
+y	, 	39765
+properties	, 	table: 0x0e5ce298
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	682
+drawInfo	, 	table: 0x0e5cabe8
+y	, 	39894
+properties	, 	table: 0x0e5ca8a0
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	669
+drawInfo	, 	table: 0x0e5c71f0
+y	, 	40006
+properties	, 	table: 0x0e5cb278
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	289
+drawInfo	, 	table: 0x0e5c7bc8
+y	, 	39281
+properties	, 	table: 0x0e5c7880
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	617
+drawInfo	, 	table: 0x0e5c41d0
+y	, 	40117
+properties	, 	table: 0x0e5c3e88
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	491
+drawInfo	, 	table: 0x0e5c07d8
+y	, 	40207
+properties	, 	table: 0x0e5c0490
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	352
+drawInfo	, 	table: 0x0e5bcde0
+y	, 	40326
+properties	, 	table: 0x0e5c0e68
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	220
+drawInfo	, 	table: 0x0e5bd7b8
+y	, 	40577
+properties	, 	table: 0x0e5bd470
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	245
+drawInfo	, 	table: 0x0e5b9dc0
+y	, 	40795
+properties	, 	table: 0x0e5b9a78
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	347
+drawInfo	, 	table: 0x0e5b63c8
+y	, 	41044
+properties	, 	table: 0x0e5b6080
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	553
+drawInfo	, 	table: 0x0e5b29d0
+y	, 	41136
+properties	, 	table: 0x0e5b6a58
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	744
+drawInfo	, 	table: 0x0e5b33a8
+y	, 	41158
+properties	, 	table: 0x0e5b3060
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	736
+drawInfo	, 	table: 0x0e5af9b0
+y	, 	41337
+properties	, 	table: 0x0e5af668
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	612
+drawInfo	, 	table: 0x0e5abfb8
+y	, 	41436
+properties	, 	table: 0x0e5abc70
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	414
+drawInfo	, 	table: 0x0e5a85c0
+y	, 	41431
+properties	, 	table: 0x0e5ac648
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	235
+drawInfo	, 	table: 0x0e5a8f98
+y	, 	41277
+properties	, 	table: 0x0e5a8c50
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	158
+drawInfo	, 	table: 0x0e5a55a0
+y	, 	41078
+properties	, 	table: 0x0e5a5258
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	272
+drawInfo	, 	table: 0x0e5a1ba8
+y	, 	40443
+properties	, 	table: 0x0e5a1860
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	756
+drawInfo	, 	table: 0x0e59e1b0
+y	, 	36330
+properties	, 	table: 0x0e5a2238
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	294
+drawInfo	, 	table: 0x0e59eb88
+y	, 	37003
+properties	, 	table: 0x0e59e840
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	230
+drawInfo	, 	table: 0x0e59b190
+y	, 	9776
+properties	, 	table: 0x0e59ae48
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	606
+drawInfo	, 	table: 0x0e597798
+y	, 	22304
+properties	, 	table: 0x0e597450
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	623
+drawInfo	, 	table: 0x0e593da0
+y	, 	22410
+properties	, 	table: 0x0e597e28
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	619
+drawInfo	, 	table: 0x0e594778
+y	, 	22530
+properties	, 	table: 0x0e594430
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
+layer	, 	table: 0x0ee01f00
+x	, 	596
+drawInfo	, 	table: 0x0e590d80
+y	, 	22636
+properties	, 	table: 0x0e590a38
+visible	, 	true
+name	, 	
+gid	, 	50
+width	, 	0
+height	, 	0
+type	, 	
