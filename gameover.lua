@@ -22,9 +22,11 @@ local gameover = {}
 		--gameoverImage = love.graphics.newImage('gfx/skulls-red-black-bonesq.jpeg')
         gameoverImage = love.graphics.newImage('gfx/scorescreen.jpg')
         dialog = love.graphics.newImage('gfx/namedialog.jpg')
-        
+        buttonPassive = love.graphics.newImage('gfx/ButtonNonSelected.png')
+        buttonSelected = love.graphics.newImage('gfx/ButtonSelected.png')
+        selectedButton = 0
         speed = 0
-        scorecount = 8
+        --scorecount = 0
 		print('game over.init')
 	end
 
@@ -84,10 +86,17 @@ local gameover = {}
             love.graphics.printf(nameText, offsetX+475, 500, bufferSize, "center", 0, 0.5)
         else
             love.graphics.setColor(140,17,37)
-        
+            
 
-            -- love.graphics.print("Press Enter to restart", 400,400,0,0.5,0.5)
-            -- love.graphics.print("Press Esc for Main Menu", 400,550,0,0.5,0.5)
+            if selectedButton == 0 then
+                love.graphics.draw(buttonSelected, 280, 60)
+                love.graphics.draw(buttonPassive, 650, 60)
+            else
+                love.graphics.draw(buttonSelected, 650, 60)
+                love.graphics.draw(buttonPassive, 280, 60)
+            end
+            love.graphics.print("Play", 380, 70, 0, 0.5)
+            love.graphics.print("Quit", 730, 70, 0, 0.5)
             --if floodGateOpen == true then
             if online == true then
                for i, name in ipairs(names) do
@@ -137,7 +146,6 @@ local gameover = {}
                 end
 
                 floodGateOpen = false
-                --hasPostedScore = false
 
             else
                 -- print("sorry, not online")
@@ -174,19 +182,14 @@ local gameover = {}
                 enterYourName = false
                 hasPostedScore = true
                 floodGateOpen = true
-            -- else
-            --     if buffer <= bufferSize then
-            --         text = text .. key
-            --         buffer = buffer + 1
-            --     end
             end
         else
             if key == "return" then
         		print("pressed enter from gameover state")
                 if selectedButton == 0 then
-        		  Gamestate.switch(game)
+                    Gamestate.switch(game)
                 else
-                    Gamestate.switch(menu)
+                    love.event.quit()
                 end
             elseif key == "right" then
                 selectedButton = (selectedButton + 1) % 2

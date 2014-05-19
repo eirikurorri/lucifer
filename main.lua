@@ -58,7 +58,7 @@ function love.load()
 
     Gamestate.registerEvents()
     print('about to switch')
-    Gamestate.switch(gameover) -- REMEMBER TO PUT TO MENU
+    Gamestate.switch(menu) -- REMEMBER TO PUT TO MENU
 end
 
 function love.draw()

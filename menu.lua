@@ -42,6 +42,7 @@ local menu = {}
 
     function menu:enter(previous)
     	print('menu:enter')
+    	scorecount = 0
     	love.graphics.draw(buttonSelected, 100, 600)
 	    love.graphics.print("Start", 185, 610, 0, 0.5, 0.5)
     	-- highlight play button
@@ -67,7 +68,7 @@ local menu = {}
     		if selectedState == 0 then
     			Gamestate.switch(game)
 			elseif selectedState == 1 then
-				Gamestate.switch(game) -- Change to scoreboard when it's ready
+				Gamestate.switch(gameover) -- Change to scoreboard when it's ready
 			elseif selectedState == 2 then
 				love.event.quit()
 			end
