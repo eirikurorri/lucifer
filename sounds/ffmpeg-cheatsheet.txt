@@ -1,1 +1,1 @@
-ffmpeg -i fire.aif -f mp3 fire.mp3
+ffmpeg -i scream%d.aif -f mp3 fire%d.mp3

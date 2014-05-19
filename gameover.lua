@@ -11,6 +11,7 @@ local gameover = {}
     local enterYourName
     local floodGateOpen = false
     local online
+    local selectedButton
 
 
     local nameText = ""
@@ -23,11 +24,12 @@ local gameover = {}
         dialog = love.graphics.newImage('gfx/namedialog.jpg')
         
         speed = 0
-        scorecount = 3
+        scorecount = 8
 		print('game over.init')
 	end
 
     function gameover:enter(previous)
+        selectedButton = 0
         print('gameover:enter')
         hasPostedScore = false
         
@@ -112,8 +114,7 @@ local gameover = {}
         --arnarth.pythonanywhere.com/save/
             if online == true then
                 print("We have posted a score and are entering update function with scorecount ", scorecount)
-                --local respbody = {} -- for the response body
-                --local result = http.request("http://arnarth.pythonanywhere.com/save/"..name.."/"..scorecount.."/".."lucifer")
+
                 local result = http.request("http://arnarth.pythonanywhere.com/load/lucifer")
 
                 for i=1, #names do 
@@ -137,8 +138,9 @@ local gameover = {}
 
                 floodGateOpen = false
                 --hasPostedScore = false
+
             else
-                print("sorry, not online")
+                -- print("sorry, not online")
             end
         elseif enterYourName == true then
             enabled = love.keyboard.hasTextInput( )
@@ -148,11 +150,11 @@ local gameover = {}
     end
 
 
-    function gameover:keyreleased(key)
+    function gameover:keypressed(key)
     	
         if enterYourName == true then
-
-            if key == "backspace" then
+            if key and key:match( '^[%w%s]$' ) then nameText = nameText..key
+            elseif key == "backspace" then
                 nameText = nameText:utf8sub(1,-2)
                 if buffer >= 1 then
                     buffer = buffer - 1
@@ -165,7 +167,7 @@ local gameover = {}
                     print("r: ", r, "c: ", c, "h: ", h)
                 else
                     print("entering hardcoded offline score")
-                    highscore.add("Mimmie", 7)
+                    highscore.add(nameText, scorecount)
                     highscore.save()
                 end
                 love.keyboard.setTextInput(false)
@@ -181,10 +183,15 @@ local gameover = {}
         else
             if key == "return" then
         		print("pressed enter from gameover state")
-        		Gamestate.switch(game)
-        	end
-            if key == "escape" then
-                Gamestate.switch(menu)
+                if selectedButton == 0 then
+        		  Gamestate.switch(game)
+                else
+                    Gamestate.switch(menu)
+                end
+            elseif key == "right" then
+                selectedButton = (selectedButton + 1) % 2
+            elseif key == "left" then
+                selectedButton = (selectedButton - 1) % 2
             end
         end
     --print(scorecount)
@@ -192,10 +199,11 @@ local gameover = {}
 
     function love.textinput(t)
         
-        --if buffer <= bufferSize then
+        if buffer <= bufferSize then
             nameText = nameText .. t
-            --buffer = buffer + 1
-        --end
+            buffer = buffer + 1
+        end
+        print(text)
         
     end
 

@@ -146,7 +146,8 @@ local game = {}
                 speed = speed + 0.4
             end
             if distance >= distanceGoal/2 then
-                speed = 0    
+                speed = 0
+                Gamestate.switch(gameover)  
             end           
         end
         --love.graphics.setColor(140,17,37)
