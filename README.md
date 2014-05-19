@@ -3,6 +3,8 @@ Lucifer: The Journey Home
 
 A game about Lucifer's journey to his cozy home in hell as he grapples with stray souls and newtonian physics.
 
+Use left, right to move around, a and d to swipe to the left and right, and s to slow down.
+
 Implemented using the Löve game engine as a part of the Computer Game Design and Development at Reykjavik University in May 2014.
 
 License: MIT License, see http://opensource.org/licenses/MIT
