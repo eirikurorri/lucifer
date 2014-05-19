@@ -68,6 +68,7 @@ function hero.updateHero(dt,cam,speed,reached_bottom,distanceGoal,cameraoffset,s
 	-- apply a downward force to the hero (=gravity)
 	herox,heroy = ourHero:center()
     
+    
     if swipeaction == true then
         --print(swipeaction)
         swiping = swipeaction
@@ -227,13 +228,12 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
 end
 
 function hero.draw()
-    map:draw()
 	--ourHero:draw('fill')
     collx, colly = ourHero:center()
     
     if reached_bottom == false then
         animation:draw(south, collx-89, colly-100, nil, 0.5)
-
+            
         if swiping == true and swipetimer <= 0.5 then
             if swipeToTheLeft == true then
                 animation = animations.southBoundSwipeL
@@ -241,7 +241,9 @@ function hero.draw()
                 animation = animations.southBoundSwipeR
             end
         else
-            if swipeToTheLeft == true then
+            if slowdown == true then 
+                animation = animations.southBoundCape 
+            elseif swipeToTheLeft == true then
                 animation = animations.southBoundForkL
             else
                 animation = animations.southBoundForkR
@@ -250,7 +252,6 @@ function hero.draw()
 
     else
         animation:draw(north, collx-89, colly-100, nil, 0.5)
-        --animation:draw(south, collx-89, colly-100, nil, 0.5)
 
         if swiping == true and swipetimer <= 0.5 then
             if swipeToTheLeft == true then
@@ -259,7 +260,9 @@ function hero.draw()
                 animation = animations.northBoundSwipeR
             end
         else
-            if swipeToTheLeft == true then
+            if slowdown == true then
+                animation = animations.northBoundCape
+            elseif swipeToTheLeft == true then
                 animation = animations.northBoundForkL
             else
                 animation = animations.northBoundForkR
@@ -407,27 +410,10 @@ function hero.findSide(map)
     return collidable_tiles
 end
 
+-- this function might be unneccessary after all
 function hero.reloadSoulObjects(map)
     print('reloading Soul Objects...')
-    -- map.layers["souls"]["objects"][shape_b.key]["visible"] = false
 
-    -- pusha key numerinu a stack
-    -- nota key sem index a map
-    -- setja map.souls.index.visible sem true
-
-    -- eda bara luppa gegnum allt souls mappid og gera allt visible
-
-    -- for i, soul in pairs(map.layers["souls"]["objects"]) do
-    --     for property, value in pairs(soul) do
-    --         --print(property, ", ", value)
-    --         if property == "visible" then
-    --             if value == false then
-    --                 print(value)
-    --                 value = true
-    --                 print("put value to be true, like this: ", value)
-    --             end
-    --         end
-    --     end
 
     for i, soul in pairs( map("souls").objects ) do
         for property, value in pairs(soul) do
@@ -441,28 +427,10 @@ function hero.reloadSoulObjects(map)
             end
         end
 
-
-
      for i, obj in pairs(caughtSouls) do
-    --     print('inserting caughtSoul ', obj)
-    --     for j, k in pairs(obj) do
-    --         print(j, ": ", k)
-    --     end
-    --     collider:addRectangle(obj.x-88, obj.y+14, 32, 56)
-    --     collider:addToGroup("soul", obj)
-    --     collider:setPassive(obj)
-    --     obj.visible = true
          table.insert(souls, obj)
     end
-    --     -- --table.insert(souls, obj)
-    --     -- local collObject = collider:addRectangle(obj.x-88, obj.y+14, 32, 56) -- hard coded according to soul image tile size
-    --     -- collObject.type = "soul"
-    --     -- collObject.key = i
-    --     -- collObject.visible = true
-    --     -- collider:addToGroup("soul", collObject)
-    --     -- collider:setPassive(collObject)
-    --     -- table.insert(souls, collObject)
-    --     -- table.remove(caughtSouls, obj)
+
     end
 end
 

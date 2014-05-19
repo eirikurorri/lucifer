@@ -16,17 +16,23 @@ local game = {}
 	    local grid = anim8.newGrid(354, 454, south:getWidth(), south:getHeight())
 
 	    animations = {
+
 	    	-- left and right refers to the gamer's perspective
 
-	  		northBoundForkL = anim8.newAnimation(grid(3,2, 4,2, 1,3), 0.1),
+	  		northBoundForkL = anim8.newAnimation(grid(4,1, 1,2, 2,2), 0.1),
 	  		northBoundForkR = anim8.newAnimation(grid(1,1, 2,1, 3,1), 0.1),
 	  		northBoundSwipeL = anim8.newAnimation(grid(2,3, 3,3, 4,3), 0.1),
-	  		northBoundSwipeR = anim8.newAnimation(grid(4,1, 1,2, 2,2), 0.1),
+	  		northBoundSwipeR = anim8.newAnimation(grid(3,2, 4,2, 1,3), 0.1),
+	  		northBoundCape = anim8.newAnimation(grid(1,4, 2,4, 3,4, 4,4, 1,5, 4,4, 3,4, 4,4, 1,5, 4,4, 3,4, 4,4, 1,5, 4,4, 3,4, 4,4, 1,5, 4,4, 3,4, 4,4, 1,5, 4,4, 3,4, 4,4, 1,5, 4,4, 3,4, 4,4, 1,5, 4,4, 3,4, 4,4, 1,5, 4,4, 3,4), 0.1),
+	  		--northBoundCapeHold = anim8.newAnimation(grid(3,4, 4,4, 1,5), 0.1),
 
-	  		southBoundForkL = anim8.newAnimation(grid(4,3, 3,3, 2,3), 0.1),
-	  		southBoundForkR = anim8.newAnimation(grid(4,1, 1,2, 2,2), 0.1),
-	  		southBoundSwipeL = anim8.newAnimation(grid(1,2, 4,2, 3,2), 0.1),
-	  		southBoundSwipeR = anim8.newAnimation(grid(3,1, 2,1, 1,1), 0.1)
+	  		southBoundForkL = anim8.newAnimation(grid(4,5, 2,4, 1,4), 0.1),
+	  		southBoundForkR = anim8.newAnimation(grid(1,5, 2,5, 3,5), 0.1),
+	  		southBoundSwipeL = anim8.newAnimation(grid(2,3, 3,3, 4,3), 0.1),
+	  		southBoundSwipeR = anim8.newAnimation(grid(3,4, 4,4, 1,3), 0.1),
+	  		southBoundCape = anim8.newAnimation(grid(1,2, 2,2, 3,2, 4,2, 1,1, 4,2, 3,2, 4,2, 1,1, 4,2, 3,2, 4,2, 1,1, 4,2, 3,2, 4,2, 1,1, 4,2, 3,2, 4,2, 1,1, 4,2, 3,2, 4,2, 1,1, 4,2, 3,2, 4,2, 1,1, 4,2, 3,2, 4,2, 1,1, 4,2, 3,2), 0.1)
+	  		--southBoundCapeHold = anim8.newAnimation(grid(3,2, 4,2, 1,1), 0.1)
+
 		}
 
 		
@@ -64,7 +70,7 @@ local game = {}
 	    bottomtiles = ourHero.findbottomTiles(map)
 	    
 	   	
-	    ourHero.reloadSoulObjects(map)
+	    --ourHero.reloadSoulObjects(map)
 		soulTiles = ourHero.findSoulObjects(map)
 
 		--map("souls").visible = true
