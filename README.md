@@ -3,7 +3,7 @@ Lucifer: The Journey Home
 
 A game about Lucifer's journey to his cozy home in hell as he grapples with stray souls and newtonian physics.
 
-Implemented using the Löve game engine.
+Implemented using the Löve game engine as a part of the Computer Game Design and Development at Reykjavik University in May 2014.
 
 License: MIT License, see http://opensource.org/licenses/MIT
 Lucifer sprite character by Gudbjorg Hlin Gudmundsdottir, license: http://creativecommons.org/licenses/by-nc/4.0/
