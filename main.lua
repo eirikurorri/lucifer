@@ -29,10 +29,11 @@ local stage = 1
 
 -- gamestates 
 Gamestate = require "hump.gamestate"
-
+highscore = require "sick"
 menu = require "menu"
 game = require "game"
 gameover = require "gameover"
+offline = require "gameoveroffline"
 
 stage = 1
 
@@ -40,14 +41,14 @@ local mainfont = love.graphics.setNewFont("font/ufonts.com_goatbeard.ttf", 120)
 local sounds = require('sounds')
 
 
-love.keyboard.setTextInput(disable)
+love.keyboard.setTextInput(false)
 love.window.setMode(1200, 800)
 --love.window.setFullscreen(true)
 
 function love.load()
 
     love.graphics.setFont(mainfont)
-
+    highscore.set("highscore", 5, "Johnnie", 3)
 
     TEsound.playLooping(wind)
     TEsound.playLooping(fire, 'hellfire', nil, fireVolume)
@@ -56,7 +57,8 @@ function love.load()
     --collider = HC(100, on_collide)
 
     Gamestate.registerEvents()
-    Gamestate.switch(menu) -- REMEMBER TO PUT TO MENU
+    print('about to switch')
+    Gamestate.switch(gameover) -- REMEMBER TO PUT TO MENU
 end
 
 function love.draw()
