@@ -5,6 +5,11 @@ A game about Lucifer's journey to his cozy home in hell as he grapples with stra
 
 Implemented using the Löve game engine.
 
+License: MIT License, see http://opensource.org/licenses/MIT
+Lucifer sprite character by Gudbjorg Hlin Gudmundsdottir, license: http://creativecommons.org/licenses/by-nc/4.0/
+
+All other assets are refenced here:
+
 Sounds:
 http://www.freesound.org/people/felix.blume/sounds/154794/
 http://www.freesound.org/people/J.Zazvurek/sounds/153235/
