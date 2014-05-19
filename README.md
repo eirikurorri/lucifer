@@ -27,3 +27,7 @@ https://www.youtube.com/watch?v=nwhmS-L7Rm8
 Graphics:
 http://aegiandyad.deviantart.com/art/Hot-Rock-Texture-181123400
 http://upload.wikimedia.org/wikipedia/commons/9/9d/Paradise_Lost_12.jpg
+http://upload.wikimedia.org/wikipedia/commons/8/8d/Mih%C3%A1ly_Zichy_Lucifer_1887.jpeg
+http://upload.wikimedia.org/wikipedia/commons/8/8a/Darvasa_gas_crater_panorama.jpg
+http://www.officialpsds.com/Wooden-Sign-PSD37538.html
+Sign image was changed a bit from the original.

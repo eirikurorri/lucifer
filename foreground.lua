@@ -20,7 +20,7 @@ function fg.loadForeground()
 
 	fgImageHeight = 2600
 	fgXoffset = -fgImageHeight
-	fgScalingFactor = 1 -- was 2.2429906542
+	fgScalingFactor = 1
 end
 
 function fg.drawForeground()

@@ -15,16 +15,14 @@ Camera = require "hump.camera"
 gamemenu = require "menu"
 souls = require "souls"
 foreground = require "foreground"
-local http = require "socket.http"
-local ltn12 = require "ltn12"
 
 local scoresign
 ourHero = require "hero"
+scorecount = 0
 
 
-local text = ""
 
-local postscore = false
+
 
 local stage = 1
 
@@ -58,7 +56,7 @@ function love.load()
     --collider = HC(100, on_collide)
 
     Gamestate.registerEvents()
-    Gamestate.switch(menu)
+    Gamestate.switch(menu) -- REMEMBER TO PUT TO MENU
 end
 
 function love.draw()
@@ -111,53 +109,13 @@ end
 
 function love.update(dt)
 
-            if postscore == false then
-            --arnarth.pythonanywhere.com/save/
-
             
-            --local respbody = {} -- for the response body
-            --local result = http.request("http://arnarth.pythonanywhere.com/save/"..name.."/"..score.."/".."lucifer")
-            --local result = http.request("http://arnarth.pythonanywhere.com/load/lucifer")
-
-            text = ""
-            enabled = love.keyboard.hasTextInput( )
-            print(enabled)    
-            love.keyboard.setTextInput(true)
-            enabled = love.keyboard.hasTextInput( )
-            print(enabled)
-
-            --local einn = string.gmatch(result,'"score":%s"(%d+)"')
-            --local tveir = string.gmatch(result,'"name":%s"(%a+)"')
-            --for w in einn do 
-            --    print(w)
-            --end
-            --for x in tveir do
-            --    print(x)
-            --end
-            --print(result)
-            --print(einn)
-            --print(tveir)
-            
-            postscore = true
-            end
-    
 end
 
 function love.keyreleased(key)
-    if key == "backspace" then
-        text = text:utf8sub(1,-2) 
-    end
-    if key == "return" then
-        --http.request("http://arnarth.pythonanywhere.com/save/"..text.."/"..scorecount.."/".."lucifer")
-        print(scorecount)
-        love.keyboard.setTextInput(false)
-    end
-    --print(scorecount)
+    
 end
 
-function love.textinput(t)
-    text = text .. t
-    print(text)
-end
+
 
 
