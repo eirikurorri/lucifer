@@ -5,7 +5,7 @@ A game about Lucifer's journey to his cozy home in hell as he grapples with stra
 
 Use left, right to move around, a and d to swipe to the left and right, and s to slow down.
 
-Implemented using the Löve game engine as a part of the Computer Game Design and Development at Reykjavik University in May 2014.
+Implemented using the Löve game engine as a part of the Computer Game Design and Development at Reykjavik University in May 2014. Developed by Eirikur Orri Olafsson and Thordur Thorsteinsson.
 
 License: MIT License, see http://opensource.org/licenses/MIT
 Lucifer sprite character by Gudbjorg Hlin Gudmundsdottir, license: http://creativecommons.org/licenses/by-nc/4.0/
