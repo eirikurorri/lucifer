@@ -194,6 +194,7 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
    elseif shape_a == swipeobject and shape_b.type == "soul" then
         map.layers["souls"]["objects"][shape_b.key]["visible"] = false
         -- local timer = 0
+        -- TEsound.play(splat)
         table.insert(caughtSouls, shape_b)
         collider:remove(shape_b)
         scorecounter()
@@ -207,6 +208,7 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
     elseif shape_b == swipeobject and shape_a.type == "soul" then
         map.layers["souls"]["objects"][shape_a.key]["visible"] = false
         --local timer = 0
+        -- TEsound.play(splat)
         table.insert(caughtSouls, shape_a)
         collider:remove(shape_a)
         scorecounter()

@@ -1,5 +1,5 @@
 local gameoveroffline = {}
-	local hasPostedScore = false
+    local hasPostedScore = false
     
     local scores = {}
     local names = {}
