@@ -134,7 +134,6 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
             bouncetimer = 0
             bounce = true
             bouncedistance = colly
-            --bouncetimer = love.timer.getTime()
         end
    elseif shape_b == ourHero and shape_a.type == "side" then
        hero_shape = shape_b
@@ -143,7 +142,6 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
             bouncetimer = 0
             bounce = true
             bouncedistance = colly
-            --bouncetimer = love.timer.getTime()
         end
    elseif shape_a == ourHero and shape_b.type == "bottom" and reached_bottom == false then
         hero_shape = shape_a
@@ -151,7 +149,6 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
             bouncetimer = 0
             bounce = true
             bouncedistance = colly
-            --bouncetimer = love.timer.getTime()
         end
    elseif shape_b == ourHero and shape_a.type == "bottom" and reached_bottom == false then
        hero_shape = shape_b
@@ -159,7 +156,6 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
             bouncetimer = 0
             bounce = true
             bouncedistance = colly
-            --bouncetimer = love.timer.getTime()
         end
     elseif shape_a == ourHero and shape_b.type == "bottom" and reached_bottom == true then
        Gamestate.switch(gameover)
@@ -173,7 +169,6 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
             bouncetimer = 0
             bounce = true
             bouncedistance = colly
-            --bouncetimer = love.timer.getTime()
         end
    elseif shape_b == ourHero and shape_a.type == "top" and reached_bottom == true then
        hero_shape = shape_b
@@ -181,7 +176,6 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
             bouncetimer = 0
             bounce = true
             bouncedistance = colly
-            --bouncetimer = love.timer.getTime()
         end
    elseif shape_a == ourHero and shape_b.type == "top" and reached_bottom == false then
         TEsound.play(splat)
@@ -193,31 +187,15 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
         return
    elseif shape_a == swipeobject and shape_b.type == "soul" then
         map.layers["souls"]["objects"][shape_b.key]["visible"] = false
-        -- local timer = 0
-        -- TEsound.play(splat)
         table.insert(caughtSouls, shape_b)
         collider:remove(shape_b)
         scorecounter()
-        -- if timer <= 0.01 then
-        --     print(timer)
-        --     timer = timer+dt
-        -- else
-        --     map.layers["souls"]["objects"][shape_b.key]["visible"] = true
-        -- end
         return
     elseif shape_b == swipeobject and shape_a.type == "soul" then
         map.layers["souls"]["objects"][shape_a.key]["visible"] = false
-        --local timer = 0
-        -- TEsound.play(splat)
         table.insert(caughtSouls, shape_a)
         collider:remove(shape_a)
         scorecounter()
-        -- if timer <= 0.01 then
-        --     print(timer)
-        --     timer = timer+dt
-        -- else
-        --     map.layers["souls"]["objects"][shape_a.key]["visible"] = true
-        -- end      
         return
    else
        -- none of the two shapes is a tile, return to upper function
@@ -230,7 +208,6 @@ function hero.collideHeroWithTile(dt, shape_a, shape_b, mtv_x, mtv_y,reached_bot
 end
 
 function hero.draw()
-	--ourHero:draw('fill')
     collx, colly = ourHero:center()
     
     if reached_bottom == false then
@@ -278,7 +255,6 @@ end
 function hero.playSoundWithTimer(dt, sound)
     if repeatTimer >= repeatDelay then
         TEsound.play(sound)
-        -- print('Swoosh!')
         repeatTimer = 0
     else 
         repeatTimer = repeatTimer + dt

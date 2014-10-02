@@ -17,7 +17,6 @@ local gameoveroffline = {}
 
 	function gameoveroffline:init()
 		print("offline:init")
-		--gameoverImage = love.graphics.newImage('gfx/skulls-red-black-bonesq.jpeg')
         gameoverImage = love.graphics.newImage('gfx/scorescreen.jpg')
         dialog = love.graphics.newImage('gfx/namedialog.jpg')
         
@@ -56,15 +55,6 @@ local gameoveroffline = {}
         else
         love.graphics.setColor(140,17,37)
 
-        -- love.graphics.print("Press Enter to restart", 400,400,0,0.5,0.5)
-        -- love.graphics.print("Press Esc for Main Menu", 400,550,0,0.5,0.5)
-        --if floodGateOpen == true then
-
-            -- for i, score, name in highscore() do
-            --    love.graphics.print(name, offsetX+150, i*linespacing+300, 0, 0.3)
-            --    love.graphics.print(score, offsetX+450, i*linespacing+300, 0, 0.3)
-            -- end
-       --end
         love.graphics.setColor(255,255,255)
     end
 
@@ -74,35 +64,9 @@ local gameoveroffline = {}
             --arnarth.pythonanywhere.com/save/
 
             print("We have posted a score and are entering update function with scorecount ", scorecount)
-            --local respbody = {} -- for the response body
-            --local result = http.request("http://arnarth.pythonanywhere.com/save/"..name.."/"..scorecount.."/".."lucifer")
-            --local result = http.request("http://arnarth.pythonanywhere.com/load/lucifer")
-
-
-            -- for i=1, #names do 
-            --     --names[i]:removeSelf()
-            --     names[i] = nil
-            -- end
-
-            -- for i=1, #scores do 
-            --     --scores[i]:removeSelf()
-            --     scores[i] = nil
-            -- end
-
-            -- local scorestring = string.gmatch(result,'"score":%s"(%d+)"')
-            -- local namestring = string.gmatch(result,'"name":%s"([%a,%s]+)"')
-            -- for name in namestring do
-            --     table.insert(names, name)
-            --     print(name)
-            -- end
-            -- for score in scorestring do
-            --     table.insert(scores, score)
-            --     print(score)
-            -- end
 
 
             floodGateOpen = false
-            --hasPostedScore = false
             elseif enterYourName == true then
                 enabled = love.keyboard.hasTextInput( )
                 --print(enabled)    
@@ -138,7 +102,6 @@ local gameoveroffline = {}
                 Gamestate.switch(menu)
             end
         end
-    --print(scorecount)
     end
 
     function love.textinput(t)

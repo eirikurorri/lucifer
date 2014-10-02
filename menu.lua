@@ -33,11 +33,7 @@ local menu = {}
 	    
 	    love.graphics.print("Quit", 890, 610, 0, 0.5, 0.5)
         love.graphics.setColor(140,17,37)
-        --love.graphics.print("Press Enter to begin", 400,400,0,0.5,0.5)
         love.graphics.setColor(255,255,255)
-        -- if menu:keypressed('right') then
-        -- 	print("pressed right from inside draw")
-        -- end
     end
 
     function menu:enter(previous)
@@ -46,7 +42,6 @@ local menu = {}
     	love.graphics.draw(buttonSelected, 100, 600)
 	    love.graphics.print("Start", 185, 610, 0, 0.5, 0.5)
     	-- highlight play button
-    	--love.graphics.draw()
     end
 
     function menu:update(dt)

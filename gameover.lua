@@ -19,7 +19,6 @@ local gameover = {}
 	local gameoverImage
 
 	function gameover:init()
-		--gameoverImage = love.graphics.newImage('gfx/skulls-red-black-bonesq.jpeg')
         gameoverImage = love.graphics.newImage('gfx/scorescreen.jpg')
         dialog = love.graphics.newImage('gfx/namedialog.jpg')
         buttonPassive = love.graphics.newImage('gfx/ButtonNonSelected.png')
@@ -169,7 +168,7 @@ local gameover = {}
                 end
             elseif key == "return" then
                 if online == true then
-                    print("saving score to server...") -- 2147483647 is a popular score to post
+                    print("saving score to server...") -- 2147483647 seems to be a popular score to post
                     r, c, h = http.request("http://arnarth.pythonanywhere.com/save/"..nameText.."/"..scorecount.."/".."lucifer")
                     print("text: ", nameText, "scorecount: ", scorecount)
                     print("r: ", r, "c: ", c, "h: ", h)
@@ -197,7 +196,6 @@ local gameover = {}
                 selectedButton = (selectedButton - 1) % 2
             end
         end
-    --print(scorecount)
     end
 
     function love.textinput(t)

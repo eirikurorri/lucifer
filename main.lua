@@ -1,5 +1,4 @@
 --background layer loaded
---background = require "background"
 require('TEsound')
 require('utf8')
 
@@ -19,10 +18,6 @@ foreground = require "foreground"
 local scoresign
 ourHero = require "hero"
 scorecount = 0
-
-
-
-
 
 local stage = 1
 
@@ -53,11 +48,8 @@ function love.load()
     TEsound.playLooping(wind)
     TEsound.playLooping(fire, 'hellfire', nil, fireVolume)
 
-    -- load HardonCollider, set callback to on_collide and size of 100
-    --collider = HC(100, on_collide)
-
     Gamestate.registerEvents()
-    print('about to switch')
+    -- print('about to switch')
     Gamestate.switch(menu) -- REMEMBER TO PUT TO MENU
 end
 
@@ -97,7 +89,6 @@ function drawCamera()
             love.graphics.print(scorecount, cam.x-130, cam.y-300,0,2,2)
         end
     end
-    --love.graphics.setColor(0,255,0)
     if reached_bottom == false then
         love.graphics.rectangle("fill", cam.x-100, cam.y+200, 200-slowdowninterval*40,20)
     else

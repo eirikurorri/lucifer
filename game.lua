@@ -51,6 +51,7 @@ local game = {}
 	   -- map("top").color = {255,0,0}
 	   -- map("side").color = {0,255,0}
 	   -- map("bottom").color = {0,0,255}
+           -- you can stop uncommenting now
 	   -- end display collision polygons
 
 		map("top").visible = false
@@ -60,8 +61,8 @@ local game = {}
 	    map("side").visible = false
 	    map("bottom").visible = false
 
-		collider = HC(100, on_collide)
-		-- Collider stuff	
+            collider = HC(100, on_collide)
+            -- Collider stuff	
 	    ourHero.setupHero(400,-300, collider)
 
 	    
@@ -80,7 +81,7 @@ local game = {}
 	    slowdown = false
 	    swipeaction = false
 	    swipeToTheLeft = true
-		-- background
+            -- background
 	    --background.loadBackground()
 	    
 
@@ -150,14 +151,6 @@ local game = {}
                 Gamestate.switch(gameover)  
             end           
         end
-        --love.graphics.setColor(140,17,37)
-        -- love.graphics.print("Cam pos y: ".. math.floor(cam.y),1050,200,0,0.25,0.25)
-        -- love.graphics.print("Speed: "..math.floor(speed),1050,180,0,0.25,0.25)
-        -- love.graphics.print("Slowdown Speed: "..math.floor(slowdownstart),1000,80,0,0.25,0.25)
-        -- love.graphics.print("Slowdownend speed: "..math.floor(slowdownend),1000,100,0,0.25,0.25)
-        -- love.graphics.print(math.floor(distance),1050,220,0,0.25,0.25)
-        -- FPS meter and memory counter
-        --love.graphics.print("FPS: "..love.timer.getFPS() .. '\nMem(kB): ' .. math.floor(collectgarbage("count")), 1050, 140,0,0.25,0.25)
         
 
 	    cam:draw(drawCamera)
@@ -169,7 +162,6 @@ local game = {}
             end
             reached_bottom = true
             
-            --print(stage)
         elseif ourHero.heroycoords() <= 100 then
             if reached_bottom == true then
                 stage = stage + 1
@@ -177,7 +169,6 @@ local game = {}
             reached_bottom = false
 
             
-            --print(stage)
         end
 
         if ourHero.heroycoords() <= distanceGoal/2 then
@@ -187,7 +178,6 @@ local game = {}
         	TEsound.volume("hellfire", reversedY/(distanceGoal/2))
         end
         map:draw()
-        -- print(fireVolume)
 	end
 
 	function game:update(dt)

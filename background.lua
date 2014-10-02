@@ -1,10 +1,7 @@
 local background = {}
 
 function background.loadBackground()
-	--background pictures loaded
-    -- background = love.graphics.newImage('gfx/map0.png')
-    -- background2 = love.graphics.newImage('gfx/map1.png')
-    -- background3 = love.graphics.newImage('gfx/map2.png')
+    --background pictures loaded
     background = love.graphics.newImage('gfx/cave.png')
     background2 = love.graphics.newImage('gfx/cave.png')
     -- background Y coordinates set
@@ -24,10 +21,8 @@ function background.drawBackground(bottom_reached, heroY)
         love.graphics.draw(background2, 120, background2y - bgheight )
         love.graphics.draw(background, 120, backgroundy )
         love.graphics.draw(background2, 120, background2y + bgheight )
-        --love.graphics.draw(background3, 120, background2y + bgheight )
         backgroundy = backgroundy - backgroundSpeed
         background2y = background2y - backgroundSpeed
-        --background3y = background3y - backgroundSpeed
         
         if backgroundy <= -bgheight then
             backgroundy = 0 
